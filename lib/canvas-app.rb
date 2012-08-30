@@ -1,7 +1,14 @@
-require "canvas-app/version"
-
 module Canvas
   module App
-    # Your code goes here...
+    ROOT = File.expand_path('./', File.dirname(__FILE__))
   end
 end
+
+require "datastore-client"
+require "devcenter-backend"
+
+require "canvas-app/version"
+require "canvas-app/embedder"
+require "canvas-app/connection"
+require "canvas-app/app"
+

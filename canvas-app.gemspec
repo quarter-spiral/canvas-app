@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "canvas-app"
   gem.require_paths = ["lib"]
   gem.version       = Canvas::App::VERSION
+
+  gem.add_dependency 'sinatra', '1.3.3'
+  gem.add_dependency 'sinatra-assetpack', '0.0.11'
+  gem.add_dependency 'sass', '3.2.1'
 end
