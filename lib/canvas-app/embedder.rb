@@ -1,5 +1,6 @@
 require "canvas-app/embedder/base"
 require "canvas-app/embedder/html5"
+require "canvas-app/embedder/flash"
 
 module Canvas::App
   module Embedder
