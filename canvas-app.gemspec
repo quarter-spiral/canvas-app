@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sinatra', '1.3.3'
   gem.add_dependency 'sinatra-assetpack', '0.0.11'
   gem.add_dependency 'sass', '3.2.1'
+  gem.add_dependency 'devcenter-backend', '0.0.1'
 end
