@@ -20,4 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sinatra-assetpack', '0.0.11'
   gem.add_dependency 'sass', '3.2.1'
   gem.add_dependency 'devcenter-backend', '0.0.1'
+  gem.add_dependency 'datastore-client', '0.0.6'
+  gem.add_dependency 'graph-client', '0.0.4'
 end
