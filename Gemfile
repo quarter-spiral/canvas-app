@@ -20,7 +20,10 @@ group :test, :development do
   gem 'rack-client'
   gem 'json'
   gem 'rake'
-  gem 'thin'
+
+  platforms :ruby do
+    gem 'thin'
+  end
 
   platforms :rbx do
     gem 'bson_ext'
