@@ -56,5 +56,26 @@ describe App do
         @response.body.must_match /<iframe [^>]*src="http:\/\/example.com\/test-game"/
       end
     end
+
+    describe "thas is a flash game" do
+      it "has an object with the game's url" do
+        @game[:configuration][:type] = 'flash'
+        @uuid = create_game(@game)
+        @response = client.get("/v1/games/#{@uuid}")
+
+        @response.body.must_match /<object [^>]*type="application\/x-shockwave-flash"\s+[^>]*data="http:\/\/example.com\/test-game"/
+      end
+    end
+
+    describe "that is an initial game" do
+      it "responds with a blank 404" do
+        @game[:configuration][:type] = 'initial'
+        @uuid = create_game(@game)
+        @response = client.get("/v1/games/#{@uuid}")
+
+        @response.status.must_equal 404
+        @response.body.must_equal ''
+      end
+    end
   end
 end

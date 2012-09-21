@@ -1,4 +1,5 @@
 require "canvas-app/embedder/base"
+require "canvas-app/embedder/initial"
 require "canvas-app/embedder/html5"
 require "canvas-app/embedder/flash"
 

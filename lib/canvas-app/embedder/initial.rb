@@ -1,13 +1,14 @@
 module Canvas::App
   module Embedder
-    class Base
-      def initialize(game)
-        @game = game
+    class Initial < Base
+      def body
+        ''
       end
 
       def status
-        200
+        404
       end
     end
   end
 end
+

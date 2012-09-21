@@ -51,9 +51,15 @@ module Canvas::App
 
       embedder = Embedder.for(game)
       return halt(403, "Invalid game") unless embedder
-      embedded_game = erb embedder.template, locals: {game: game}
 
-      erb template, locals: {game: game, embedded_game: embedded_game}
+      status embedder.status
+
+      if embedder.respond_to?(:body)
+        embedder.body
+      else
+        embedded_game = erb embedder.template, locals: {game: game}
+        erb template, locals: {game: game, embedded_game: embedded_game}
+      end
     end
   end
 end
