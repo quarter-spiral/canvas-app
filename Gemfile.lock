@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    canvas-app (0.0.1)
+    canvas-app (0.0.2)
       datastore-client (= 0.0.6)
       devcenter-backend (= 0.0.11)
       graph-backend (= 0.0.3)
