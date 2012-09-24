@@ -3,7 +3,7 @@ PATH
   specs:
     canvas-app (0.0.2)
       datastore-client (= 0.0.6)
-      devcenter-backend (= 0.0.11)
+      devcenter-backend (= 0.0.13)
       graph-backend (= 0.0.3)
       graph-client (= 0.0.4)
       sass (= 3.2.1)
@@ -37,7 +37,7 @@ GEM
       commander
       json
       service-client (= 0.0.4)
-    devcenter-backend (0.0.11)
+    devcenter-backend (0.0.13)
       datastore-client (= 0.0.6)
       grape (= 0.2.0)
       graph-client (= 0.0.4)
