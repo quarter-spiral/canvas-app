@@ -25,32 +25,23 @@ module Canvas::App
       alias_method :h, :escape_html
     end
 
-    template = <<-EOS
-<!DOCTYPE html>
-<html lang="en-us">
-    <head>
-      <title><%=h game.name %></title>
-      <%= css :application, :media => 'screen' %>
-    </head>
-    <body>
-    </body>
-      <h1><%=h game.name %></h1>
+    error Devcenter::Backend::Error::NotFoundError do
+      halt 404, env['sinatra.error']
+    end
 
-      <%= embedded_game %>
-    </body>
-</html>
-    EOS
+    error Devcenter::Backend::Error::BaseError do
+      halt 403, env['sinatra.error']
+    end
 
-    get '/v1/games/:uuid' do
+    get '/v1/games/:uuid/:venue' do
       return not_found unless params[:uuid]
-      game = connection.datastore.get(:public, params[:uuid])
-      return not_found unless game
-      game = game['game']
-      return halt(403, "Entity not a game") unless game
-      game = Devcenter::Backend::Game.new(game)
+      game = Devcenter::Backend::Game.find(params[:uuid])
 
       embedder = Embedder.for(game)
       return halt(403, "Invalid game") unless embedder
+
+      venue = Venue.for(game, params[:venue])
+      return halt(404) unless venue
 
       status embedder.status
 
@@ -58,7 +49,7 @@ module Canvas::App
         embedder.body
       else
         embedded_game = erb embedder.template, locals: {game: game}
-        erb template, locals: {game: game, embedded_game: embedded_game}
+        erb venue.template, locals: {game: game, embedded_game: embedded_game}
       end
     end
   end

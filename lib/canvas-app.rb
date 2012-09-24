@@ -8,7 +8,9 @@ require "datastore-client"
 require "devcenter-backend"
 
 require "canvas-app/version"
+require "canvas-app/utils"
 require "canvas-app/embedder"
+require "canvas-app/venue"
 require "canvas-app/connection"
 require "canvas-app/app"
 

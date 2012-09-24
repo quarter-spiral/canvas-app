@@ -12,6 +12,10 @@ gemspec
 
 #gem 'devcenter-backend', path: '../devcenter-backend'
 
+platforms :ruby do
+  gem 'thin'
+end
+
 group :test, :development do
   #gem 'datastore-backend', path: '../datastore-backend'
   gem 'datastore-backend', '0.0.4'
@@ -20,10 +24,6 @@ group :test, :development do
   gem 'rack-client'
   gem 'json'
   gem 'rake'
-
-  platforms :ruby do
-    gem 'thin'
-  end
 
   platforms :rbx do
     gem 'bson_ext'

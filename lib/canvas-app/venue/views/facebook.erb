@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+      <title><%=h game.name %></title>
+      <%= css :application, :media => 'screen' %>
+      <style>
+        body {
+          background-color: #3b5998;
+        }
+      </style>
+    </head>
+    <body>
+    </body>
+      <h1><%=h game.name %></h1>
+
+      <%= embedded_game %>
+    </body>
+</html>
