@@ -1,9 +1,20 @@
 require 'sinatra'
 require 'sinatra/assetpack'
 require 'uri'
+require 'service-client'
 
 module Canvas::App
   class App < Sinatra::Base
+    class TokenStore
+      def self.token
+        @token ||= connection.auth.create_app_token(ENV['QS_OAUTH_CLIENT_ID'], ENV['QS_OAUTH_CLIENT_SECRET'])
+      end
+
+      def self.reset!
+        @token = nil
+      end
+    end
+
     set :root, ROOT
 
     register Sinatra::AssetPack
@@ -21,6 +32,18 @@ module Canvas::App
         @connection ||= Connection.create
       end
 
+      def token
+        TokenStore.token
+      end
+
+      def try_twice_and_avoid_token_expiration
+        yield
+      rescue Service::Client::ServiceError => e
+        raise e unless e.error == 'Unauthenticated'
+        TokenStore.reset!
+        yield
+      end
+
       include Rack::Utils
       alias_method :h, :escape_html
     end
@@ -35,7 +58,10 @@ module Canvas::App
 
     get '/v1/games/:uuid/:venue' do
       return not_found unless params[:uuid]
-      game = Devcenter::Backend::Game.find(params[:uuid])
+
+      game = try_twice_and_avoid_token_expiration do
+        Devcenter::Backend::Game.find(params[:uuid], token)
+      end
 
       embedder = Embedder.for(game)
       return halt(403, "Invalid game") unless embedder
