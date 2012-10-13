@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.2)
+    canvas-app (0.0.3)
       auth-client (>= 0.0.8)
       datastore-client (= 0.0.7)
       devcenter-backend (= 0.0.15)
