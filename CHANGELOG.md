@@ -1,3 +1,7 @@
+# 0.0.4
+
+* Fixes auth connection bug when creating OAuth tokens on Heroku
+
 # 0.0.3
 
 * Adds OAuth authenticated connections for the backends
