@@ -20,7 +20,7 @@ PATH
   remote: .
   specs:
     canvas-app (0.0.4)
-      auth-client (>= 0.0.8)
+      auth-client (>= 0.0.9)
       datastore-client (= 0.0.7)
       devcenter-backend (= 0.0.15)
       sass (= 3.2.1)
@@ -65,7 +65,7 @@ GEM
       sinatra-activerecord
       sinatra-flash
       uuid
-    auth-client (0.0.8)
+    auth-client (0.0.9)
       service-client (>= 0.0.6)
     bcrypt-ruby (3.0.1)
     bson (1.6.4)
