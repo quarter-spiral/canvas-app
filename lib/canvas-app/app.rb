@@ -6,7 +6,7 @@ require 'service-client'
 module Canvas::App
   class App < Sinatra::Base
     class TokenStore
-      def self.token
+      def self.token(connection)
         @token ||= connection.auth.create_app_token(ENV['QS_OAUTH_CLIENT_ID'], ENV['QS_OAUTH_CLIENT_SECRET'])
       end
 
@@ -33,7 +33,7 @@ module Canvas::App
       end
 
       def token
-        TokenStore.token
+        TokenStore.token(connection)
       end
 
       def try_twice_and_avoid_token_expiration
