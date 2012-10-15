@@ -16,6 +16,7 @@ module Canvas::App
     end
 
     set :root, ROOT
+    set :protection, :except => [:frame_options, :xss_header]
 
     register Sinatra::AssetPack
 
@@ -56,26 +57,30 @@ module Canvas::App
       halt 403, env['sinatra.error']
     end
 
-    get '/v1/games/:uuid/:venue' do
-      return not_found unless params[:uuid]
+    [:get, :post].each do |method|
+      send(method, '/v1/games/:uuid/:venue') do
+        return not_found unless params[:uuid]
 
-      game = try_twice_and_avoid_token_expiration do
-        Devcenter::Backend::Game.find(params[:uuid], token)
-      end
+        game = try_twice_and_avoid_token_expiration do
+          Devcenter::Backend::Game.find(params[:uuid], token)
+        end
 
-      embedder = Embedder.for(game)
-      return halt(403, "Invalid game") unless embedder
+        embedder = Embedder.for(game)
+        return halt(403, "Invalid game") unless embedder
 
-      venue = Venue.for(game, params[:venue])
-      return halt(404) unless venue
+        venue = Venue.for(game, params[:venue])
+        return halt(404) unless venue
 
-      status embedder.status
+        headers['X-Frame-Options'] = ''
 
-      if embedder.respond_to?(:body)
-        embedder.body
-      else
-        embedded_game = erb embedder.template, locals: {game: game}
-        erb venue.template, locals: {game: game, embedded_game: embedded_game}
+        status embedder.status
+
+        if embedder.respond_to?(:body)
+          embedder.body
+        else
+          embedded_game = erb embedder.template, locals: {game: game}
+          erb venue.template, locals: {game: game, embedded_game: embedded_game}
+        end
       end
     end
   end

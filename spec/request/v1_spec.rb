@@ -169,6 +169,11 @@ describe App do
         @response.status.must_equal 200
       end
 
+      it "responds with 200 for POST request" do
+        @response = client.post("/v1/games/#{@uuid}/facebook")
+        @response.status.must_equal 200
+      end
+
       it "has the name of the game as the pages title and headline" do
         @response.body.must_match /<title>Some Game<\/title>/
         @response.body.must_match /<h1>Some Game<\/h1>/
