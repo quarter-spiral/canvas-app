@@ -11,6 +11,10 @@ module Canvas::App
         File.read(File.expand_path("./#{Utils.uncamelize_string(name)}.erb", template_dir))
       end
 
+      def error_for(request)
+        nil
+      end
+
       protected
       def template_dir
         File.join(File.dirname(__FILE__), '/views')

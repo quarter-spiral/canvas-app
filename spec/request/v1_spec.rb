@@ -162,48 +162,55 @@ describe App do
       before do
         @game[:venues] = {'facebook' => {'enabled' => true}}
         devcenter_client.put("/v1/games/#{@uuid}", {}, JSON.dump(venues: @game[:venues]))
+       end
+
+      it "errors out on GET requests" do
         @response = client.get("/v1/games/#{@uuid}/facebook")
+        @response.status.must_equal 405
       end
 
-      it "responds with 200" do
-        @response.status.must_equal 200
-      end
-
-      it "responds with 200 for POST request" do
-        @response = client.post("/v1/games/#{@uuid}/facebook")
-        @response.status.must_equal 200
-      end
-
-      it "has the name of the game as the pages title and headline" do
-        @response.body.must_match /<title>Some Game<\/title>/
-        @response.body.must_match /<h1>Some Game<\/h1>/
-      end
-
-      describe "that is an html5 game" do
-        it "has an iframe with the game's url" do
-          @response.body.must_match /<iframe [^>]*src="http:\/\/example.com\/test-game"/
+      describe "with a request" do
+        before do
+          @response = client.post("/v1/games/#{@uuid}/facebook")
         end
-      end
 
-      describe "thas is a flash game" do
-        it "has an object with the game's url" do
-          @game[:configuration]['type'] = 'flash'
-          @uuid = create_game(@game)
-          @response = client.get("/v1/games/#{@uuid}/facebook")
-
-          @response.body.must_match /<object [^>]*type="application\/x-shockwave-flash"\s+[^>]*data="http:\/\/example.com\/test-game"/
+        it "responds with 200 for POST request" do
+          @response = client.post("/v1/games/#{@uuid}/facebook")
+          @response.status.must_equal 200
         end
-      end
 
-      describe "that is an initial game" do
-        it "responds with a blank 404" do
-          @game[:configuration]['type'] = 'initial'
-          @uuid = create_game(@game)
-          @response = client.get("/v1/games/#{@uuid}/facebook")
-
-          @response.status.must_equal 404
-          @response.body.must_equal ''
+        it "has the name of the game as the pages title and headline" do
+          @response.body.must_match /<title>Some Game<\/title>/
+          @response.body.must_match /<h1>Some Game<\/h1>/
         end
+
+        describe "that is an html5 game" do
+          it "has an iframe with the game's url" do
+            @response.body.must_match /<iframe [^>]*src="http:\/\/example.com\/test-game"/
+          end
+        end
+
+        describe "thas is a flash game" do
+          it "has an object with the game's url" do
+            @game[:configuration]['type'] = 'flash'
+            @uuid = create_game(@game)
+            @response = client.post("/v1/games/#{@uuid}/facebook")
+
+            @response.body.must_match /<object [^>]*type="application\/x-shockwave-flash"\s+[^>]*data="http:\/\/example.com\/test-game"/
+          end
+        end
+
+        describe "that is an initial game" do
+          it "responds with a blank 404" do
+            @game[:configuration]['type'] = 'initial'
+            @uuid = create_game(@game)
+            @response = client.post("/v1/games/#{@uuid}/facebook")
+
+            @response.status.must_equal 404
+            @response.body.must_equal ''
+          end
+        end
+
       end
     end
   end

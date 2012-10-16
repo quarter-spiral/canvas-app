@@ -71,7 +71,8 @@ module Canvas::App
         venue = Venue.for(game, params[:venue])
         return halt(404) unless venue
 
-        headers['X-Frame-Options'] = ''
+        error = venue.error_for(request)
+        halt(*error) if error
 
         status embedder.status
 
