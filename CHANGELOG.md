@@ -1,3 +1,7 @@
+# 0.0.8
+
+* Small bug fix for Facebook authentication redirects #2
+
 # 0.0.7
 
 * Small bug fix for Facebook authentication redirects
