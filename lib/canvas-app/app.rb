@@ -71,16 +71,13 @@ module Canvas::App
         venue = Venue.for(game, params[:venue])
         return halt(404) unless venue
 
-        error = venue.error_for(request)
-        halt(*error) if error
-
         status embedder.status
 
         if embedder.respond_to?(:body)
           embedder.body
         else
           embedded_game = erb embedder.template, locals: {game: game}
-          erb venue.template, locals: {game: game, embedded_game: embedded_game}
+          venue.response_for(game, embedded_game, self)
         end
       end
     end

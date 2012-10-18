@@ -4,6 +4,8 @@ module Canvas
   end
 end
 
+require "facebook-client"
+
 require "datastore-client"
 require "devcenter-backend"
 

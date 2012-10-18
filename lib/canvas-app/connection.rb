@@ -10,5 +10,9 @@ module Canvas::App
       @datastore = ::Datastore::Client.new(datastore_backend_url)
       @auth = ::Auth::Client.new(auth_backend_url)
     end
+
+    def facebook(client_id, client_secret)
+      ::Facebook::Client.new(client_id, client_secret)
+    end
   end
 end

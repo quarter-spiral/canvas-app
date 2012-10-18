@@ -12,6 +12,8 @@ gemspec
 
 #gem 'devcenter-backend', path: '../devcenter-backend'
 
+#gem 'facebook-client', path: '../facebook-client'
+
 platforms :ruby do
   gem 'thin'
 end

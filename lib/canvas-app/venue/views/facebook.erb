@@ -10,9 +10,15 @@
       </style>
     </head>
     <body>
-    </body>
       <h1><%=h game.name %></h1>
 
       <%= embedded_game %>
+
+      <h3>Your friends</h3>
+      <ul>
+        <% friends.each do |friend| %>
+          <li><%=h friend.name %> (FB ID: <%=h friend.identifier %>)</li>
+        <% end %>
+      </ul>
     </body>
 </html>

@@ -160,22 +160,25 @@ describe App do
 
     describe "on the facebook venue" do
       before do
-        @game[:venues] = {'facebook' => {'enabled' => true}}
+        @app_id = ::Facebook::Client::Fixtures.client_id
+        @app_secret = ::Facebook::Client::Fixtures.client_secret
+        @game[:venues] = {'facebook' => {'enabled' => true, 'app-id' => @app_id, 'app-secret' => @app_secret}}
         devcenter_client.put("/v1/games/#{@uuid}", {}, JSON.dump(venues: @game[:venues]))
        end
 
       it "errors out on GET requests" do
         @response = client.get("/v1/games/#{@uuid}/facebook")
-        @response.status.must_equal 405
+        @response.status.must_equal 302
+        @response['Location'].must_equal ::Facebook::Client.new(@app_id, @app_secret).unauthenticated.app_url
       end
 
       describe "with a request" do
         before do
-          @response = client.post("/v1/games/#{@uuid}/facebook")
+          @response = client.post("/v1/games/#{@uuid}/facebook", {}, signed_request: ::Facebook::Client::Fixtures.signed_request)
         end
 
         it "responds with 200 for POST request" do
-          @response = client.post("/v1/games/#{@uuid}/facebook")
+          @response = client.post("/v1/games/#{@uuid}/facebook", {}, signed_request: ::Facebook::Client::Fixtures.signed_request)
           @response.status.must_equal 200
         end
 
@@ -194,7 +197,7 @@ describe App do
           it "has an object with the game's url" do
             @game[:configuration]['type'] = 'flash'
             @uuid = create_game(@game)
-            @response = client.post("/v1/games/#{@uuid}/facebook")
+            @response = client.post("/v1/games/#{@uuid}/facebook", {}, signed_request: ::Facebook::Client::Fixtures.signed_request)
 
             @response.body.must_match /<object [^>]*type="application\/x-shockwave-flash"\s+[^>]*data="http:\/\/example.com\/test-game"/
           end

@@ -11,8 +11,8 @@ module Canvas::App
         File.read(File.expand_path("./#{Utils.uncamelize_string(name)}.erb", template_dir))
       end
 
-      def error_for(request)
-        nil
+      def response_for(game, embedded_game, context)
+        context.erb template, locals: {game: game, embedded_game: embedded_game, context: context}
       end
 
       protected

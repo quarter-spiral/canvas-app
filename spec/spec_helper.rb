@@ -10,6 +10,8 @@ require 'datastore-backend'
 require 'graph-backend'
 require 'auth-backend'
 
+require 'facebook-client/fixtures'
+
 AUTH_APP = Auth::Backend::App.new(test: true)
 
 class FakeAdapters
@@ -54,6 +56,12 @@ module Canvas::App
 
       @datastore.client.raw.adapter = FakeAdapters.datastore
       @auth = FakeAdapters.auth
+    end
+
+    def facebook(client_id, client_secret)
+      @facebook = ::Facebook::Client.new(client_id, client_secret, adapter: :mock)
+      @facebook.adapter.authorization_url = "http://mygame.example.com"
+      @facebook
     end
   end
 end
