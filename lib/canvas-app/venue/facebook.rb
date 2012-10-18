@@ -19,7 +19,7 @@ module Canvas::App
 
           context.erb template, locals: {game: game, embedded_game: embedded_game, context: context, facebook_info: facebook_info, friends: friends}
         else
-          context.redirect facebook_client.authorization_url(redirect_url: request.url, scopes: [])
+          context.redirect facebook_client.unauthenticated.authorization_url(redirect_url: request.url, scopes: [])
         end
       end
     end
