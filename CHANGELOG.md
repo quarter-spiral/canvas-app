@@ -1,3 +1,7 @@
+# 0.0.6
+
+* Adds a rough first facebook integration through the facebook-client gem
+
 # 0.0.5
 
 * Bumps auth-client to fix another severe bug in the OAuth token creation on Heroku
