@@ -1,3 +1,7 @@
+# 0.0.7
+
+* Small bug fix for Facebook authentication redirects
+
 # 0.0.6
 
 * Adds a rough first facebook integration through the facebook-client gem
