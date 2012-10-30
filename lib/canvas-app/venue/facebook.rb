@@ -23,12 +23,13 @@ module Canvas::App
           }
           qs_oauth = context.connection.auth.venue_token(context.token, 'facebook', venue_data)
 
-          tokens = {
+          context.tokens = {
             qs: qs_oauth,
             venue: facebook_info['oauth_token']
           }
+          context.venue = 'facebook'
 
-          context.erb template, locals: {game: game, embedded_game: embedded_game, context: context, tokens: tokens}
+          context.erb template, locals: {game: game, context: context}
         else
           context.redirect facebook_client.unauthenticated.authorization_url(redirect_url: request.url, scopes: [:email])
         end

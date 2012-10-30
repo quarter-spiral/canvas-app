@@ -21,12 +21,15 @@ PATH
   specs:
     canvas-app (0.0.9)
       auth-client (>= 0.0.10)
+      coffee-script (= 2.2.0)
       datastore-client (= 0.0.7)
       devcenter-backend (= 0.0.15)
       facebook-client (>= 0.0.4)
+      less (= 2.2.2)
       sass (= 3.2.1)
       sinatra (= 1.3.3)
       sinatra-assetpack (= 0.0.11)
+      therubyracer (= 0.10.1)
       uuid
 
 GEM
@@ -73,8 +76,13 @@ GEM
     bson_ext (1.6.4)
       bson (~> 1.6.4)
     builder (3.0.3)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.4.0)
     commander (4.1.2)
       highline (~> 1.6.11)
+    commonjs (0.2.6)
     daemons (1.1.9)
     datastore-backend (0.0.9)
       auth-client (>= 0.0.6)
@@ -95,6 +103,8 @@ GEM
       json (= 1.7.4)
     erubis (2.7.0)
     eventmachine (1.0.0)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
     facebook-client (0.0.4)
       fb_graph
     faraday (0.8.1)
@@ -135,6 +145,9 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    less (2.2.2)
+      commonjs (~> 0.2.6)
+    libv8 (3.3.10.4)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
     mongo (1.6.2)
@@ -210,6 +223,8 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
     systemu (2.5.2)
+    therubyracer (0.10.1)
+      libv8 (~> 3.3.10)
     thin (1.4.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)

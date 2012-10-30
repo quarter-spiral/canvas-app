@@ -17,6 +17,7 @@ module Canvas::App
 
     set :root, ROOT
     set :protection, :except => [:frame_options, :xss_header]
+    set :views, File.expand_path('./venue/views', File.dirname(__FILE__))
 
     register Sinatra::AssetPack
 
@@ -25,8 +26,23 @@ module Canvas::App
       serve '/v1/stylesheets', from: 'canvas-app/app/assets/stylesheets'
       serve '/v1/images',      from: 'canvas-app/app/assets/images'
 
-      css :application, '/v1/stylesheets/application.css', ['/v1/stylesheets/*.css']
-      js  :jquery, '/v1/javascripts/jquery.js', ['/v1/javascripts/jquery-1.8.2.min.js']
+      css :application, '/v1/stylesheets/application.css', [
+        '/v1/stylesheets/default.css'
+      ]
+
+      js  :vendor, '/v1/javascripts/vendor.js', [
+        '/v1/javascripts/vendor/jquery-1.8.2.min.js',
+        '/v1/javascripts/vendor/angular/angular.js',
+        '/v1/javascripts/vendor/angular/angular-resource.js'
+      ]
+
+      js :app, '/v1/javascripts/app.js', [
+        '/v1/javascripts/app/app.js',
+        '/v1/javascripts/app/services.js',
+        '/v1/javascripts/app/controllers.js',
+        '/v1/javascripts/app/filters.js',
+        '/v1/javascripts/app/directives.js'
+      ]
     }
 
     helpers do
@@ -44,6 +60,26 @@ module Canvas::App
         raise e unless e.error == 'Unauthenticated'
         TokenStore.reset!
         yield
+      end
+
+      def embedded_game
+        @embedded_game
+      end
+
+      def tokens=(tokens)
+        @tokens = tokens
+      end
+
+      def tokens
+        @tokens || {}
+      end
+
+      def venue=(venue)
+        @venue = venue
+      end
+
+      def venue
+        @venue || 'none'
       end
 
       include Rack::Utils
@@ -77,7 +113,7 @@ module Canvas::App
         if embedder.respond_to?(:body)
           embedder.body
         else
-          embedded_game = erb embedder.template, locals: {game: game}
+          @embedded_game = erb embedder.template, locals: {game: game}, layout: false
           venue.response_for(game, embedded_game, self)
         end
       end

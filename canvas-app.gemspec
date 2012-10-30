@@ -23,4 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'datastore-client', '0.0.7'
   gem.add_dependency 'auth-client', '>= 0.0.10'
   gem.add_dependency 'facebook-client', '>= 0.0.4'
+  gem.add_dependency 'coffee-script', '2.2.0'
+  gem.add_dependency 'less', '2.2.2'
+  gem.add_dependency 'therubyracer', '0.10.1'
 end
