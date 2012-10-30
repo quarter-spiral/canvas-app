@@ -1,4 +1,4 @@
-# 0.0.9 WIP
+# 0.0.9
 
 * Passes QS data to games on facebook including all OAuth tokens (FB&QS)
 
