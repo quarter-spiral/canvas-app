@@ -162,6 +162,8 @@ describe App do
       before do
         @app_id = ::Facebook::Client::Fixtures.client_id
         @app_secret = ::Facebook::Client::Fixtures.client_secret
+        fb_token = ::Facebook::Client::Fixtures.signed_request_data['oauth_token']
+        connection.facebook(@app_id, @app_secret).adapter.token_owner[fb_token] = {'name' => 'Peter', 'email' => 'peter@example.com', 'id' => '123'}
         @game[:venues] = {'facebook' => {'enabled' => true, 'app-id' => @app_id, 'app-secret' => @app_secret}}
         devcenter_client.put("/v1/games/#{@uuid}", {}, JSON.dump(venues: @game[:venues]))
        end

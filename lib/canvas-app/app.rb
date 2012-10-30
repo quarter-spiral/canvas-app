@@ -26,6 +26,7 @@ module Canvas::App
       serve '/v1/images',      from: 'canvas-app/app/assets/images'
 
       css :application, '/v1/stylesheets/application.css', ['/v1/stylesheets/*.css']
+      js  :jquery, '/v1/javascripts/jquery.js', ['/v1/javascripts/jquery-1.8.2.min.js']
     }
 
     helpers do

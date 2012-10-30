@@ -20,10 +20,10 @@ PATH
   remote: .
   specs:
     canvas-app (0.0.8)
-      auth-client (>= 0.0.9)
+      auth-client (>= 0.0.10)
       datastore-client (= 0.0.7)
       devcenter-backend (= 0.0.15)
-      facebook-client (>= 0.0.3)
+      facebook-client (>= 0.0.4)
       sass (= 3.2.1)
       sinatra (= 1.3.3)
       sinatra-assetpack (= 0.0.11)
@@ -56,18 +56,17 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     attr_required (0.0.5)
-    auth-backend (0.0.6)
+    auth-backend (0.0.8)
       activerecord
       bcrypt-ruby
       json
       kaminari
       padrino-helpers
-      pg
       sinatra
       sinatra-activerecord
       sinatra-flash
       uuid
-    auth-client (0.0.9)
+    auth-client (0.0.10)
       service-client (>= 0.0.6)
     bcrypt-ruby (3.0.1)
     bson (1.6.4)
@@ -96,7 +95,7 @@ GEM
       json (= 1.7.4)
     erubis (2.7.0)
     eventmachine (1.0.0)
-    facebook-client (0.0.3)
+    facebook-client (0.0.4)
       fb_graph
     faraday (0.8.1)
       multipart-post (~> 1.1)
@@ -165,7 +164,6 @@ GEM
     padrino-helpers (0.10.7)
       i18n (~> 0.6)
       padrino-core (= 0.10.7)
-    pg (0.14.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -230,7 +228,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  auth-backend (~> 0.0.6)
+  auth-backend (~> 0.0.8)
   bson_ext
   canvas-app!
   datastore-backend (= 0.0.9)

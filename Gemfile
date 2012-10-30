@@ -14,9 +14,12 @@ gemspec
 
 #gem 'facebook-client', path: '../facebook-client'
 
+#gem 'auth-client', path: '../auth-client'
+
 platforms :ruby do
   gem 'thin'
 end
+
 
 group :test, :development do
   #gem 'datastore-backend', path: '../datastore-backend'
@@ -30,7 +33,7 @@ group :test, :development do
   gem 'graph-client', '0.0.5'
   #gem 'graph-backend', path: '../graph-backend'
   gem 'graph-backend', '0.0.9'
-  gem 'auth-backend', "~> 0.0.6"
+  gem 'auth-backend', "~> 0.0.8"
   gem 'sqlite3'
   gem 'sinatra_warden', git: 'https://github.com/quarter-spiral/sinatra_warden.git'
   gem 'songkick-oauth2-provider', git: 'https://github.com/quarter-spiral/oauth2-provider.git'

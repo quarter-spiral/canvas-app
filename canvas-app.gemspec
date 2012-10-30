@@ -21,6 +21,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sass', '3.2.1'
   gem.add_dependency 'devcenter-backend', '0.0.15'
   gem.add_dependency 'datastore-client', '0.0.7'
-  gem.add_dependency 'auth-client', '>= 0.0.9'
-  gem.add_dependency 'facebook-client', '>= 0.0.3'
+  gem.add_dependency 'auth-client', '>= 0.0.10'
+  gem.add_dependency 'facebook-client', '>= 0.0.4'
 end

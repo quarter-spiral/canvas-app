@@ -1,3 +1,7 @@
+# 0.0.9 WIP
+
+* Passes QS data to games on facebook including all OAuth tokens (FB&QS)
+
 # 0.0.8
 
 * Small bug fix for Facebook authentication redirects #2

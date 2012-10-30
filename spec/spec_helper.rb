@@ -26,6 +26,11 @@ class FakeAdapters
   def self.auth
     @auth ||= Auth::Client.new('http://auth-backend.dev', adapter: [:rack, AUTH_APP])
   end
+
+  def self.facebook(client_id, client_secret)
+    @facebooks ||= {}
+    @facebooks[[client_id, client_secret]] ||= ::Facebook::Client.new(client_id, client_secret, adapter: :mock)
+  end
 end
 
 module Datastore::Backend
@@ -59,9 +64,9 @@ module Canvas::App
     end
 
     def facebook(client_id, client_secret)
-      @facebook = ::Facebook::Client.new(client_id, client_secret, adapter: :mock)
-      @facebook.adapter.authorization_url = "http://mygame.example.com"
-      @facebook
+      client = FakeAdapters.facebook(client_id, client_secret)
+      client.adapter.authorization_url = "http://mygame.example.com"
+      client
     end
   end
 end
