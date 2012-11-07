@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="header">
-      <a href="http://quarterspiral.com" target="new"><img src="/v1/images/quarterspiral_logo.png" width="40px" height="40px" alt="logo" /></a>
+      <a href="http://quarterspiral.com" target="new" id="logo"><img src="/v1/images/quarterspiral_logo_side.png" width="163px" height="40px" alt="logo" /></a>
       <h1><%=h game.name %></h1>
     </div>
 
@@ -17,7 +17,10 @@
 
         <%= embedded_game %>
 
-        <div id="socialBar" ng-Controller="SocialCtrl">
+      </div>
+
+
+      <div id="socialBar" ng-Controller="SocialCtrl">
           <ul class="options">
             <!--
               <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
@@ -40,7 +43,8 @@
             </li>
           </ul>
         </div>
-      </div>
+
+
     </div>
 
     <%= yield %>
