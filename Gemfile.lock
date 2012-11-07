@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.9)
+    canvas-app (0.0.10)
       auth-client (>= 0.0.10)
       coffee-script (= 2.2.0)
       datastore-client (= 0.0.7)
