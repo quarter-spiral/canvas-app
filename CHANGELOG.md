@@ -1,3 +1,7 @@
+# 0.0.95
+
+* Changed loyout to accomodate larger games (page now scrolls). Refined look and feel
+
 # 0.0.9
 
 * Passes QS data to games on facebook including all OAuth tokens (FB&QS)
