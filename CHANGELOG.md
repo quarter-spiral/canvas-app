@@ -1,4 +1,4 @@
-# 0.0.95
+# 0.0.95 WIP
 
 * Changed loyout to accomodate larger games (page now scrolls). Refined look and feel
 
