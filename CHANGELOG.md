@@ -1,3 +1,7 @@
+# 0.0.11 WIP
+
+* Stores facebook friends in our graph each time a user plays a game on facebook
+
 # 0.0.10
 
 * Changed loyout to accomodate larger games (page now scrolls). Refined look and feel

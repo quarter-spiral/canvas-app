@@ -15,19 +15,26 @@ module Canvas::App
         facebook_user_id = facebook_info['user_id']
 
         if facebook_user_id
-          player_info = facebook_client.authenticated_by(facebook_info['oauth_token']).whoami
+          authenticated_client = facebook_client.authenticated_by(facebook_info['oauth_token'])
+          player_info = authenticated_client.whoami
           venue_data = {
             'name'  => player_info['name'],
             'email' => player_info['email'],
             'venue-id' => player_info['id']
           }
           qs_oauth = context.connection.auth.venue_token(context.token, 'facebook', venue_data)
+          qs_uuid = context.connection.auth.token_owner(qs_oauth)['uuid']
 
           context.tokens = {
             qs: qs_oauth,
             venue: facebook_info['oauth_token']
           }
           context.venue = 'facebook'
+
+          friends = authenticated_client.friends_of(player_info['id'])
+          friends.map! {|f| {"venue-id" => f.identifier, "name" => f.name, "email" => f.email}}
+
+          context.connection.playercenter.update_friends_of(qs_uuid, qs_oauth, context.venue, friends)
 
           context.erb template, locals: {game: game, context: context}
         else

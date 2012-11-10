@@ -7,6 +7,7 @@ end
 require "facebook-client"
 
 require "datastore-client"
+require "playercenter-client"
 require "devcenter-backend"
 
 require "canvas-app/version"

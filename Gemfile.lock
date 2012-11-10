@@ -22,10 +22,11 @@ PATH
     canvas-app (0.0.10)
       auth-client (>= 0.0.10)
       coffee-script (= 2.2.0)
-      datastore-client (= 0.0.7)
-      devcenter-backend (= 0.0.15)
-      facebook-client (>= 0.0.4)
+      datastore-client (= 0.0.8)
+      devcenter-backend (= 0.0.16)
+      facebook-client (>= 0.0.5)
       less (= 2.2.2)
+      playercenter-client (= 0.0.2)
       sass (= 3.2.1)
       sinatra (= 1.3.3)
       sinatra-assetpack (= 0.0.11)
@@ -59,9 +60,10 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     attr_required (0.0.5)
-    auth-backend (0.0.8)
+    auth-backend (0.0.10)
       activerecord
       bcrypt-ruby
+      graph-client
       json
       kaminari
       padrino-helpers
@@ -69,13 +71,13 @@ GEM
       sinatra-activerecord
       sinatra-flash
       uuid
-    auth-client (0.0.10)
-      service-client (>= 0.0.6)
+    auth-client (0.0.12)
+      service-client (>= 0.0.8)
     bcrypt-ruby (3.0.1)
-    bson (1.6.4)
-    bson_ext (1.6.4)
-      bson (~> 1.6.4)
-    builder (3.0.3)
+    bson (1.7.0)
+    bson_ext (1.7.0)
+      bson (~> 1.7.0)
+    builder (3.0.4)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -91,25 +93,25 @@ GEM
       mongoid (= 2.4.11)
       rack-jsonp-middleware (= 0.0.5)
       uuid
-    datastore-client (0.0.7)
+    datastore-client (0.0.8)
       commander
       json
-      service-client (= 0.0.7)
-    devcenter-backend (0.0.15)
+      service-client (>= 0.0.7)
+    devcenter-backend (0.0.16)
       auth-client (>= 0.0.6)
-      datastore-client (= 0.0.7)
+      datastore-client (>= 0.0.7)
       grape (= 0.2.0)
-      graph-client (= 0.0.5)
+      graph-client (>= 0.0.5)
       json (= 1.7.4)
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    facebook-client (0.0.4)
+    facebook-client (0.0.5)
       fb_graph
     faraday (0.8.1)
       multipart-post (~> 1.1)
-    fb_graph (2.5.5)
+    fb_graph (2.5.8)
       httpclient (>= 2.2.0.2)
       json
       rack-oauth2 (>= 0.14.4)
@@ -120,14 +122,14 @@ GEM
       multi_xml
       rack
       rack-mount
-    graph-backend (0.0.9)
+    graph-backend (0.0.10)
       auth-client (>= 0.0.6)
       grape (= 0.2.0)
       json (= 1.7.4)
       neography (= 0.0.29)
-    graph-client (0.0.5)
+    graph-client (0.0.6)
       commander
-      service-client (>= 0.0.6)
+      service-client (>= 0.0.8)
     hashie (1.2.0)
     highline (1.6.15)
     hike (1.2.1)
@@ -150,13 +152,13 @@ GEM
     libv8 (3.3.10.4)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
-    mongo (1.6.2)
-      bson (~> 1.6.2)
+    mongo (1.3.1)
+      bson (>= 1.3.1)
     mongoid (2.4.11)
       activemodel (~> 3.1)
       mongo (<= 1.6.2)
       tzinfo (~> 0.3.22)
-    multi_json (1.3.6)
+    multi_json (1.3.7)
     multi_xml (0.5.1)
     multipart-post (1.1.5)
     neography (0.0.29)
@@ -177,6 +179,13 @@ GEM
     padrino-helpers (0.10.7)
       i18n (~> 0.6)
       padrino-core (= 0.10.7)
+    playercenter-backend (0.0.7)
+      auth-client (>= 0.0.12)
+      grape (= 0.2.0)
+      graph-client (>= 0.0.6)
+      json (= 1.7.4)
+    playercenter-client (0.0.2)
+      service-client (>= 0.0.8)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -195,19 +204,19 @@ GEM
       rack (>= 1.1)
     rack-protection (1.2.0)
       rack
-    rack-test (0.6.1)
+    rack-test (0.6.2)
       rack (>= 1.0)
     rake (0.9.2.2)
     rubyzip (0.9.9)
     sass (3.2.1)
-    service-client (0.0.7)
+    service-client (0.0.8)
       faraday (= 0.8.1)
       json
     sinatra (1.3.3)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    sinatra-activerecord (1.1.1)
+    sinatra-activerecord (1.1.2)
       activerecord (~> 3.0)
       sinatra (~> 1.0)
     sinatra-assetpack (0.0.11)
@@ -225,13 +234,13 @@ GEM
     systemu (2.5.2)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
-    thin (1.4.1)
+    thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.15.4)
     tilt (1.3.3)
-    tzinfo (0.3.33)
+    tzinfo (0.3.35)
     url_mount (0.2.1)
       rack
     uuid (2.3.5)
@@ -243,14 +252,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  auth-backend (~> 0.0.8)
+  auth-backend (~> 0.0.10)
   bson_ext
   canvas-app!
-  datastore-backend (= 0.0.9)
-  graph-backend (= 0.0.9)
-  graph-client (= 0.0.5)
+  datastore-backend (~> 0.0.9)
+  graph-backend (~> 0.0.10)
+  graph-client (~> 0.0.6)
   json
   nokogiri
+  playercenter-backend (~> 0.0.7)
   rack-client
   rack-test
   rake
