@@ -1,4 +1,4 @@
-# 0.0.11 WIP
+# 0.0.11
 
 * Stores facebook friends in our graph each time a user plays a game on facebook
 
