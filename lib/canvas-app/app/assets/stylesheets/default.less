@@ -1,21 +1,16 @@
-@import "./lib/canvas-app/app/assets/stylesheets/vendor/bootstrap/bootstrap.less";
 @import "./lib/canvas-app/app/assets/stylesheets/mixins.less";
-@iconSpritePath: "/v1/images/vendor/bootstrap/glyphicons-halflings.png";
-@iconWhiteSpritePath: "/v1/images/vendor/bootstrap/glyphicons-halflings-white.png";
-
 
 @avatarWidth: 80px;
 @avatarHeight: 80px;
-
 @headerHeight: 50px;
 
 
 body {
   background-color:#FFF;
+  padding-top:40px;
 }
 
 #mainView {
-  z-index:50;
   width:100%;
   #game {
     width:100%;
@@ -132,9 +127,6 @@ body {
 }
 
 #header {
-  width:100%;
-  height:@headerHeight;
-  background-color:#000;
   h1 {
     font-size:1.3em;
     color:#FFF;
