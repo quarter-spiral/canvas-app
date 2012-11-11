@@ -30,10 +30,17 @@ module Canvas::App
         '/v1/stylesheets/default.css'
       ]
 
+      css :vendor, '/v1/stylesheets/vendor.css', [
+        '/v1/stylesheets/vendor/bootstrap.css',
+        '/v1/stylesheets/vendor/bootstrap-responsive.css'
+      ]
+
       js  :vendor, '/v1/javascripts/vendor.js', [
         '/v1/javascripts/vendor/jquery-1.8.2.min.js',
         '/v1/javascripts/vendor/angular/angular.js',
-        '/v1/javascripts/vendor/angular/angular-resource.js'
+        '/v1/javascripts/vendor/angular/angular-resource.js',
+        '/v1/javascripts/vendor/bootstrap.js',
+        '/v1/javascripts/vendor/modernizr-2-6-1.js'
       ]
 
       js :app, '/v1/javascripts/app.js', [
