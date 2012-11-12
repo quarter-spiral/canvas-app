@@ -1,4 +1,4 @@
-# 0.0.12 WIP
+# 0.0.12
 
 * Refactors galaxy-spiral to spiral-galaxy
 
