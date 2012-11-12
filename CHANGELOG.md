@@ -1,3 +1,7 @@
+# 0.0.12 WIP
+
+* Refactors galaxy-spiral to spiral-galaxy
+
 # 0.0.11
 
 * Stores facebook friends in our graph each time a user plays a game on facebook

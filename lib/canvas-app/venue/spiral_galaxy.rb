@@ -1,6 +1,6 @@
 module Canvas::App
   module Venue
-    class GalaxySpiral < Base
+    class SpiralGalaxy < Base
     end
   end
 end

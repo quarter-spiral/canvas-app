@@ -24,7 +24,7 @@ describe App do
     end
 
     it "does not work with the galaxy-sprial venue when not enabled" do
-      @response = client.get("/v1/games/#{@uuid}/galaxy-spiral")
+      @response = client.get("/v1/games/#{@uuid}/spiral-galaxy")
       @response.status.must_equal 404
     end
 
@@ -33,11 +33,11 @@ describe App do
       @response.status.must_equal 404
     end
 
-    describe "on the galaxy-spiral venue" do
+    describe "on the spiral-galaxy venue" do
       before do
-        @game[:venues] = {'galaxy-spiral' => {'enabled' => true}}
+        @game[:venues] = {'spiral-galaxy' => {'enabled' => true}}
         devcenter_client.put("/v1/games/#{@uuid}", {}, JSON.dump(venues: @game[:venues]))
-        @response = client.get("/v1/games/#{@uuid}/galaxy-spiral")
+        @response = client.get("/v1/games/#{@uuid}/spiral-galaxy")
       end
 
       it "responds with 200" do
@@ -59,7 +59,7 @@ describe App do
         it "has an object with the game's url" do
           @game[:configuration]['type'] = 'flash'
           @uuid = create_game(@game)
-          @response = client.get("/v1/games/#{@uuid}/galaxy-spiral")
+          @response = client.get("/v1/games/#{@uuid}/spiral-galaxy")
 
           @response.body.must_match /<object [^>]*type="application\/x-shockwave-flash"\s+[^>]*data="http:\/\/example.com\/test-game"/
         end
@@ -69,7 +69,7 @@ describe App do
         it "responds with a blank 404" do
           @game[:configuration]['type'] = 'initial'
           @uuid = create_game(@game)
-          @response = client.get("/v1/games/#{@uuid}/galaxy-spiral")
+          @response = client.get("/v1/games/#{@uuid}/spiral-galaxy")
 
           @response.status.must_equal 404
           @response.body.must_equal ''
@@ -80,7 +80,7 @@ describe App do
         auth_helpers.expire_all_tokens!
         APP_TOKEN.gsub!(/^.*$/, auth_helpers.get_app_token(oauth_app[:id], oauth_app[:secret]))
         AuthenticationInjector.token = APP_TOKEN
-        @response = client.get("/v1/games/#{@uuid}/galaxy-spiral")
+        @response = client.get("/v1/games/#{@uuid}/spiral-galaxy")
         @response.status.must_equal 200
         @response.body.must_match /<title>Some Game<\/title>/
       end
