@@ -1,4 +1,4 @@
-# 0.0.13 WIP
+# 0.0.13
 
 * Bumps datastore-client to use the new API
 
