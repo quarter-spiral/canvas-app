@@ -22,8 +22,8 @@ PATH
     canvas-app (0.0.12)
       auth-client (>= 0.0.13)
       coffee-script (= 2.2.0)
-      datastore-client (= 0.0.8)
-      devcenter-backend (= 0.0.18)
+      datastore-client (>= 0.0.9)
+      devcenter-backend (>= 0.0.20)
       facebook-client (>= 0.0.5)
       less (= 2.2.2)
       playercenter-client (= 0.0.2)
@@ -73,6 +73,7 @@ GEM
       uuid
     auth-client (0.0.13)
       service-client (>= 0.0.8)
+    backports (2.6.5)
     bcrypt-ruby (3.0.1)
     bson (1.7.0)
     bson_ext (1.7.0)
@@ -86,21 +87,21 @@ GEM
       highline (~> 1.6.11)
     commonjs (0.2.6)
     daemons (1.1.9)
-    datastore-backend (0.0.9)
+    datastore-backend (0.0.11)
       auth-client (>= 0.0.6)
-      grape (= 0.2.0)
+      grape (= 0.2.3.qs)
       json (= 1.7.4)
       mongoid (= 2.4.11)
       rack-jsonp-middleware (= 0.0.5)
       uuid
-    datastore-client (0.0.8)
+    datastore-client (0.0.9)
       commander
       json
       service-client (>= 0.0.7)
-    devcenter-backend (0.0.18)
+    devcenter-backend (0.0.20)
       auth-client (>= 0.0.12)
-      datastore-client (>= 0.0.7)
-      grape (= 0.2.0)
+      datastore-client (>= 0.0.9)
+      grape (= 0.2.3.qs)
       graph-client (>= 0.0.7)
       json (= 1.7.4)
     erubis (2.7.0)
@@ -116,15 +117,18 @@ GEM
       json
       rack-oauth2 (>= 0.14.4)
       tzinfo
-    grape (0.2.0)
+    grape (0.2.3.qs)
+      activesupport
       hashie (~> 1.2)
-      multi_json
+      multi_json (>= 1.3.2)
       multi_xml
       rack
+      rack-accept
       rack-mount
-    graph-backend (0.0.10)
+      virtus
+    graph-backend (0.0.11)
       auth-client (>= 0.0.6)
-      grape (= 0.2.0)
+      grape (>= 0.2.0)
       json (= 1.7.4)
       neography (= 0.0.29)
     graph-client (0.0.7)
@@ -179,14 +183,16 @@ GEM
     padrino-helpers (0.10.7)
       i18n (~> 0.6)
       padrino-core (= 0.10.7)
-    playercenter-backend (0.0.9)
+    playercenter-backend (0.0.10)
       auth-client (>= 0.0.13)
-      grape (= 0.2.0)
+      grape (>= 0.2.0)
       graph-client (>= 0.0.7)
       json (= 1.7.4)
     playercenter-client (0.0.2)
       service-client (>= 0.0.8)
     rack (1.4.1)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-client (0.4.0)
@@ -245,6 +251,8 @@ GEM
       rack
     uuid (2.3.5)
       macaddr (~> 1.0)
+    virtus (0.5.2)
+      backports (~> 2.6.1)
     warden (1.2.1)
       rack (>= 1.0)
 
@@ -255,12 +263,12 @@ DEPENDENCIES
   auth-backend (~> 0.0.11)
   bson_ext
   canvas-app!
-  datastore-backend (~> 0.0.9)
-  graph-backend (~> 0.0.10)
+  datastore-backend (~> 0.0.11)
+  graph-backend (~> 0.0.11)
   graph-client (~> 0.0.7)
   json
   nokogiri
-  playercenter-backend (~> 0.0.9)
+  playercenter-backend (~> 0.0.10)
   rack-client
   rack-test
   rake

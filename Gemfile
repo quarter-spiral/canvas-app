@@ -24,7 +24,7 @@ end
 
 
 group :test, :development do
-  gem 'datastore-backend', '~> 0.0.9'
+  gem 'datastore-backend', '~> 0.0.11'
 
   gem 'rack-test'
   gem 'rack-client'
@@ -32,14 +32,14 @@ group :test, :development do
   gem 'rake'
 
   gem 'graph-client', '~> 0.0.7'
-  gem 'graph-backend', '~> 0.0.10'
+  gem 'graph-backend', '~> 0.0.11'
   gem 'auth-backend', "~> 0.0.11"
   gem 'sqlite3'
   gem 'sinatra_warden', git: 'https://github.com/quarter-spiral/sinatra_warden.git'
   gem 'songkick-oauth2-provider', git: 'https://github.com/quarter-spiral/oauth2-provider.git'
   gem 'nokogiri'
 
-  gem 'playercenter-backend', '~> 0.0.9'
+  gem 'playercenter-backend', '~> 0.0.10'
 
   platforms :rbx do
     gem 'bson_ext'

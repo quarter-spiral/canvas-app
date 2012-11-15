@@ -1,3 +1,7 @@
+# 0.0.13 WIP
+
+* Bumps datastore-client to use the new API
+
 # 0.0.12
 
 * Refactors galaxy-spiral to spiral-galaxy
