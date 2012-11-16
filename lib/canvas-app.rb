@@ -4,6 +4,8 @@ module Canvas
   end
 end
 
+require "qless"
+
 require "facebook-client"
 
 require "datastore-client"
@@ -12,8 +14,8 @@ require "devcenter-backend"
 
 require "canvas-app/version"
 require "canvas-app/utils"
+require "canvas-app/job"
 require "canvas-app/embedder"
 require "canvas-app/venue"
 require "canvas-app/connection"
 require "canvas-app/app"
-

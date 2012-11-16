@@ -9,39 +9,18 @@ end
 
 task :default => :test
 
-task :herokuize do
-  gems = ['service-client', 'datastore-client', 'graph-client', 'devcenter-backend']
-  paths = gems.map {|gem| [gem, `bundle show --paths|grep #{gem}`.chomp]}
+require 'qless/tasks'
+namespace :qless do
+  task :setup do
+    require 'canvas-app' # to ensure all job classes are loaded
 
-  root = File.dirname(__FILE__)
-
-  gemfile = File.read(File.expand_path('./Gemfile', root))
-  original_gemfile = gemfile.clone
-
-  `rm -rf #{root}/vendor/gems`
-  `mkdir -p #{root}/vendor/gems`
-
-  `git branch -D heroku`
-  `git checkout -b heroku`
-
-  paths.each do |gem, path|
-    basename = File.basename(path)
-    `rm -rf /tmp/#{basename}`
-    `cp -r #{path} /tmp/#{basename}`
-    `rm -rf /tmp/#{basename}/.git`
-    `cp -r /tmp/#{basename} #{root}/vendor/gems`
-    gemfile.gsub!(/^gem '#{gem}',.*$/, "gem '#{gem}', path: 'vendor/gems/#{basename}'")
+    # Set options via environment variables
+    # The only required option is QUEUES; the
+    # rest have reasonable defaults.
+    ENV['REDIS_URL'] ||= ENV['MYREDIS_URL'] || 'redis://localhost:6379'
+    ENV['QUEUES'] ||= 'jobs'
+    ENV['JOB_RESERVER'] ||= 'Ordered'
+    ENV['INTERVAL'] ||= '10' # 10 seconds
+    ENV['VERBOSE'] ||= 'true'
   end
-
-  File.open(File.expand_path("./Gemfile", root), 'w') {|f| f.write(gemfile)}
-  `bundle`
-  `git add Gemfile*`
-  `git add vendor/*`
-  `git commit -m "Heroku Deploy"`
-  `git push heroku heroku:master -f`
-  `git co -`
-  `git checkout Gemfile`
-  `git checkout Gemfile.lock`
-
-  `rm -rf #{root}/vendor/gems`
 end

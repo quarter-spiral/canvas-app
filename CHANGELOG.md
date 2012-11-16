@@ -1,3 +1,7 @@
+# 0.0.14 WIP
+
+* Moves facebook friend creation in the background
+
 # 0.0.13
 
 * Bumps datastore-client to use the new API

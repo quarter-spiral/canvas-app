@@ -12,6 +12,12 @@ describe "on the facebook venue" do
     @fb_adapter.token_owner[@fb_token] = {'name' => 'Peter', 'email' => 'peter@example.com', 'id' => '123'}
     @game[:venues] = {'facebook' => {'enabled' => true, 'app-id' => @app_id, 'app-secret' => @app_secret}}
     devcenter_client.put("/v1/games/#{@uuid}", {}, JSON.dump(venues: @game[:venues]))
+
+    #clear all jobs
+    queue = connection.qless.queues['jobs']
+    while job = queue.pop
+      job.cancel
+    end
   end
 
   it "errors out on GET requests" do
@@ -37,6 +43,11 @@ describe "on the facebook venue" do
     signed_request = ::Facebook::Client::Fixtures.signed_request(user_id: facebook_id, oauth_token: fb_token)
 
     @response = client.post("/v1/games/#{@uuid}/facebook", {}, signed_request: signed_request)
+
+    job = connection.qless.queues['jobs'].pop
+    job.wont_be_nil
+    job.perform
+
     friends = connection.playercenter.friends_of(uuid, token)
     friends.keys.size.must_equal 2
     friends.values.must_include("facebook" => {"id" => "21312313", "name" => "Jacko Smith"})
