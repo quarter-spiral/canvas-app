@@ -1,4 +1,4 @@
-# 0.0.14 WIP
+# 0.0.14
 
 * Moves facebook friend creation in the background
 
