@@ -1,4 +1,4 @@
-# 0.0.15 WIP
+# 0.0.15
 
 * Shows real friends in the friends bar
 * Minor Angular refactorings (renames ``MyApp`` module etc.)
