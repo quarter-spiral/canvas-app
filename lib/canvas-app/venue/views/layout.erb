@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" ng-app="myApp">
+<html lang="en-us" ng-app="canvasApp">
   <head>
     <title><%=h game.name %></title>
     <%= css :application, :media => 'screen' %>
@@ -20,29 +20,29 @@
       </div>
 
 
-      <div id="socialBar" ng-Controller="SocialCtrl">
-          <ul class="options">
-            <!--
-              <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
-            -->
+      <div id="socialBar" ng-Controller="SocialController">
+        <ul class="options">
+          <!--
+          <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
+          -->
 
-            <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'fullName'}"></i> Sort by Name</a></li>
+          <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'fullName'}"></i> Sort by Name</a></li>
 
-            <li><a ng-click="sortFriends = 'level'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'level'}"></i> Sort by Level</a></li>
+          <li><a ng-click="sortFriends = 'level'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'level'}"></i> Sort by Level</a></li>
 
-            <li><a ng-click="sortFriends = 'xp'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'xp'}"></i> Sort by XP</a></li>
+          <li><a ng-click="sortFriends = 'xp'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'xp'}"></i> Sort by XP</a></li>
 
-            <li><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
-          </ul>
-          <ul class="avatars">
-            <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends:true">
-              <div class="name">{{friend.fullName}}</div>
-              <div class="level">{{friend.level}}</div>
-              <div class="xp">{{friend.xp}}</div>
-              <img src="{{friend.avatar}}" />
-            </li>
-          </ul>
-        </div>
+          <li><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
+        </ul>
+        <ul class="avatars">
+          <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends:true">
+          <div class="name">{{friend.fullName}}</div>
+          <div class="level">{{friend.level}}</div>
+          <div class="xp">{{friend.xp}}</div>
+          <img src="{{friend.avatar}}" />
+          </li>
+        </ul>
+      </div>
 
 
     </div>
@@ -55,10 +55,15 @@
       }
       window.qs.tokens = <%= tokens.to_json %>;
       window.qs.info = {
-        venue: <%= venue.to_json %>
+        venue: <%= venue.to_json %>,
+        uuid: <%= uuid.to_json %>
       };
     </script>
 
+    <!-- Angular must be included before these -->
+    <script src="/angular-commons/javascripts/envs.js"></script>
+    <script src="/angular-commons/javascripts/services.js"></script>
+    <script src="/angular-commons/javascripts/controllers.js"></script>
     <%= js :app %>
   </body>
 </html>

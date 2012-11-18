@@ -1,3 +1,8 @@
+# 0.0.15 WIP
+
+* Shows real friends in the friends bar
+* Minor Angular refactorings (renames ``MyApp`` module etc.)
+
 # 0.0.14
 
 * Moves facebook friend creation in the background
