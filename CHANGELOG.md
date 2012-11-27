@@ -1,3 +1,7 @@
+# 0.0.17 WIP
+
+* Fixes small bug in the DOM exposed game UUID (not quoted before)
+
 # 0.0.16
 
 * Shows only friends that play the specific game
