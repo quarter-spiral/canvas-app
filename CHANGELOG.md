@@ -1,4 +1,4 @@
-# 0.0.16 WIP
+# 0.0.16
 
 * Shows only friends that play the specific game
 
