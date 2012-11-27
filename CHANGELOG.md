@@ -1,5 +1,6 @@
 # 0.0.17 WIP
 
+* Fixes bug that makes it impossible to pass a body with a GET request in Angular
 * Fixes small bug in the DOM exposed game UUID (not quoted before)
 
 # 0.0.16
