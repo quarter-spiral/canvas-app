@@ -26,6 +26,7 @@ services.factory "players", ["$rootScope", "venue-user","qs_commons_http", (root
       http.makeRequest(
         method: 'GET'
         url: "#{playercenterUrl}/v1/#{user.currentUser().uuid}/friends"
+        body: {game: window.qs.info.game}
         returns: (data) ->
           friends = []
           for uuid, friendData of data

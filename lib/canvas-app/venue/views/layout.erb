@@ -55,6 +55,7 @@
       }
       window.qs.tokens = <%= tokens.to_json %>;
       window.qs.info = {
+        game: <%= game.uuid %>,
         venue: <%= venue.to_json %>,
         uuid: <%= uuid.to_json %>
       };

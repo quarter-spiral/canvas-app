@@ -42,8 +42,14 @@ module Canvas::App
             'email' => player_info['email'],
             'venue-id' => player_info['id']
           }
-          qs_oauth = context.connection.auth.venue_token(context.token, 'facebook', venue_data)
-          qs_uuid = context.connection.auth.token_owner(qs_oauth)['uuid']
+          qs_oauth = nil
+          qs_uuid = nil
+          context.try_twice_and_avoid_token_expiration do
+            qs_oauth = context.connection.auth.venue_token(context.token, 'facebook', venue_data)
+            qs_uuid = context.connection.auth.token_owner(qs_oauth)['uuid']
+
+            context.connection.playercenter.register_player(qs_uuid, game.uuid, 'facebook', qs_oauth)
+          end
 
           context.tokens = {
             qs: qs_oauth,

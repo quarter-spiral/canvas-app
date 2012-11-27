@@ -26,7 +26,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'coffee-script', '2.2.0'
   gem.add_dependency 'less', '2.2.2'
   gem.add_dependency 'therubyracer', '0.10.1'
-  gem.add_dependency 'playercenter-client', '0.0.2'
+  gem.add_dependency 'playercenter-client', '0.0.3'
   gem.add_dependency 'qless', '>= 0.9.1'
   gem.add_dependency 'angular-commons-middleware'
 end
