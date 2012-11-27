@@ -1,3 +1,7 @@
+# 0.0.16 WIP
+
+* Shows only friends that play the specific game
+
 # 0.0.15
 
 * Shows real friends in the friends bar
