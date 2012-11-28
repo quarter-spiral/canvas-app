@@ -1,3 +1,7 @@
+# 0.0.18 WIP
+
+* Adds the name back into the friends bar
+
 # 0.0.17
 
 * Fixes bug that makes it impossible to pass a body with a GET request in Angular
