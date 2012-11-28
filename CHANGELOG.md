@@ -1,4 +1,4 @@
-# 0.0.18 WIP
+# 0.0.18
 
 * Adds the name back into the friends bar
 
