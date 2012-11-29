@@ -4,16 +4,19 @@ module Canvas
   end
 end
 
+require "qless"
+
 require "facebook-client"
 
 require "datastore-client"
 require "playercenter-client"
 require "devcenter-backend"
+require "angular-commons-middleware"
 
 require "canvas-app/version"
 require "canvas-app/utils"
+require "canvas-app/job"
 require "canvas-app/embedder"
 require "canvas-app/venue"
 require "canvas-app/connection"
 require "canvas-app/app"
-

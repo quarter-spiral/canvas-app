@@ -40,7 +40,8 @@ module Canvas::App
         '/v1/javascripts/vendor/angular/angular.js',
         '/v1/javascripts/vendor/angular/angular-resource.js',
         '/v1/javascripts/vendor/bootstrap.js',
-        '/v1/javascripts/vendor/modernizr-2-6-1.js'
+        '/v1/javascripts/vendor/modernizr-2-6-1.js',
+        '/v1/javascripts/vendor/socialite.js'
       ]
 
       js :app, '/v1/javascripts/app.js', [
@@ -48,7 +49,8 @@ module Canvas::App
         '/v1/javascripts/app/services.js',
         '/v1/javascripts/app/controllers.js',
         '/v1/javascripts/app/filters.js',
-        '/v1/javascripts/app/directives.js'
+        '/v1/javascripts/app/directives.js',
+        '/v1/javascripts/app/main.js'
       ]
     }
 

@@ -1,3 +1,33 @@
+# 0.0.18
+
+* Adds the name back into the friends bar
+
+# 0.0.17
+
+* Fixes bug that makes it impossible to pass a body with a GET request in Angular
+* Fixes small bug in the DOM exposed game UUID (not quoted before)
+
+# 0.0.16
+
+* Shows only friends that play the specific game
+
+# 0.0.15
+
+* Shows real friends in the friends bar
+* Minor Angular refactorings (renames ``MyApp`` module etc.)
+
+# 0.0.14
+
+* Moves facebook friend creation in the background
+
+# 0.0.13
+
+* Bumps datastore-client to use the new API
+
+# 0.0.12
+
+* Refactors galaxy-spiral to spiral-galaxy
+
 # 0.0.11
 
 * Stores facebook friends in our graph each time a user plays a game on facebook
