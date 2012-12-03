@@ -45,6 +45,8 @@ module Canvas::App
       ]
     }
 
+    use Angular::Commons::Middleware
+
     helpers do
       def connection
         @connection ||= Connection.create

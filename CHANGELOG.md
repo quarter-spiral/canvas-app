@@ -1,3 +1,7 @@
+# 0.0.19 WIP
+
+* Adds ability to parse signed requests from spiral-galaxy
+
 # 0.0.18
 
 * Adds the name back into the friends bar

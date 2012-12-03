@@ -39,7 +39,13 @@ group :test, :development do
   gem 'songkick-oauth2-provider', git: 'https://github.com/quarter-spiral/oauth2-provider.git'
   gem 'nokogiri'
 
-  gem 'playercenter-backend', '~> 0.0.13'
+  gem 'playercenter-backend', '~> 0.0.15'
+  gem 'spiral-galaxy', '>= 0.0.6'
+
+  gem 'poltergeist'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'capybara_minitest_spec'
 
   platforms :rbx do
     gem 'bson_ext'

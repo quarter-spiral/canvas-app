@@ -17,7 +17,6 @@ app = Rack::Builder.new do
     map('/qless') {run Qless::Server.new}
   end
 
-  use Angular::Commons::Middleware
   run Canvas::App::App
 end
 
