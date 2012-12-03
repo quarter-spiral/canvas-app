@@ -75,8 +75,8 @@
         <ul class="avatars">
           <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends:true">
           <div class="name">{{friend.fullName}}</div>
-          <div class="level">{{friend.level}}</div>
-          <div class="xp">{{friend.xp}}</div>
+          <!-- <div class="level">{{friend.level}}</div> -->
+          <!-- <div class="xp">{{friend.xp}}</div> -->
           <img src="{{friend.avatar}}" />
           </li>
         </ul>
