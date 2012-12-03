@@ -1,3 +1,7 @@
+# 0.0.20 WIP
+
+* Adds a minor workaround for
+
 # 0.0.19
 
 * Adds ability to parse signed requests from spiral-galaxy

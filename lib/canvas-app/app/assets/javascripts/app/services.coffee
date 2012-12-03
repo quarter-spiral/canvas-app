@@ -29,7 +29,7 @@ services.factory "players", ["$rootScope", "venue-user","qs_commons_http", (root
         returns: (data) ->
           friends = []
           for uuid, friendData of data
-            friendData = friendData[window.qs.info.venue]
+            friendData = friendData[window.qs.info.venue] || friendData['facebook'] # TODO <-- dirty hack till we have QS friends
             friends.push {
               uuid: uuid
               userName: friendData.name
