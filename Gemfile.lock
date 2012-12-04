@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.22)
+    canvas-app (0.0.23)
       angular-commons-middleware
       auth-client (>= 0.0.13)
       coffee-script (= 2.2.0)
@@ -328,9 +328,9 @@ GEM
     thor (0.15.4)
     tilt (1.3.3)
     tzinfo (0.3.35)
-    uglifier (1.2.6)
+    uglifier (1.3.0)
       execjs (>= 0.3.0)
-      multi_json (~> 1.3)
+      multi_json (~> 1.0, >= 1.0.2)
     url_mount (0.2.1)
       rack
     uuid (2.3.6)
