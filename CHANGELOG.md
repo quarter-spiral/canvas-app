@@ -1,3 +1,7 @@
+# 0.0.23 WIP
+
+* Moves to Uglify JS compressor to avoid errors in the bootstrap js
+
 # 0.0.22
 
 * Fixes regression in the canvas layout template

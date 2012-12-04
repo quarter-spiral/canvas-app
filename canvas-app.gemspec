@@ -29,4 +29,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'playercenter-client', '0.0.3'
   gem.add_dependency 'qless', '>= 0.9.1'
   gem.add_dependency 'angular-commons-middleware'
+  gem.add_dependency 'uglifier'
 end

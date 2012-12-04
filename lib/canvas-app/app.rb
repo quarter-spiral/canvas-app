@@ -22,6 +22,8 @@ module Canvas::App
     register Sinatra::AssetPack
 
     assets {
+      js_compression  :uglify
+
       serve '/v1/javascripts', from: 'canvas-app/app/assets/javascripts'
       serve '/v1/stylesheets', from: 'canvas-app/app/assets/stylesheets'
       serve '/v1/images',      from: 'canvas-app/app/assets/images'
