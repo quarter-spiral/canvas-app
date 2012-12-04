@@ -1,3 +1,7 @@
+# 0.0.22 WIP
+
+* Fixes regression in the canvas layout template
+
 # 0.0.21
 
 * Removes fake data displayed in the friend bar
