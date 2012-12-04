@@ -1,3 +1,8 @@
+# 0.0.21
+
+* Removes fake data displayed in the friend bar
+* Adds QS navigation
+
 # 0.0.20
 
 * Adds a minor workaround for
