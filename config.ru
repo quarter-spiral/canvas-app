@@ -8,7 +8,7 @@ if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
   ENV['QS_OAUTH_CLIENT_SECRET'] ||= 'rcghf9way9i7lbdzyakaecly5ow9fau'
 end
 
-ENV_KEYS_TO_EXPOSE = ['QS_PLAYERCENTER_BACKEND_URL']
+ENV_KEYS_TO_EXPOSE = ['QS_PLAYERCENTER_BACKEND_URL', 'QS_AUTH_BACKEND_URL']
 
 app = Rack::Builder.new do
   if ENV['RACK_ENV'] == 'development'

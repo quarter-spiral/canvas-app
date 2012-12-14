@@ -1,3 +1,7 @@
+# 0.0.24 WIP
+
+* Adds features to the Flash and HTML5 embedder needed by the new developer SDK
+
 # 0.0.23
 
 * Moves to Uglify JS compressor to avoid errors in the bootstrap js

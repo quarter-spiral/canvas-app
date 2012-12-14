@@ -9,12 +9,30 @@ module Canvas::App
   $(function() {
     $('iframe#html5frame').load(function() {
       var iframe = frames[0];
+      var infoReceived = false;
+      var destination = <%= url.gsub(/\\/$/, '').to_json %>;
+
+
+      var receiveConfirmation = function(event) {
+        if (event.origin !== destination) {
+          return;
+        }
+        var data = angular.fromJson(event.data);
+
+        if (data.type === 'qs-info-received') {
+          infoReceived = true;
+        }
+      }
+      window.addEventListener("message", receiveConfirmation, false)
+
       var sendData = function() {
-        iframe.postMessage('bla', '*');
-        iframe.postMessage({type: 'qs-data', data: window.qs}, <%= File.join(url, '/').to_json %>)
+        if (infoReceived) {
+          return;
+        }
+        iframe.postMessage(angular.toJson({type: 'qs-data', data: window.qs}), destination)
+        setTimeout(sendData, 500)
       };
       sendData();
-      setTimeout(sendData, 500)
     });
   });
 </script>
