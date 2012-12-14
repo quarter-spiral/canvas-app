@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.23)
+    canvas-app (0.0.24)
       angular-commons-middleware
       auth-client (>= 0.0.13)
       coffee-script (= 2.2.0)
@@ -125,7 +125,7 @@ GEM
       commander
       json
       service-client (>= 0.0.7)
-    devcenter-backend (0.0.25)
+    devcenter-backend (0.0.26)
       auth-client (>= 0.0.14)
       datastore-client (>= 0.0.9)
       grape (= 0.2.3.qs)

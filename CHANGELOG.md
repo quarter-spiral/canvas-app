@@ -1,4 +1,4 @@
-# 0.0.24 WIP
+# 0.0.24
 
 * Adds features to the Flash and HTML5 embedder needed by the new developer SDK
 
