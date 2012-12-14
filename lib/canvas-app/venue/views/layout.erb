@@ -61,14 +61,15 @@
       <div id="socialBar" ng-Controller="SocialController">
         <ul class="options">
           <!--
-          <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
+            <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
+
+
+            <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'fullName'}"></i> Sort by Name</a></li>
+
+            <li><a ng-click="sortFriends = 'level'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'level'}"></i> Sort by Level</a></li>
+
+            <li><a ng-click="sortFriends = 'xp'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'xp'}"></i> Sort by XP</a></li>
           -->
-
-          <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'fullName'}"></i> Sort by Name</a></li>
-
-          <li><a ng-click="sortFriends = 'level'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'level'}"></i> Sort by Level</a></li>
-
-          <li><a ng-click="sortFriends = 'xp'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'xp'}"></i> Sort by XP</a></li>
 
           <li><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
         </ul>
