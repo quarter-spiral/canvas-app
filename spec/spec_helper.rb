@@ -13,6 +13,7 @@ require 'graph-backend'
 require 'auth-backend'
 require 'playercenter-backend'
 require 'spiral-galaxy'
+require 'sdk-app'
 
 require 'facebook-client/fixtures'
 
@@ -30,7 +31,7 @@ class FakeAdapters
   end
 
   def self.playercenter
-    @playercenter ||= Service::Client::Adapter::Faraday.new(adapter: [:rack, Playercenter::Backend::API.new])
+    @playercenter ||= Service::Client::Adapter::Faraday.new(adapter: [:rack, PLAYERCENTER_APP])
   end
 
   def self.facebook(client_id, client_secret)
@@ -109,6 +110,8 @@ module Playercenter::Backend
   end
 end
 
+PLAYERCENTER_APP = Playercenter::Backend::API.new
+
 module Spiral::Galaxy
   class Connection
     alias raw_initialize initialize
@@ -154,3 +157,5 @@ ENV['QS_OAUTH_CLIENT_ID'] = OAUTH_APP[:id]
 ENV['QS_OAUTH_CLIENT_SECRET'] = OAUTH_APP[:secret]
 
 APP_TOKEN = Devcenter::Backend::Connection.create.auth.create_app_token(OAUTH_APP[:id], OAUTH_APP[:secret])
+
+ENV['QS_SDK_APP_URL'] = '/fake-sdk'

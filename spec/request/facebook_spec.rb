@@ -66,7 +66,6 @@ describe "on the facebook venue" do
 
     it "has the name of the game as the pages title and headline" do
       @response.body.must_match /<title>Some Game<\/title>/
-      @response.body.must_match /<h1>Some Game<\/h1>/
     end
 
     describe "that is an html5 game" do
@@ -81,7 +80,7 @@ describe "on the facebook venue" do
         @uuid = create_game(@game)
         @response = client.post("/v1/games/#{@uuid}/facebook", {}, signed_request: ::Facebook::Client::Fixtures.signed_request)
 
-        @response.body.must_match /<object [^>]*type="application\/x-shockwave-flash"\s+[^>]*data="http:\/\/example.com\/test-game"/
+        @response.body.must_match /<param [^>]*name="movie"\s+[^>]*value="http:\/\/example.com\/test-game"/
       end
     end
 

@@ -23,22 +23,36 @@ services.factory "players", ["$rootScope", "venue-user","qs_commons_http", (root
 
   {
     fetchFriends: ->
+      url = "#{playercenterUrl}/v1/#{user.currentUser().uuid}/friends?game=#{window.qs.info.game}"
+      metaKeys = []
+      if window.qs.info.friendbar.values.top
+        metaKeys.push(window.qs.info.friendbar.values.top.key)
+      if window.qs.info.friendbar.values.bottom
+        metaKeys.push(window.qs.info.friendbar.values.bottom.key)
+      if metaKeys.length > 0
+        url = "#{url}&meta=#{encodeURIComponent(angular.toJson(metaKeys))}"
+
       http.makeRequest(
         method: 'GET'
-        url: "#{playercenterUrl}/v1/#{user.currentUser().uuid}/friends?game=#{window.qs.info.game}"
+        url: url
         returns: (data) ->
           friends = []
-          for uuid, friendData of data
-            friendData = friendData[window.qs.info.venue] || friendData['facebook'] # TODO <-- dirty hack till we have QS friends
-            friends.push {
+          for uuid, rawFriendData of data
+            friendData = rawFriendData[window.qs.info.venue] || rawFriendData['facebook'] # TODO <-- dirty hack till we have QS friends
+            friend = {
               uuid: uuid
               userName: friendData.name
               fullName: friendData.name
-              level: 12
-              xp: 2311
-              online: false
               avatar: "#{playercenterUrl}/v1/#{uuid}/avatars/#{window.qs.info.venue}"
+              meta: {}
             }
+
+            if window.qs.info.friendbar.values.top
+              friend.meta.top = {label: window.qs.info.friendbar.values.top.label, value: rawFriendData['meta'][window.qs.info.friendbar.values.top.key]}
+            if window.qs.info.friendbar.values.bottom
+              friend.meta.bottom = {label: window.qs.info.friendbar.values.bottom.label, value: rawFriendData['meta'][window.qs.info.friendbar.values.bottom.key]}
+
+            friends.push(friend)
           friends
       )
   }

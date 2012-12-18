@@ -5,12 +5,9 @@ module Canvas::App
         request = context.request
 
         game_url = File.join(ENV['QS_SPIRAL_GALAXY_URL'], 'play', game.uuid)
-
         context.redirect game_url and return unless request.post?
-
         spiral_galaxy_info = context.connection.facebook('none', game.secret).unauthenticated.decode_signed_request(request.params['signed_request'])
         qs_uuid = spiral_galaxy_info['uuid']
-
         if qs_uuid
           qs_oauth = spiral_galaxy_info['oauth_token']
           context.try_twice_and_avoid_token_expiration do

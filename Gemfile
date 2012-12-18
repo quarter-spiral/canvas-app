@@ -34,12 +34,13 @@ group :test, :development do
   gem 'graph-client', '~> 0.0.9'
   gem 'graph-backend', '~> 0.0.13'
   gem 'auth-backend', "~> 0.0.15"
+  gem 'sdk-app', "~> 0.0.5"
   gem 'sqlite3'
   gem 'sinatra_warden', git: 'https://github.com/quarter-spiral/sinatra_warden.git'
   gem 'songkick-oauth2-provider', git: 'https://github.com/quarter-spiral/oauth2-provider.git'
   gem 'nokogiri'
 
-  gem 'playercenter-backend', '~> 0.0.15'
+  gem 'playercenter-backend', '~> 0.0.18'
   gem 'spiral-galaxy', '>= 0.0.6'
 
   gem 'poltergeist'

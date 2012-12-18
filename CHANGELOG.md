@@ -1,3 +1,11 @@
+# 0.0.26 WIP
+
+* Adds dynamic friend bar filter and badges
+
+# 0.0.25
+
+* Removes dysfunctional friend bar filter
+
 # 0.0.24
 
 * Adds features to the Flash and HTML5 embedder needed by the new developer SDK

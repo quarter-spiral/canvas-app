@@ -6,7 +6,9 @@
 
   players.fetchFriends().then (friends) -> $scope.friends = friends
 
-  $scope.sortFriends = "level"
+  $scope.friendbarValues = window.qs.info.friendbar.values
+
+  $scope.sortFriends = "fullName"
   $scope.onlineOnlyFriends = "level"
   $scope.searchFriends = new Object
   $scope.toggleFriendFilter = ->
