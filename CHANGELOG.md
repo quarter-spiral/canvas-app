@@ -1,4 +1,4 @@
-# 0.0.26 WIP
+# 0.0.26
 
 * Adds dynamic friend bar filter and badges
 
