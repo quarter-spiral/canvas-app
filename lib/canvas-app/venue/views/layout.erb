@@ -65,7 +65,7 @@
         -->
             <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'fullName'}"></i> Sort by Name</a></li>
 
-            <li ng-show="friendbarValues.top"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'meta.top.value'}"></i> Sort by {{friendbarValues.top.label}}</a></li>
+            <li ng-show="friendbarValues.top.label"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'meta.top.value'}"></i> Sort by {{friendbarValues.top.label}}</a></li>
 
             <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'meta.bottom.value'}"></i> Sort by {{friendbarValues.bottom.label}}</a></li>
           <li><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
@@ -99,7 +99,7 @@
           <% if label = game.configuration['friendbarTopValueLabel'] and key = game.configuration['friendbarTopValueKey'] and !label.empty? and !key.empty? %>
             <% values['top'] = {'label' => label, 'key' => key} %>
           <% end %>
-          <% if label = game.configuration['friendbarBottomValueLabel'] and key = game.configuration['friendbarBottomValueKey'] %>
+          <% if label = game.configuration['friendbarBottomValueLabel'] and key = game.configuration['friendbarBottomValueKey'] and !label.empty? and !key.empty? %>
             <% values['bottom'] = {'label' => label, 'key' => key} %>
           <% end %>
           values: <%= values.to_json %>
