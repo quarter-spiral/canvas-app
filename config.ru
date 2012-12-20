@@ -10,6 +10,24 @@ end
 
 ENV_KEYS_TO_EXPOSE = ['QS_PLAYERCENTER_BACKEND_URL', 'QS_AUTH_BACKEND_URL']
 
+require 'newrelic_rpm'
+require 'new_relic/agent/instrumentation/rack'
+require 'ping-middleware'
+
+class NewRelicMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    @app.call(env)
+  end
+  include NewRelic::Agent::Instrumentation::Rack
+end
+
+use NewRelicMiddleware
+use Ping::Middleware
+
 app = Rack::Builder.new do
   if ENV['RACK_ENV'] == 'development'
     require 'qless/server'

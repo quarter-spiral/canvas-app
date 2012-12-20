@@ -30,4 +30,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'qless', '>= 0.9.1'
   gem.add_dependency 'angular-commons-middleware'
   gem.add_dependency 'uglifier'
+  gem.add_dependency 'newrelic_rpm'
+  gem.add_dependency 'ping-middleware', '~> 0.0.2'
 end
