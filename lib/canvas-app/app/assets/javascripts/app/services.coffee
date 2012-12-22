@@ -48,9 +48,11 @@ services.factory "players", ["$rootScope", "venue-user","qs_commons_http", (root
             }
 
             if window.qs.info.friendbar.values.top
-              friend.meta.top = {label: window.qs.info.friendbar.values.top.label, value: rawFriendData['meta'][window.qs.info.friendbar.values.top.key]}
+              value = rawFriendData['meta'][window.qs.info.friendbar.values.top.key] || window.qs.info.friendbar.values.top.default
+              friend.meta.top = {label: window.qs.info.friendbar.values.top.label, value: value}
             if window.qs.info.friendbar.values.bottom
-              friend.meta.bottom = {label: window.qs.info.friendbar.values.bottom.label, value: rawFriendData['meta'][window.qs.info.friendbar.values.bottom.key]}
+              value = rawFriendData['meta'][window.qs.info.friendbar.values.bottom.key] || window.qs.info.friendbar.values.bottom.default
+              friend.meta.bottom = {label: window.qs.info.friendbar.values.bottom.label, value: value}
 
             friends.push(friend)
           friends

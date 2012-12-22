@@ -72,9 +72,9 @@
         </ul>
         <ul class="avatars">
           <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends">
-            <div class="name">{{friend.fullName}} {{friend.meta}}</div>
-            <div ng-show="friend.meta.top.value" class="top-value level" title="{{friend.meta.top.label}}">{{friend.meta.top.value}}</div>
-            <div ng-show="friend.meta.bottom.value" class="bottom-value xp" title="{{friend.meta.bottom.label}}">{{friend.meta.bottom.value}}</div>
+            <div class="name">{{friend.fullName}}</div>
+            <div ng-show="!!friend.meta.top.value" class="top-value level" title="{{friend.meta.top.label}}">{{friend.meta.top.value}}</div>
+            <div ng-show="!!friend.meta.bottom.value" class="bottom-value xp" title="{{friend.meta.bottom.label}}">{{friend.meta.bottom.value}}</div>
             <img src="{{friend.avatar}}" />
           </li>
         </ul>
@@ -97,10 +97,10 @@
         friendbar: {
           <% values = {} %>
           <% if label = game.configuration['friendbarTopValueLabel'] and key = game.configuration['friendbarTopValueKey'] and !label.empty? and !key.empty? %>
-            <% values['top'] = {'label' => label, 'key' => key} %>
+            <% values['top'] = {'label' => label, 'key' => key, 'default' => game.configuration['friendbarTopValueDefault']} %>
           <% end %>
           <% if label = game.configuration['friendbarBottomValueLabel'] and key = game.configuration['friendbarBottomValueKey'] and !label.empty? and !key.empty? %>
-            <% values['bottom'] = {'label' => label, 'key' => key} %>
+            <% values['bottom'] = {'label' => label, 'key' => key, 'default' => game.configuration['friendbarBottomValueDefault']} %>
           <% end %>
           values: <%= values.to_json %>
         }

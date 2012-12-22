@@ -67,7 +67,8 @@ describe "Friendbar" do
         'friendbarTopValueLabel' => "Top",
         'friendbarTopValueKey' => "theKey"
       )
-      values.must_equal('top' => {'key' => 'theKey', 'label' => 'Top'})
+      values['top']['key'].must_equal('theKey')
+      values['top']['label'].must_equal('Top')
     end
 
     it "is empty when only key is set" do
@@ -84,7 +85,8 @@ describe "Friendbar" do
         'friendbarBottomValueLabel' => "The bottom",
         'friendbarBottomValueKey' => "boootom"
       )
-      values.must_equal('bottom' => {'key' => 'boootom', 'label' => 'The bottom'})
+      values['bottom']['key'].must_equal('boootom')
+      values['bottom']['label'].must_equal('The bottom')
     end
 
     it "it shows both values" do
@@ -95,10 +97,10 @@ describe "Friendbar" do
         'friendbarBottomValueLabel' => "The bottom",
         'friendbarBottomValueKey' => "boootom"
       )
-      values.must_equal(
-        'top' => {'key' => 'theKey', 'label' => 'Top'},
-        'bottom' => {'key' => 'boootom', 'label' => 'The bottom'}
-      )
+      values['top']['key'].must_equal('theKey')
+      values['top']['label'].must_equal('Top')
+      values['bottom']['key'].must_equal('boootom')
+      values['bottom']['label'].must_equal('The bottom')
     end
   end
 
@@ -126,5 +128,44 @@ describe "Friendbar" do
     @page.has_selector?('a', text: /Sort by Level/, visible: true).must_equal true
     @page.has_selector?('div.top-value', visible: true, text: '654').must_equal true
     @page.has_selector?('div.bottom-value', visible: true, text: 'Tower').must_equal true
+  end
+
+  it "can display default values" do
+    token = connection.auth.venue_token(APP_TOKEN, 'spiral-galaxy', {"venue-id" => 'some-one', "name" => "Paul II"})
+    friend_uuid = connection.auth.token_owner(token)['uuid']
+
+    game_options = game_options()
+    game_options[:configuration] = game_options[:configuration].merge(
+      'friendbarTopValueLabel' => "Score",
+      'friendbarTopValueKey' => "highScore"
+    )
+    game = Devcenter::Backend::Game.create(APP_TOKEN, game_options)
+
+    playercenter_connection = Canvas::App::Connection.create.playercenter
+    playercenter_connection.register_player(friend_uuid, game.uuid, 'spiral-galaxy', APP_TOKEN)
+    connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays')
+    connection.graph.add_relationship(@player['uuid'], friend_uuid, APP_TOKEN, 'friends')
+
+    login(@player['uuid'], @player['name'], @token, domain: 'localhost')
+
+    @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
+    sleep 2
+    @page.has_selector?('div.top-value', visible: true).must_equal false
+
+    game_options = game_options()
+    game_options[:configuration] = game_options[:configuration].merge(
+      'friendbarTopValueLabel' => "Score",
+      'friendbarTopValueKey' => "highScore",
+      'friendbarTopValueDefault' => 123
+    )
+    game = Devcenter::Backend::Game.create(APP_TOKEN, game_options)
+    playercenter_connection.register_player(friend_uuid, game.uuid, 'spiral-galaxy', APP_TOKEN)
+    connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays')
+    @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
+    @page.has_selector?('div.top-value', visible: true, text: '123').must_equal true
+
+    connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays', meta: {"#{Playercenter::Backend::MetaData::PREFIX}highScore" => 654})
+    @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
+    @page.has_selector?('div.top-value', visible: true, text: '654').must_equal true
   end
 end

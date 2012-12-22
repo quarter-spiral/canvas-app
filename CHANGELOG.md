@@ -1,3 +1,7 @@
+# 0.0.28 WIP
+
+* Adds meta data default values
+
 # 0.0.27
 
 * Adds Newrelic monitoring and ping middleware
