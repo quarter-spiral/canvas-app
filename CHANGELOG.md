@@ -1,4 +1,4 @@
-# 0.0.29 WIP
+# 0.0.29
 
 * Fixes frame communication for QS data exchange with nested frames
 
