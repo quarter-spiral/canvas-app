@@ -1,3 +1,7 @@
+# 0.0.29 WIP
+
+* Fixes frame communication for QS data exchange with nested frames
+
 # 0.0.28
 
 * Adds meta data default values
