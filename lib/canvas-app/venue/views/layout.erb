@@ -59,18 +59,18 @@
 
 
       <div id="socialBar" ng-Controller="SocialController">
-        <ul class="options">
+        <ul class="options" ng-show="friends.length > 0">
         <!--
             <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
         -->
-            <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'fullName'}"></i> Sort by Name</a></li>
+            <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'fullName'}"></i> Sort by Name</a></li>
 
-            <li ng-show="friendbarValues.top.label"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'meta.top.value'}"></i> Sort by {{friendbarValues.top.label}}</a></li>
+            <li ng-show="friendbarValues.top"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.top.value'}"></i> Sort by {{friendbarValues.top.label}}</a></li>
 
-            <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'meta.bottom.value'}"></i> Sort by {{friendbarValues.bottom.label}}</a></li>
+            <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.bottom.value'}"></i> Sort by {{friendbarValues.bottom.label}}</a></li>
           <li><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
         </ul>
-        <ul class="avatars">
+        <ul class="avatars" ng-show="friends.length > 0">
           <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends">
             <div class="name">{{friend.fullName}}</div>
             <div ng-show="!!friend.meta.top.value" class="top-value level" title="{{friend.meta.top.label}}">{{friend.meta.top.value}}</div>
@@ -78,6 +78,9 @@
             <img src="{{friend.avatar}}" />
           </li>
         </ul>
+        <div class="noFriends" ng-hide="friends.length > 0">
+          <p>Log in to see friends appear here</p>
+        </div>
       </div>
 
 
