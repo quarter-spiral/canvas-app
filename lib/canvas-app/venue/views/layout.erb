@@ -10,13 +10,11 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width">
   </head>
-  <body>
+  <body ng-Controller="navigationController">
     <div id="header">
       <h1><%=h game.name %></h1>
       <ul>
-        <li><a class="">Login</a></li>
-        <li><a class="">Register</a></li>
-        <li><a class="">Share...</a></li>
+        <li><a class="" ng-click="toggleSharing()">Share...</a></li>
       </ul>
       <div id="QS">
         A <a href="http://quarterspiral.com" target="new">Quarter Spiral</a> Game
@@ -25,9 +23,42 @@
 
     <div id="mainView">
 
-      <div id="game">
+      <div id="game" ng-show="currentSection == 'game'">
 
         <%= embedded_game %>
+
+      </div>
+
+      <div id="sharing" ng-show="currentSection == 'share'">
+
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <button class="close" ng-click="toggleSharing()">&times;</button>
+              <h3>Share this game</h3>
+
+            </div>
+
+            <div class="span5">
+              <p>Spread the love and embed "<%=h game.name %>" whereever you want: websites, blogs, the sky is the limit!</p>
+              <p>Simply copy the code snippet into your website and the game will appear there.</p>
+              <p>Just like youTube videos.</p>
+            </div>
+
+            <div class="span6 offset1">
+
+              <pre class="code">&lt;iframe width="600" height="600" src="" style="padding:0px; margin:0px; background-color:#000; border-width:0px;" frameborder="0" align="top">&lt;/iframe></pre>
+ 
+            </div>
+
+            <div class="span12">
+              <hr />
+              <p>
+                <button class="btn btn-primary" ng-click="toggleSharing()">Back to <%=h game.name %></button>
+              </p>
+            </div>
+          </div>
+        </div>
 
       </div>
 
