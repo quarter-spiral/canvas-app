@@ -1,4 +1,4 @@
-# 0.0.30 WIP
+# 0.0.30
 
 * Adds support for the embed venue
 
