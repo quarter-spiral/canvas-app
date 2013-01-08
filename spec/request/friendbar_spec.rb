@@ -124,6 +124,7 @@ describe "Friendbar" do
 
     login(@player['uuid'], @player['name'], @token, domain: 'localhost')
     @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
+    sleep 1
     @page.has_selector?('a', text: /Sort by Score/, visible: true).must_equal true
     @page.has_selector?('a', text: /Sort by Level/, visible: true).must_equal true
     @page.has_selector?('div.top-value', visible: true, text: '654').must_equal true
@@ -162,6 +163,7 @@ describe "Friendbar" do
     playercenter_connection.register_player(friend_uuid, game.uuid, 'spiral-galaxy', APP_TOKEN)
     connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays')
     @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
+    sleep 1
     @page.has_selector?('div.top-value', visible: true, text: '123').must_equal true
 
     connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays', meta: {"#{Playercenter::Backend::MetaData::PREFIX}highScore" => 654})

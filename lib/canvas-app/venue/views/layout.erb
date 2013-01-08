@@ -93,7 +93,9 @@
       window.qs.info = {
         game: <%= game.uuid.to_json %>,
         venue: <%= venue.to_json %>,
+        <%if defined? uuid %>
         uuid: <%= uuid.to_json %>,
+        <% end %>
         friendbar: {
           <% values = {} %>
           <% if label = game.configuration['friendbarTopValueLabel'] and key = game.configuration['friendbarTopValueKey'] and !label.empty? and !key.empty? %>

@@ -1,6 +1,7 @@
 require "canvas-app/venue/base"
 require "canvas-app/venue/spiral_galaxy"
 require "canvas-app/venue/facebook"
+require "canvas-app/venue/embedded"
 
 module Canvas::App
   module Venue

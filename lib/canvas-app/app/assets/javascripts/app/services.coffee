@@ -16,13 +16,17 @@ services.factory "venue-user", [->
   }
 ]
 
-services.factory "players", ["$rootScope", "venue-user","qs_commons_http", (rootScope, user, http) ->
+services.factory "players", ["$rootScope", "$q", "venue-user","qs_commons_http", (rootScope, q, user, http) ->
   playercenterUrl = window.qs.ENV.QS_PLAYERCENTER_BACKEND_URL
 
   http.setUserService user
 
   {
     fetchFriends: ->
+      unless user.currentUser().uuid
+        deferred = q.defer()
+        return deferred.promise
+
       url = "#{playercenterUrl}/v1/#{user.currentUser().uuid}/friends?game=#{window.qs.info.game}"
       metaKeys = []
       if window.qs.info.friendbar.values.top

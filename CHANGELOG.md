@@ -1,3 +1,7 @@
+# 0.0.30 WIP
+
+* Adds support for the embed venue
+
 # 0.0.29
 
 * Fixes frame communication for QS data exchange with nested frames
