@@ -1,4 +1,4 @@
-# 0.0.31 WIP
+# 0.0.31
 
 * Makes the canvas work on and adopt to different screen sizes
 * Makes the friend bar look good when no friends are present
