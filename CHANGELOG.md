@@ -1,3 +1,10 @@
+# 0.0.31 WIP
+
+* Makes the canvas work on and adopt to different screen sizes
+* Makes the friend bar look good when no friends are present
+* Adds sharing section dummy
+* Adds about section
+
 # 0.0.30
 
 * Adds support for the embed venue
