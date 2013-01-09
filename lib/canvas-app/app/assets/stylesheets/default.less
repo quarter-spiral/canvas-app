@@ -9,14 +9,17 @@ body {
   background-color:#000 !important;
 }
 
+a {
+  color:#09D !important;
+}
+
 #mainView {
   width:100%;
   background-color:#000;
   .page {
     background-color: #FFF;
     padding:20px 15px 40px;
-    border-bottom:1px solid #DDD;
-    border-top:1px solid #DDD;
+
   }
   #game {
     width:100%;
@@ -149,13 +152,13 @@ body {
   line-height: @headerHeight;
   background-color:#EEE;
   padding:0px 10px;
-  .text-shadow(0px, 1px, 0px, rgba(255,255,255,1));
   #QS {
     float:right;
     font-size:0.8em;
     color:#999;
     font-weight: bold;
     text-transform: uppercase;
+    .text-shadow(0px, 1px, 0px, rgba(255,255,255,1));
   }
   h1 {
     display: inline-block;
@@ -163,7 +166,7 @@ body {
     padding:0px;
     font-size:1em;
     line-height: @headerHeight;
-    
+    .text-shadow(0px, 1px, 0px, rgba(255,255,255,1));
     a {
       color:#333;
     }
@@ -176,7 +179,22 @@ body {
     li {
       display: inline-block;
       margin:0px 5px;
-      font-size: 0.9em;
+      &.active {
+        a, a:hover {
+          border-bottom: 3px solid #09D;
+          height:@headerHeight - 3px;
+        }
+      }
+      a {
+        display: block;
+        height:@headerHeight;
+        line-height: @headerHeight;
+        &:hover {
+          text-decoration:none;
+          border-bottom: 3px solid #CCC;
+          height:@headerHeight - 3px;
+        }
+      }
     }
   }
 }
