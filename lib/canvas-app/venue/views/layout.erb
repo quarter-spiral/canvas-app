@@ -14,7 +14,7 @@
     <div id="header">
       <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
       <ul>
-        <li ng-class="{active: currentSection == 'share'}"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
+        <li ng-class="{active: currentSection == 'share'}" ng-show="gameEmbedCode()"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
         <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')">About</a></li>
       </ul>
       <div id="QS">
@@ -36,10 +36,10 @@
           <div class="row">
             <div class="span12">
               <button class="close" ng-click="toggleSection('about')">&times;</button>
-              <h3><%=h game.name %></h3>
+              <h3>{{gameData().name}}</h3>
             </div>
             <div class="span6">
-              <p><%=h game.description %></p>
+              <p>{{gameData().description}}</p>
             </div>
 
             <div class="span12">
@@ -54,7 +54,7 @@
 
       </div>
 
-      <div id="sharing" class="page" ng-show="currentSection == 'share'">
+      <div id="sharing" class="page" ng-show="gameEmbedCode() && currentSection == 'share'">
 
         <div class="container">
           <div class="row">
@@ -72,8 +72,8 @@
 
             <div class="span6 offset1">
 
-              <pre class="code">&lt;iframe width="600" height="600" src="" style="padding:0px; margin:0px; background-color:#000; border-width:0px;" frameborder="0" align="top">&lt;/iframe></pre>
- 
+              <pre class="code">{{gameEmbedCode()}}</pre>
+
             </div>
 
             <div class="span12">
@@ -125,6 +125,8 @@
       window.qs.tokens = <%= tokens.to_json %>;
       window.qs.info = {
         game: <%= game.uuid.to_json %>,
+        gameDetails: <%= game.public_information.to_json %>,
+        embedCode: <%= (((game.venues_with_computed_config || {})['embedded'] || {})['computed'] || {})['code'].to_json %>,
         venue: <%= venue.to_json %>,
         <%if defined? uuid %>
         uuid: <%= uuid.to_json %>,

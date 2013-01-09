@@ -1,3 +1,8 @@
+# 0.0.32 WIP
+
+* Adds more information about the game to the DOM/qs info object
+* Uses the embed code provided by the devcenter to show the sharing page
+
 # 0.0.31
 
 * Makes the canvas work on and adopt to different screen sizes

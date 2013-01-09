@@ -24,7 +24,7 @@ PATH
       auth-client (>= 0.0.13)
       coffee-script (= 2.2.0)
       datastore-client (>= 0.0.9)
-      devcenter-backend (>= 0.0.29)
+      devcenter-backend (>= 0.0.30)
       facebook-client (>= 0.0.5)
       less (= 2.2.2)
       newrelic_rpm
@@ -131,7 +131,7 @@ GEM
       commander
       json
       service-client (>= 0.0.7)
-    devcenter-backend (0.0.29)
+    devcenter-backend (0.0.30)
       auth-client (>= 0.0.14)
       datastore-client (>= 0.0.9)
       grape (= 0.2.3.qs)
