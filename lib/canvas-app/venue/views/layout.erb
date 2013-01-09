@@ -12,9 +12,10 @@
   </head>
   <body ng-Controller="navigationController">
     <div id="header">
-      <h1><%=h game.name %></h1>
+      <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
       <ul>
-        <li><a class="" ng-click="toggleSharing()">Share...</a></li>
+        <li><a class="" ng-click="toggleSection('share')">Share</a></li>
+        <li><a class="" ng-click="toggleSection('about')">About</a></li>
       </ul>
       <div id="QS">
         A <a href="http://quarterspiral.com" target="new">Quarter Spiral</a> Game
@@ -29,12 +30,36 @@
 
       </div>
 
-      <div id="sharing" ng-show="currentSection == 'share'">
+      <div id="about" class="page" ng-show="currentSection == 'about'">
 
         <div class="container">
           <div class="row">
             <div class="span12">
-              <button class="close" ng-click="toggleSharing()">&times;</button>
+              <button class="close" ng-click="toggleSection('about')">&times;</button>
+              <h3><%=h game.name %></h3>
+            </div>
+            <div class="span6">
+              <p><%=h game.description %></p>
+            </div>
+
+            <div class="span12">
+              <hr />
+              <p>
+                <button class="btn btn-primary" ng-click="toggleSection('about')">Back</button>
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div id="sharing" class="page" ng-show="currentSection == 'share'">
+
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <button class="close" ng-click="toggleSection('share')">&times;</button>
               <h3>Share this game</h3>
 
             </div>
@@ -54,7 +79,7 @@
             <div class="span12">
               <hr />
               <p>
-                <button class="btn btn-primary" ng-click="toggleSharing()">Back to <%=h game.name %></button>
+                <button class="btn btn-primary" ng-click="toggleSection('share')">Back</button>
               </p>
             </div>
           </div>

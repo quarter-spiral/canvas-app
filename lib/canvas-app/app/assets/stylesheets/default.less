@@ -12,7 +12,7 @@ body {
 #mainView {
   width:100%;
   background-color:#000;
-  #sharing {
+  .page {
     background-color: #FFF;
     padding:20px 15px 40px;
     border-bottom:1px solid #DDD;
@@ -149,13 +149,13 @@ body {
   line-height: @headerHeight;
   background-color:#EEE;
   padding:0px 10px;
+  .text-shadow(0px, 1px, 0px, rgba(255,255,255,1));
   #QS {
     float:right;
     font-size:0.8em;
     color:#999;
     font-weight: bold;
     text-transform: uppercase;
-    .text-shadow(0px, 1px, 0px, rgba(255,255,255,1));
   }
   h1 {
     display: inline-block;
@@ -163,7 +163,10 @@ body {
     padding:0px;
     font-size:1em;
     line-height: @headerHeight;
-    .text-shadow(0px, 1px, 0px, rgba(255,255,255,1));
+    
+    a {
+      color:#333;
+    }
   }
   ul {
     display: inline-block;
@@ -174,7 +177,6 @@ body {
       display: inline-block;
       margin:0px 5px;
       font-size: 0.9em;
-      .text-shadow(0px, 1px, 0px, rgba(255,255,255,1));
     }
   }
 }
