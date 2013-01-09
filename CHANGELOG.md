@@ -1,4 +1,4 @@
-# 0.0.32 WIP
+# 0.0.32
 
 * Adds more information about the game to the DOM/qs info object
 * Uses the embed code provided by the devcenter to show the sharing page
