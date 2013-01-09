@@ -1,3 +1,7 @@
+# 0.0.33
+
+* introduces promo bar 
+
 # 0.0.32
 
 * Adds more information about the game to the DOM/qs info object
