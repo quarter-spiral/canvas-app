@@ -13,13 +13,25 @@
   <body ng-Controller="navigationController">
 
     <div id="promo" ng-show="showPromo">
-
+      <button class="close" ng-click="togglePromo()">&times;</button>
       <div class="container">
         <div class="row">
-          <div class="span12">
+          <div class="span1">
+            <a href="http://qs-canvas-app.herokuapp.com/v1/games/59b0bc40-3351-0130-2784-1231381f54b3/spiral-galaxy" target="new"><img src="/v1/images/face.png" width="100" height="100" /></a>
+          </div>
+          <div class="span5">
+            <p class="big">If you like {{gameData().name}}, try <a href="http://qs-canvas-app.herokuapp.com/v1/games/59b0bc40-3351-0130-2784-1231381f54b3/spiral-galaxy" target="new">A Million Faces</a> next</p>
 
-            <button class="close" ng-click="togglePromo()">&times;</button>
-            <p>This is for promotions.</p>
+          </div>
+          <div class="span2 offset1">
+            <p>Publish your own game with <a href="http://sample-devapp.herokuapp.com" target="new">Mission Kontrol</a> for free</p>
+
+          </div>
+          <div class="span2">
+
+            <p>
+              Find more games like this on <a href="http://spiral-galaxy.herokuapp.com" target="new">Spiral Galaxy</a>
+            </p>
 
           </div>
         </div>
@@ -31,8 +43,8 @@
       <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
       <ul>
         <li ng-class="{active: currentSection == 'share'}" ng-show="gameEmbedCode()"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
-        <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')">About</a></li>
-        <li><a class="" ng-click="togglePromo()">More Games</a></li>
+        <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i> About</a></li>
+        <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li>
       </ul>
       <div id="QS">
         A <a href="http://quarterspiral.com" target="new">Quarter Spiral</a> Game
