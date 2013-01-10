@@ -119,7 +119,7 @@ module Canvas::App
         if embedder.respond_to?(:body)
           embedder.body
         else
-          @embedded_game = erb embedder.template, locals: {game: game}, layout: false
+          @embedded_game = erb embedder.template, locals: {game: game, request: request}, layout: false
           venue.response_for(game, embedded_game, self)
         end
       end

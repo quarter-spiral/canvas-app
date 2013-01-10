@@ -1,3 +1,7 @@
+# 0.0.34 WIP
+
+* Redirects flash embed to HTTPS when requested via HTTPS
+
 # 0.0.33
 
 * introduces promo bar 
