@@ -1,4 +1,4 @@
-# 0.0.34 WIP
+# 0.0.34
 
 * Redirects flash embed to HTTPS when requested via HTTPS
 
