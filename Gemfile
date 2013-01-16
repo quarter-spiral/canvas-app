@@ -41,7 +41,7 @@ group :test, :development do
   gem 'nokogiri'
 
   gem 'playercenter-backend', '~> 0.0.18'
-  gem 'spiral-galaxy', '>= 0.0.6'
+  gem 'spiral-galaxy', '>= 0.0.12'
 
   gem 'poltergeist'
   gem 'capybara'

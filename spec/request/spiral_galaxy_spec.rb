@@ -34,7 +34,6 @@ describe Canvas::App::Venue::SpiralGalaxy do
   end
 
   it "can puts the right information into the DOM" do
-
     login(@player['uuid'], @player['name'], @token, domain: 'localhost', path: "/fake-spiral-galaxy/play/#{@game.uuid}")
     @page.visit "/v1/games/#{@game.uuid}/spiral-galaxy"
     @page.has_selector?('iframe').must_equal true
@@ -44,5 +43,18 @@ describe Canvas::App::Venue::SpiralGalaxy do
     dom_info['tokens']['venue'].must_equal @token
     dom_info['info']['game'].must_equal @game.uuid
     dom_info['info']['uuid'].must_equal @player['uuid']
+  end
+
+  it "can puts the right information into the DOM when not logged in" do
+    @page.visit "/v1/games/#{@game.uuid}/spiral-galaxy"
+
+    @page.has_selector?('iframe').must_equal true
+
+    dom_info = @page.evaluate_script('window.qs');
+    dom_info['tokens'].wont_be_nil
+    dom_info['tokens']['qs'].must_be_nil
+    dom_info['tokens']['venue'].must_be_nil
+    dom_info['info']['game'].must_equal @game.uuid
+    dom_info['info']['uuid'].must_be_nil
   end
 end

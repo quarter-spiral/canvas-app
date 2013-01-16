@@ -1,3 +1,7 @@
+# 0.0.35 WIP
+
+* Makes it possible to play games in spiral-galaxy while not being logged in
+
 # 0.0.34
 
 * Redirects flash embed to HTTPS when requested via HTTPS

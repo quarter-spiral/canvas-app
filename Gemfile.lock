@@ -34,7 +34,7 @@ PATH
       sass (= 3.2.1)
       sinatra (= 1.3.3)
       sinatra-assetpack (= 0.0.11)
-      therubyracer (= 0.10.1)
+      therubyracer (= 0.10.2)
       uglifier
       uuid
 
@@ -322,15 +322,17 @@ GEM
       tilt (>= 1.3.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    spiral-galaxy (0.0.6)
+    spiral-galaxy (0.0.12)
       angular-commons-middleware (>= 0.0.3)
       auth-client (>= 0.0.14)
       brochure
       coffee-script
       devcenter-client (>= 0.0.3)
       less
+      newrelic_rpm
       omniauth-oauth2
-      therubyracer
+      ping-middleware (~> 0.0.2)
+      therubyracer (~> 0.10.2)
       thin
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -339,7 +341,7 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
     systemu (2.5.2)
-    therubyracer (0.10.1)
+    therubyracer (0.10.2)
       libv8 (~> 3.3.10)
     thin (1.5.0)
       daemons (>= 1.0.9)
@@ -388,6 +390,6 @@ DEPENDENCIES
   sdk-app (~> 0.0.5)
   sinatra_warden!
   songkick-oauth2-provider!
-  spiral-galaxy (>= 0.0.6)
+  spiral-galaxy (>= 0.0.12)
   sqlite3
   thin
