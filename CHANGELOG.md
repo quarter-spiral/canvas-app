@@ -1,4 +1,4 @@
-# 0.0.35 WIP
+# 0.0.35
 
 * Makes it possible to play games in spiral-galaxy while not being logged in
 
