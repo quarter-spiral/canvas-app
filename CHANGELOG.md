@@ -1,4 +1,4 @@
-# 0.0.36 WIP
+# 0.0.36
 
 * Makes it possible to log into the canvas app
 
