@@ -45,6 +45,10 @@
         <li ng-class="{active: currentSection == 'share'}" ng-show="gameEmbedCode()"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
         <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i> About</a></li>
         <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li>
+        <li ng-show="qsData().info.uuid">
+          <a ng-click="logout()" ng-show="qsData().info.venue == 'embedded'">Log out</a>
+          <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/#/logout" ng-show="qsData().info.venue == 'spiral-galaxy'">Log out</a>
+        </li>
       </ul>
       <div id="QS">
         A <a href="http://quarterspiral.com" target="new">Quarter Spiral</a> Game
@@ -52,9 +56,7 @@
     </div>
 
     <div id="mainView">
-
-
-
+      <div ng-view></div>
       <div id="game" ng-show="currentSection == 'game'">
 
         <%= embedded_game %>
@@ -140,7 +142,12 @@
           </li>
         </ul>
         <div class="noFriends" ng-hide="friends.length > 0">
-          <p>Log in to see your friends here</p>
+          <p ng-hide="qsData().info.uuid">
+            <a href="/auth/auth_backend" ng-hide="qsData().info.venue == 'spiral-galaxy'">Log in</a>
+            <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/auth/auth_backend?origin={{('/play/' + qsData().info.game)|url}}" ng-show="qsData().info.venue == 'spiral-galaxy'">Log in</a>
+            to see your friends here
+          </p>
+          <p ng-show="qsData().info.uuid">Hey {{qsData().info.userName}}. You have no friends in our system, yet.</p>
         </div>
       </div>
 
@@ -161,6 +168,7 @@
         venue: <%= venue.to_json %>,
         <%if defined? uuid %>
         uuid: <%= uuid.to_json %>,
+        userName: <%= user_name.to_json %>,
         <% end %>
         friendbar: {
           <% values = {} %>

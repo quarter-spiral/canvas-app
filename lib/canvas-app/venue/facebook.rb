@@ -66,7 +66,7 @@ module Canvas::App
             'uuid' => qs_uuid
           )
 
-          context.erb template, locals: {game: game, context: context, uuid: qs_uuid}
+          context.erb template, locals: {game: game, context: context, uuid: qs_uuid, user_name: player_info['name']}
         else
           context.redirect facebook_client.unauthenticated.authorization_url(redirect_url: request.url, scopes: [:email])
         end

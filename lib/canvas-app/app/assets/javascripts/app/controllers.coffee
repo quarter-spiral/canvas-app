@@ -15,6 +15,7 @@
       $scope.searchFriends.online = ""
 
 @SocialController.$inject = ["$scope", "players"]
+
 @navigationController = ($scope) ->
   $scope.currentSection = "game"
   $scope.showPromo = false
@@ -38,5 +39,15 @@
 
   $scope.gameEmbedCode = ->
     $scope.qsData().info.embedCode
+
+  $scope.logout = ->
+    date = new Date()
+    date.setTime(date.getTime()+(-1*24*60*60*1000))
+    expires = "expires="+date.toGMTString()
+    document.cookie = "qs_canvas_authentication=; " + expires + "; path=/"
+
+    redirectUrl = window.location.href.replace(/#\/logout.*$/, '')
+    logoutUrl = window.qs.ENV["QS_AUTH_BACKEND_URL"] + "/signout?redirect_uri=" + encodeURIComponent(redirectUrl)
+    window.location.href = logoutUrl
 
 @navigationController.$inject = ["$scope"]

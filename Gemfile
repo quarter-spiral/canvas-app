@@ -22,7 +22,6 @@ platforms :ruby do
   gem 'thin'
 end
 
-
 group :test, :development do
   gem 'datastore-backend', '~> 0.0.11'
 
@@ -33,7 +32,7 @@ group :test, :development do
 
   gem 'graph-client', '~> 0.0.9'
   gem 'graph-backend', '~> 0.0.13'
-  gem 'auth-backend', "~> 0.0.15"
+  gem 'auth-backend', "~> 0.0.21"
   gem 'sdk-app', "~> 0.0.5"
   gem 'sqlite3'
   gem 'sinatra_warden', git: 'https://github.com/quarter-spiral/sinatra_warden.git'

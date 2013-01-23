@@ -8,8 +8,6 @@ if !ENV['RACK_ENV'] || ENV['RACK_ENV'] == 'development'
   ENV['QS_OAUTH_CLIENT_SECRET'] ||= 'rcghf9way9i7lbdzyakaecly5ow9fau'
 end
 
-ENV_KEYS_TO_EXPOSE = ['QS_PLAYERCENTER_BACKEND_URL', 'QS_AUTH_BACKEND_URL']
-
 require 'newrelic_rpm'
 require 'new_relic/agent/instrumentation/rack'
 require 'ping-middleware'
@@ -35,7 +33,7 @@ app = Rack::Builder.new do
     map('/qless') {run Qless::Server.new}
   end
 
-  run Canvas::App::App
+  run Canvas::App::AppBuilder.new
 end
 
 run app

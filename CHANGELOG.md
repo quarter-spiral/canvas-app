@@ -1,3 +1,7 @@
+# 0.0.36 WIP
+
+* Makes it possible to log into the canvas app
+
 # 0.0.35
 
 * Makes it possible to play games in spiral-galaxy while not being logged in

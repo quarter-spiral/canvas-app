@@ -32,4 +32,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'uglifier'
   gem.add_dependency 'newrelic_rpm'
   gem.add_dependency 'ping-middleware', '~> 0.0.2'
+  gem.add_dependency 'omniauth-oauth2'
 end

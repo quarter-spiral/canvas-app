@@ -12,7 +12,7 @@ module Canvas::App
       end
 
       def response_for(game, embedded_game, context)
-        context.erb template, locals: {game: game, context: context, venue: Utils.uncamelize_string(name), uuid: 'none'}
+        context.erb template, locals: {game: game, context: context, venue: Utils.uncamelize_string(name)}
       end
 
       protected

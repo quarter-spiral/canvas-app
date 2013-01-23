@@ -4,9 +4,22 @@ module Canvas::App
       def response_for(game, embedded_game, context)
         request = context.request
 
-        context.tokens = {qs: nil, venue: nil}
+        qs_oauth = nil
+        qs_uuid = nil
+        player_name = nil
+
+        if auth_cookie = context.request.cookies['qs_canvas_authentication']
+          if auth_cookie['info']
+            auth_cookie = JSON.parse(auth_cookie)
+            qs_oauth = auth_cookie['info']['token']
+            qs_uuid = auth_cookie['info']['uuid']
+            player_name = auth_cookie['info']['name']
+          end
+        end
+
+        context.tokens = {qs: qs_oauth, venue: qs_oauth}
         context.venue = 'embedded'
-        context.erb template, locals: {game: game, context: context}
+        context.erb template, locals: {game: game, context: context, uuid: qs_uuid, user_name: player_name}
       end
     end
   end

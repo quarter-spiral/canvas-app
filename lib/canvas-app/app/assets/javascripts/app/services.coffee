@@ -43,22 +43,23 @@ services.factory "players", ["$rootScope", "$q", "venue-user","qs_commons_http",
           friends = []
           for uuid, rawFriendData of data
             friendData = rawFriendData[window.qs.info.venue] || rawFriendData['facebook'] # TODO <-- dirty hack till we have QS friends
-            friend = {
-              uuid: uuid
-              userName: friendData.name
-              fullName: friendData.name
-              avatar: "#{playercenterUrl}/v1/#{uuid}/avatars/#{window.qs.info.venue}"
-              meta: {}
-            }
+            if friendData
+              friend = {
+                uuid: uuid
+                userName: friendData.name
+                fullName: friendData.name
+                avatar: "#{playercenterUrl}/v1/#{uuid}/avatars/#{window.qs.info.venue}"
+                meta: {}
+              }
 
-            if window.qs.info.friendbar.values.top
-              value = rawFriendData['meta'][window.qs.info.friendbar.values.top.key] || window.qs.info.friendbar.values.top.default
-              friend.meta.top = {label: window.qs.info.friendbar.values.top.label, value: value}
-            if window.qs.info.friendbar.values.bottom
-              value = rawFriendData['meta'][window.qs.info.friendbar.values.bottom.key] || window.qs.info.friendbar.values.bottom.default
-              friend.meta.bottom = {label: window.qs.info.friendbar.values.bottom.label, value: value}
+              if window.qs.info.friendbar.values.top
+                value = rawFriendData['meta'][window.qs.info.friendbar.values.top.key] || window.qs.info.friendbar.values.top.default
+                friend.meta.top = {label: window.qs.info.friendbar.values.top.label, value: value}
+              if window.qs.info.friendbar.values.bottom
+                value = rawFriendData['meta'][window.qs.info.friendbar.values.bottom.key] || window.qs.info.friendbar.values.bottom.default
+                friend.meta.bottom = {label: window.qs.info.friendbar.values.bottom.label, value: value}
 
-            friends.push(friend)
+              friends.push(friend)
           friends
       )
   }

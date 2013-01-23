@@ -51,7 +51,7 @@ AuthenticationInjector.token = APP_TOKEN
 def client
   return @client if @client
 
-  @client = Rack::Client.new {run Canvas::App::App}
+  @client = Rack::Client.new {run Canvas::App::AppBuilder.new}
 end
 
 def devcenter_client
