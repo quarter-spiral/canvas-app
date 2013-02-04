@@ -5,7 +5,7 @@ module Canvas::App
         <<-EOS
 <% canvas_host = URI.escape(request.host) %>
 <% url = URI.escape(game.configuration['url']) %>
-<% url.gsub!('http://', 'https://') if request.scheme == 'https' %>
+<% url.gsub!('http://', 'https://') if request.scheme == 'https' && !params[:nossl] %>
 
 <% sdk_url = File.join(ENV['QS_SDK_APP_URL'], '/javascripts/sdk.js') %>
 <script src="<%= sdk_url %>" type="text/javascript"></script>
