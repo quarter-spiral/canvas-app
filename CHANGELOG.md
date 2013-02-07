@@ -1,4 +1,4 @@
-# 0.0.37 WIP
+# 0.0.37
 
 * Updates devcenter-backend gem to add games' categories field
 
