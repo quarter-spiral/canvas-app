@@ -1,3 +1,7 @@
+# 0.0.37 WIP
+
+* Updates devcenter-backend gem to add games' categories field
+
 # 0.0.36
 
 * Makes it possible to log into the canvas app
