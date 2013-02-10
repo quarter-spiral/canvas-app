@@ -1,3 +1,7 @@
+# 0.0.38 WIP
+
+* Fixed static links in cross promo section to point to new domains
+
 # 0.0.37
 
 * Updates devcenter-backend gem to add games' categories field
