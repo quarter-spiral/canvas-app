@@ -1,4 +1,4 @@
-# 0.0.38 WIP
+# 0.0.38
 
 * Fixed static links in cross promo section to point to new domains
 
