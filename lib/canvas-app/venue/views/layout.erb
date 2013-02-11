@@ -41,7 +41,7 @@
 
     <div id="header">
       <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
-      <ul>
+      <ul ng-hide="currentSection == 'preroll'">
         <li ng-class="{active: currentSection == 'share'}" ng-show="gameEmbedCode()"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
         <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i> About</a></li>
         <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li>
@@ -65,6 +65,25 @@
 
         <%= embedded_game %>
 
+      </div>
+
+      <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad>
+        <p>{{gameData().name}} is supported by:</p>
+        <div id="addBody">
+
+          <!-- <iframe width="560" height="315" src="http://www.youtube.com/embed/jSOtjwwz7EE?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
+          <SCRIPT language="Javascript">
+          var cpmstar_rnd=Math.round(Math.random()*999999);
+          var cpmstar_pid=42195;
+          document.writeln("<SCR"+"IPT language='Javascript' src='//server.cpmstar.com/view.aspx?poolid="+cpmstar_pid+"&script=1&rnd="+cpmstar_rnd+"'></SCR"+"IPT>");
+          </SCRIPT>
+
+        </div>
+        <p ad-timer>
+          <span ng-hide="timeTillAdIsSkipable < 1">
+            You can skip this ad in {{timeTillAdIsSkipable}} seconds.
+          </span>
+          <a ng-click="toggleSection('game')" ng-show="timeTillAdIsSkipable < 1" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Continue to {{gameData().name}}</a></p>
       </div>
 
       <div id="about" class="page" ng-show="currentSection == 'about'">
@@ -181,6 +200,9 @@
         <%if defined? uuid %>
         uuid: <%= uuid.to_json %>,
         userName: <%= user_name.to_json %>,
+        <% end %>
+        <% if game.configuration['local_mode'] %>
+        localMode: true,
         <% end %>
         friendbar: {
           <% values = {} %>

@@ -39,6 +39,7 @@ module Canvas::App
         return unless game.developer_configuration['local_mode'] && game.developer_configuration['local_mode'][uuid]
 
         game.configuration = game.developer_configuration['local_mode'][uuid]
+        game.configuration['local_mode'] = true
       end
 
       def name

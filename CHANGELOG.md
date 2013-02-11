@@ -1,3 +1,7 @@
+# 0.0.47 WIP
+
+* Adds a pre-roll ad
+
 # 0.0.46
 
 * Fixes Facebook app authentication redirect
