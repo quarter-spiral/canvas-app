@@ -1,4 +1,4 @@
-# 0.0.41 WIP
+# 0.0.41
 
 * Fixes bug in the flash embedder JS
 
