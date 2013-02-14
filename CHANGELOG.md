@@ -1,4 +1,4 @@
-# 0.0.40 WIP
+# 0.0.40
 
 * Bumps descanter
 * Adds fix to make flash games work again with asynchronous SDK loading
