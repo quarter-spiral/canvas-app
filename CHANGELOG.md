@@ -1,3 +1,7 @@
+# 0.0.39 WIP
+
+* Improves Flash game load times with loading the SDK asynchroniously
+
 # 0.0.38
 
 * Fixed static links in cross promo section to point to new domains
