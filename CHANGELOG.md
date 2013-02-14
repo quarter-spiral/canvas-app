@@ -1,4 +1,4 @@
-# 0.0.39 WIP
+# 0.0.39
 
 * Improves Flash game load times with loading the SDK asynchroniously
 
