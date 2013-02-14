@@ -23,7 +23,7 @@ describe Canvas::App::Venue::Embedded do
     @player['name'] = "Thorben Schröder"
     @connection.graph.add_role(@player['uuid'], APP_TOKEN, 'player')
 
-    @game_options = {:name => "Test Game 1", :description => "Good game", :configuration => {'type' => 'html5', 'url' => 'http://example.com'},:developers => [@developer], :venues => {"embedded" => {"enabled" => true}}}
+    @game_options = {:name => "Test Game 1", :description => "Good game", :category => 'Jump n Run', :configuration => {'type' => 'html5', 'url' => 'http://example.com'},:developers => [@developer], :venues => {"embedded" => {"enabled" => true}}}
     @game = Devcenter::Backend::Game.create(APP_TOKEN, @game_options)
   end
 

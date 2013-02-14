@@ -30,7 +30,7 @@ describe "Login" do
     app_id = ::Facebook::Client::Fixtures.client_id
     app_secret = ::Facebook::Client::Fixtures.client_secret
 
-    @game_options = {:name => "Test Game 1", :description => "Good game", :configuration => {'type' => 'html5', 'url' => 'http://example.com'},:developers => [@developer], :venues => {"spiral-galaxy" => {"enabled" => true}, "embedded" => {"enabled" => true}, 'facebook' => {'enabled' => true, 'app-id' => app_id, 'app-secret' => app_secret}}}
+    @game_options = {:name => "Test Game 1", :description => "Good game", :configuration => {'type' => 'html5', 'url' => 'http://example.com'},:developers => [@developer], :category => 'Jump n Run', :venues => {"spiral-galaxy" => {"enabled" => true}, "embedded" => {"enabled" => true}, 'facebook' => {'enabled' => true, 'app-id' => app_id, 'app-secret' => app_secret}}}
     @game = Devcenter::Backend::Game.create(APP_TOKEN, @game_options)
 
     Capybara.current_session.driver.remove_cookie('qs_canvas_authentication')

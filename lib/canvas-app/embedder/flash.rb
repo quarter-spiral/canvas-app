@@ -8,6 +8,17 @@ module Canvas::App
 <% url.gsub!('http://', 'https://') if request.scheme == 'https' && !params[:nossl] %>
 
 <% sdk_url = File.join(ENV['QS_SDK_APP_URL'], '/javascripts/sdk.js') %>
+<script>
+  var qsSetupPlaceholder;
+
+  qsSetupPlaceholder = {
+    setup: function {
+      setTimeout(function() {windows.QS.setup()}, 500);
+    }
+  };
+  windows.QS = qsSetupPlaceholder;
+</script>
+
 <script src="<%= sdk_url %>" type="text/javascript" async></script>
 
 <object type="application/x-shockwave-flash" width="1024" height="600" id="qs-embedded-flash-game">

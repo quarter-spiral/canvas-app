@@ -78,7 +78,8 @@ def create_initial_game
     name: "Some Game",
     description: "A good game",
     developers: [DEV_USER['uuid']],
-    configuration: {'type' => 'html5', 'url' => 'http://example.com/test-game'}
+    configuration: {'type' => 'html5', 'url' => 'http://example.com/test-game'},
+    category: 'Jump n Run'
   }
   uuid = create_game(game)
 

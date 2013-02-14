@@ -9,7 +9,7 @@ def game_options
   developer = UUID.new.generate
   Devcenter::Backend::Connection.create.graph.add_role(developer, APP_TOKEN, 'developer')
 
-  {:name => "Test Game #{@count}", :description => "Good game", :configuration => {'type' => 'html5', 'url' => 'http://example.com'},:developers => [developer], :venues => {"spiral-galaxy" => {"enabled" => true}}}
+  {:name => "Test Game #{@count}", :description => "Good game", :category => 'Jump n Run', :configuration => {'type' => 'html5', 'url' => 'http://example.com'},:developers => [developer], :venues => {"spiral-galaxy" => {"enabled" => true}}}
 end
 
 def create_game_and_get_friendbar_values(merge_options = nil)

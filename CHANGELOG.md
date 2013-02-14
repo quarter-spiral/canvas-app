@@ -1,3 +1,8 @@
+# 0.0.40 WIP
+
+* Bumps descanter
+* Adds fix to make flash games work again with asynchronous SDK loading
+
 # 0.0.39
 
 * Improves Flash game load times with loading the SDK asynchroniously
