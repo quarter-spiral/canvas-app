@@ -12,7 +12,7 @@ module Canvas::App
   var qsSetupPlaceholder;
 
   qsSetupPlaceholder = {
-    setup: function {
+    setup: function() {
       setTimeout(function() {windows.QS.setup()}, 500);
     }
   };

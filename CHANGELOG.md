@@ -1,3 +1,7 @@
+# 0.0.41 WIP
+
+* Fixes bug in the flash embedder JS
+
 # 0.0.40
 
 * Bumps descanter
