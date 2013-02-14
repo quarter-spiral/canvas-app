@@ -16,7 +16,7 @@ module Canvas::App
       setTimeout(function() {windows.QS.setup()}, 500);
     }
   };
-  windows.QS = qsSetupPlaceholder;
+  window.QS = qsSetupPlaceholder;
 </script>
 
 <script src="<%= sdk_url %>" type="text/javascript" async></script>
