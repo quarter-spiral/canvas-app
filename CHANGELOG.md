@@ -1,3 +1,8 @@
+# 0.0.42 WIP
+
+* Sets flash WMODE to direct
+* Fixes another bug in the flash embedder JS
+
 # 0.0.41
 
 * Fixes bug in the flash embedder JS

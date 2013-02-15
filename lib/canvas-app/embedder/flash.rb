@@ -23,7 +23,7 @@ module Canvas::App
 
 <object type="application/x-shockwave-flash" width="1024" height="600" id="qs-embedded-flash-game">
   <param name="movie" value="<%= url %>">
-  <param name="wmode" value="opaque">
+  <param name="wmode" value="direct">
   <param name="FlashVars" value="qsCanvasHost=<%= canvas_host %>" />
   <param name="allowScriptAccess" value="always">
   <embed name="qsEmbeddedFlashGame" type="application/x-shockwave-flash" href="<%= url %>" allowscriptaccess="always" FlashVars="qsCanvasHost=<%= canvas_host %>">
