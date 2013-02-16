@@ -1,4 +1,4 @@
-# 0.0.42 WIP
+# 0.0.42
 
 * Sets flash WMODE to direct
 * Fixes another bug in the flash embedder JS
