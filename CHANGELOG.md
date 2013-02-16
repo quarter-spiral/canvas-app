@@ -1,3 +1,7 @@
+# 0.0.44 WIP
+
+* Fixes (hopefully) the last flash embedder JS bug for now
+
 # 0.0.43
 
 * Adds credits of a game to it's about section
