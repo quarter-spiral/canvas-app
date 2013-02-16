@@ -71,6 +71,11 @@
               <button class="close" ng-click="toggleSection('about')">&times;</button>
               <h3>{{gameData().name}}</h3>
             </div>
+            <div class="span12" ng-show="gameData().credits">
+              <p ng-hide="gameData().credits_url">by {{gameData().credits}}</p>
+              <p ng-show="gameData().credits_url">by <a href="{{gameData().credits_url}}">{{gameData().credits}}</a></p>
+              <hr/>
+            </div>
             <div class="span6">
               <p>{{gameData().description}}</p>
             </div>

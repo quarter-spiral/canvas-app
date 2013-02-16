@@ -1,3 +1,7 @@
+# 0.0.43 WIP
+
+* Adds credits of a game to it's about section
+
 # 0.0.42
 
 * Sets flash WMODE to direct
