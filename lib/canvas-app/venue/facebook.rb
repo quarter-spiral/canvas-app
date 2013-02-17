@@ -21,7 +21,7 @@ module Canvas::App
         end
       end
 
-      def response_for(game, embedded_game, context)
+      def response_for(game, context)
         request = context.request
 
         app_id = game.venues['facebook']['app-id']
@@ -66,7 +66,7 @@ module Canvas::App
             'uuid' => qs_uuid
           )
 
-          context.erb template, locals: {game: game, context: context, uuid: qs_uuid, user_name: player_info['name']}
+          super(game, context, uuid: qs_uuid, user_name: player_info['name'])
         else
           context.redirect facebook_client.unauthenticated.authorization_url(redirect_url: request.url, scopes: [:email])
         end

@@ -73,10 +73,6 @@ module Canvas::App
         yield
       end
 
-      def embedded_game
-        @embedded_game
-      end
-
       def tokens=(tokens)
         @tokens = tokens
       end
@@ -91,6 +87,10 @@ module Canvas::App
 
       def venue
         @venue || 'none'
+      end
+
+      def embedder
+        @embedder
       end
 
       include Rack::Utils
@@ -111,17 +111,11 @@ module Canvas::App
         game = try_twice_and_avoid_token_expiration do
           Devcenter::Backend::Game.find(params[:uuid], token)
         end
-        embedder = Embedder.for(game)
-        return halt(403, "Invalid game") unless embedder
+
         venue = Venue.for(game, params[:venue])
         return halt(404) unless venue
-        status embedder.status
-        if embedder.respond_to?(:body)
-          embedder.body
-        else
-          @embedded_game = erb embedder.template, locals: {game: game, request: request}, layout: false
-          venue.response_for(game, embedded_game, self)
-        end
+
+        venue.response_for(game, self)
       end
     end
   end

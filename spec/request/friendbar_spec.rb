@@ -124,11 +124,14 @@ describe "Friendbar" do
 
     login(@player['uuid'], @player['name'], @token, domain: 'localhost')
     @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
-    sleep 1
-    @page.has_selector?('a', text: /Sort by Score/, visible: true).must_equal true
-    @page.has_selector?('a', text: /Sort by Level/, visible: true).must_equal true
-    @page.has_selector?('div.top-value', visible: true, text: '654').must_equal true
-    @page.has_selector?('div.bottom-value', visible: true, text: 'Tower').must_equal true
+    sleep 2
+    @page.evaluate_script('$("a:contains(\"Sort by Score\")").length').must_equal 1
+    @page.evaluate_script('$("a:contains(\"Sort by Level\")").length').must_equal 1
+
+    sleep 2
+    @page.driver.render('/Users/walski/Desktop/file.png', :full => true)
+    @page.evaluate_script('$("div.top-value:contains(\"654\")").length').must_equal 1
+    @page.evaluate_script('$("div.bottom-value:contains(\"Tower\")").length').must_equal 1
   end
 
   it "can display default values" do

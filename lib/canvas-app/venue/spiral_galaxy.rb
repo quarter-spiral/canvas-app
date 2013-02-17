@@ -1,7 +1,7 @@
 module Canvas::App
   module Venue
     class SpiralGalaxy < Base
-      def response_for(game, embedded_game, context)
+      def response_for(game, context)
         request = context.request
 
         game_url = File.join(ENV['QS_SPIRAL_GALAXY_URL'], 'play', game.uuid)
@@ -24,8 +24,7 @@ module Canvas::App
         }
 
         context.venue = 'spiral-galaxy'
-
-        context.erb template, locals: {game: game, context: context, uuid: qs_uuid, user_name: player_name}
+        super(game, context, uuid: qs_uuid, user_name: player_name)
       end
     end
   end

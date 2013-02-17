@@ -88,7 +88,7 @@ describe "on the facebook venue" do
       it "responds with a blank 404" do
         @game[:configuration]['type'] = 'initial'
         @uuid = create_game(@game)
-        @response = client.post("/v1/games/#{@uuid}/facebook")
+        @response = client.post("/v1/games/#{@uuid}/facebook", {}, signed_request: ::Facebook::Client::Fixtures.signed_request)
 
         @response.status.must_equal 404
         @response.body.must_equal ''

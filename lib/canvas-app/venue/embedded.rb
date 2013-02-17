@@ -1,7 +1,7 @@
 module Canvas::App
   module Venue
     class Embedded < Base
-      def response_for(game, embedded_game, context)
+      def response_for(game, context)
         request = context.request
 
         qs_oauth = nil
@@ -19,7 +19,8 @@ module Canvas::App
 
         context.tokens = {qs: qs_oauth, venue: qs_oauth}
         context.venue = 'embedded'
-        context.erb template, locals: {game: game, context: context, uuid: qs_uuid, user_name: player_name}
+
+        super(game, context, uuid: qs_uuid, user_name: player_name)
       end
     end
   end
