@@ -1,4 +1,4 @@
-# 0.0.44 WIP
+# 0.0.44
 
 * Makes it possible to customize the delivered build per user
 * Fixes (hopefully) the last flash embedder JS bug for now
