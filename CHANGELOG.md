@@ -1,3 +1,7 @@
+# 0.0.45
+
+* tweaked presentation of credits line
+
 # 0.0.44
 
 * Makes it possible to customize the delivered build per user
