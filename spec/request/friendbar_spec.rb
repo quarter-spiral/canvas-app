@@ -129,7 +129,6 @@ describe "Friendbar" do
     @page.evaluate_script('$("a:contains(\"Sort by Level\")").length').must_equal 1
 
     sleep 2
-    @page.driver.render('/Users/walski/Desktop/file.png', :full => true)
     @page.evaluate_script('$("div.top-value:contains(\"654\")").length').must_equal 1
     @page.evaluate_script('$("div.bottom-value:contains(\"Tower\")").length').must_equal 1
   end
