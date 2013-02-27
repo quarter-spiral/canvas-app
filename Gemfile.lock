@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.45)
+    canvas-app (0.0.46)
       angular-commons-middleware
       auth-client (>= 0.0.13)
       coffee-script (= 2.2.0)
@@ -169,9 +169,9 @@ GEM
       rack-accept
       rack-mount
       virtus
-    grape_newrelic (0.0.3)
+    grape_newrelic (0.0.4)
       grape (>= 0.2.2)
-      newrelic_rpm (~> 3.5.4.33)
+      newrelic_rpm (>= 3.5.4.33)
     graph-backend (0.0.14)
       auth-client (>= 0.0.14)
       grape (>= 0.2.0)

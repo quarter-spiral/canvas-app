@@ -1,4 +1,4 @@
-# 0.0.46 WIP
+# 0.0.46
 
 * Fixes Facebook app authentication redirect
 * now cloaking the promo block
