@@ -68,7 +68,8 @@ module Canvas::App
 
           super(game, context, uuid: qs_uuid, user_name: player_info['name'])
         else
-          context.redirect facebook_client.unauthenticated.authorization_url(redirect_url: request.url, scopes: [:email])
+          authorization_url = facebook_client.unauthenticated.authorization_url(redirect_url: request.url, scopes: [:email])
+          "<html><head><title>Authorizing app</title></head><body><script>top.location.href=#{JSON.dump(authorization_url)};</script></body></html>"
         end
       end
     end
