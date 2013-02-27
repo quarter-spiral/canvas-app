@@ -1,3 +1,7 @@
+# 0.0.46 WIP
+
+* now cloaking the promo block
+
 # 0.0.45
 
 * tweaked presentation of credits line
