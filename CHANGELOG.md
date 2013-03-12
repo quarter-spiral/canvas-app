@@ -1,4 +1,4 @@
-# 0.0.47 WIP
+# 0.0.47
 
 * Adds a pre-roll ad
 
