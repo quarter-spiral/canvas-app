@@ -21,7 +21,7 @@ module Canvas::App
 
 <script src="<%= sdk_url %>" type="text/javascript" async></script>
 
-<object type="application/x-shockwave-flash" width="1024" height="600" id="qs-embedded-flash-game">
+<object type="application/x-shockwave-flash" width="1024" height="600" id="qs-embedded-flash-game" data="<%= url %>">
   <param name="movie" value="<%= url %>">
   <param name="wmode" value="direct">
   <param name="FlashVars" value="qsCanvasHost=<%= canvas_host %>" />

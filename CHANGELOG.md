@@ -1,3 +1,7 @@
+# 0.0.48 WIP
+
+* Makes flash embeds work in Firefox 
+
 # 0.0.47
 
 * Adds a pre-roll ad
