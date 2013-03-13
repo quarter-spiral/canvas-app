@@ -1,4 +1,4 @@
-# 0.0.48 WIP
+# 0.0.48
 
 * Makes flash embeds work in Firefox 
 
