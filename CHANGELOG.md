@@ -1,4 +1,4 @@
-# 0.0.49 WIP
+# 0.0.49
 
 * Fixes DOM SDK integration
 * Rounds numeric friend badge values to 2 decimals
