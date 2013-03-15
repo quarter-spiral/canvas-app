@@ -6,49 +6,43 @@ module Canvas::App
 <% url = game.configuration['url'] %>
 <iframe name="html5frame" id="html5frame" src="<%= URI.escape(url) %>"></iframe>
 <script type="text/javascript">
-  $(function() {
-    $('iframe#html5frame').load(function() {
-      var iframe = frames[0];
-      var infoReceived = false;
-      var destination = '*'; //FIXME: Use <%= url.gsub(/\\/$/, '').to_json %>
+  var debug = function(message) {
+    if (!window.qsDebug) return;
+    console.log(message);
+  };
 
+  var frameHasSignaledGameIsLoaded = false;
+  var frameHasAcknowledgedReceiptOfData = false;
 
-      var receiveConfirmation = function(event) {
-        //FIXME: Add security checks back in
-        //if (event.origin !== destination) {
-        //  return;
-        //}
-        var data = angular.fromJson(event.data);
+  var sendGameDataToFrame = function() {
+    debug("Sending game data to frame");
+    if (!frameHasAcknowledgedReceiptOfData) {
+      var iframe = document.getElementById('html5frame').contentWindow;
+      iframe.postMessage(angular.toJson({type: 'qs-data', data: window.qs}), '*');
+      setTimeout(sendGameDataToFrame, 200);
+    }
+  }
 
-        if (data.type === 'qs-info-received') {
-          infoReceived = true;
+  var messageHandler = function(event) {
+    debug("Got a message:")
+    debug(event.data)
+
+    var data = angular.fromJson(event.data);
+    switch(data.type) {
+      case "qs-game-loaded":
+        if (!frameHasSignaledGameIsLoaded) {
+          debug("Game loaded. Sending info to game frame.");
+          sendGameDataToFrame();
+          frameHasSignaledGameIsLoaded = true;
         }
-      }
-      window.addEventListener("message", receiveConfirmation, false)
-
-      var sendingToFrame = function(frame, data, destination) {
-        //This is brute forcing all sub frames :(
-        var maxDepth = 1;
-        try {
-          frame.postMessage(data, destination)
-          for (var i = 0; i < maxDepth; i++) {
-            sendingToFrame(frame.frames[i], data,destination);
-          }
-        } catch (e) {
-          //FIXME: Use a better approach than "brute-force-and-swallow-all-errors"
-        }
-      }
-
-      var sendData = function() {
-        if (infoReceived) {
-          return;
-        }
-        sendingToFrame(iframe, angular.toJson({type: 'qs-data', data: window.qs}), destination)
-        setTimeout(sendData, 500)
-      };
-      sendData();
-    });
-  });
+        break;
+      case "qs-info-received":
+        debug("Turning of sending of data to frame");
+        frameHasAcknowledgedReceiptOfData = true;
+        break;
+    }
+  }
+  window.addEventListener("message", messageHandler, false)
 </script>
         EOS
       end

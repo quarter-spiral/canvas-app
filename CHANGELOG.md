@@ -1,5 +1,6 @@
 # 0.0.49 WIP
 
+* Fixes DOM SDK integration
 * Rounds numeric friend badge values to 2 decimals
 * Fixes bug when displaying avatar images with Angular
 
