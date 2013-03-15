@@ -1,3 +1,8 @@
+# 0.0.49 WIP
+
+* Rounds numeric friend badge values to 2 decimals
+* Fixes bug when displaying avatar images with Angular
+
 # 0.0.48
 
 * Makes flash embeds work in Firefox 

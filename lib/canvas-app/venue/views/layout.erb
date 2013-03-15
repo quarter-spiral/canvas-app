@@ -167,9 +167,9 @@
         <ul class="avatars" ng-show="friends.length > 0">
           <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends">
             <div class="name">{{friend.fullName}}</div>
-            <div ng-show="!!friend.meta.top.value" class="top-value level" title="{{friend.meta.top.label}}">{{friend.meta.top.value}}</div>
-            <div ng-show="!!friend.meta.bottom.value" class="bottom-value xp" title="{{friend.meta.bottom.label}}">{{friend.meta.bottom.value}}</div>
-            <img src="{{friend.avatar}}" />
+            <div ng-show="!!friend.meta.top.value" class="top-value level" title="{{friend.meta.top.label}}">{{friend.meta.top.value|friendbarValue}}</div>
+            <div ng-show="!!friend.meta.bottom.value" class="bottom-value xp" title="{{friend.meta.bottom.label}}">{{friend.meta.bottom.value|friendbarValue}}</div>
+            <img ng-src="{{friend.avatar}}" />
           </li>
         </ul>
         <div class="noFriends" ng-hide="friends.length > 0">

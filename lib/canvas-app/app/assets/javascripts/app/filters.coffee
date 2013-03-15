@@ -7,4 +7,11 @@
 ]).filter('url', [->
   (url) ->
     window.encodeURIComponent(url)
+]).filter('friendbarValue', [->
+  (value) ->
+    return unless value
+    if typeof value is "number"
+      return Math.round(value * 100) / 100
+    else
+      return value
 ])
