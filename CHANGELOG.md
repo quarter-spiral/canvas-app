@@ -1,3 +1,7 @@
+# 0.0.50 WIP
+
+* Obeys game's dimension configuration
+
 # 0.0.49
 
 * Fixes DOM SDK integration

@@ -4,7 +4,20 @@ module Canvas::App
       def template
         <<-EOS
 <% url = game.configuration['url'] %>
-<iframe name="html5frame" id="html5frame" src="<%= URI.escape(url) %>"></iframe>
+
+<% fluid = game.configuration["fluid-size"] %>
+<% sizes = game.configuration["sizes"] %>
+
+<iframe name="html5frame" id="html5frame" src="<%= URI.escape(url) %>" <% if fluid %>style="min-width:<%= sizes.first['width'] %>px;min-height:<%= sizes.first['height'] %>px;%>"<% end %> class="<%= fluid ? 'fluid-size' : 'fixed-size' %>"></iframe>
+
+<% unless fluid %>
+  <script src="/v1/javascripts/app/resizer.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    adoptSizes($('#html5frame'), <%= sizes.to_json %>);
+  </script>
+<% end %>
+
+
 <script type="text/javascript">
   var debug = function(message) {
     if (!window.qsDebug) return;

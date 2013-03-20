@@ -21,7 +21,10 @@ module Canvas::App
 
 <script src="<%= sdk_url %>" type="text/javascript" async></script>
 
-<object type="application/x-shockwave-flash" width="1024" height="600" id="qs-embedded-flash-game" data="<%= url %>">
+<% fluid = game.configuration["fluid-size"] %>
+<% sizes = game.configuration["sizes"] %>
+
+<object type="application/x-shockwave-flash" id="qs-embedded-flash-game" data="<%= url %>" <% if fluid %>style="width:100%;height:100%;min-width:<%= sizes.first['width'] %>;min-height:<%= sizes.first['height'] %>px;"<% end %> class="<%= fluid ? 'fluid-size' : 'fixed-size' %>">
   <param name="movie" value="<%= url %>">
   <param name="wmode" value="direct">
   <param name="FlashVars" value="qsCanvasHost=<%= canvas_host %>" />
@@ -29,6 +32,13 @@ module Canvas::App
   <embed name="qsEmbeddedFlashGame" type="application/x-shockwave-flash" href="<%= url %>" allowscriptaccess="always" FlashVars="qsCanvasHost=<%= canvas_host %>">
   </embed>
 </object>
+
+<% unless fluid %>
+  <script src="/v1/javascripts/app/resizer.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    adoptSizes($('#qs-embedded-flash-game'), <%= sizes.to_json %>);
+  </script>
+<% end %>
         EOS
       end
     end
