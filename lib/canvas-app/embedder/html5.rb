@@ -6,7 +6,7 @@ module Canvas::App
 <% url = game.configuration['url'] %>
 
 <% fluid = game.configuration["fluid-size"] %>
-<% sizes = game.configuration["sizes"] %>
+<% sizes = game.configuration["sizes"] || [{'width' => 600, 'height' => 400}] %>
 
 <iframe name="html5frame" id="html5frame" src="<%= URI.escape(url) %>" <% if fluid %>style="min-width:<%= sizes.first['width'] %>px;min-height:<%= sizes.first['height'] %>px;%>"<% end %> class="<%= fluid ? 'fluid-size' : 'fixed-size' %>"></iframe>
 

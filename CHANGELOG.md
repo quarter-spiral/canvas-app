@@ -1,3 +1,7 @@
+# 0.0.51 WIP
+
+* Adds size defaults when no size is set on the game
+
 # 0.0.50
 
 * Obeys game's dimension configuration
