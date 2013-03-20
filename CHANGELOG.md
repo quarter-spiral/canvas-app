@@ -1,4 +1,4 @@
-# 0.0.51 WIP
+# 0.0.51
 
 * Adds size defaults when no size is set on the game
 
