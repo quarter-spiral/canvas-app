@@ -1,5 +1,5 @@
 module Canvas
   module App
-    VERSION = "0.0.49"
+    VERSION = "0.0.50"
   end
 end

@@ -1,4 +1,4 @@
-# 0.0.50 WIP
+# 0.0.50
 
 * Obeys game's dimension configuration
 
