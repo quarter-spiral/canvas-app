@@ -44,7 +44,7 @@
       <ul ng-hide="currentSection == 'preroll'">
         <li ng-class="{active: currentSection == 'share'}" ng-show="gameEmbedCode()"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
         <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i> About</a></li>
-        <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li>
+        <!-- <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li> -->
         <li ng-show="qsData().info.uuid">
           <a ng-click="logout()" ng-show="qsData().info.venue == 'embedded'">Log out</a>
           <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/#/logout" ng-show="qsData().info.venue == 'spiral-galaxy'">Log out</a>
