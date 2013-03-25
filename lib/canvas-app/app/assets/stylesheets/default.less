@@ -53,10 +53,15 @@ body {
       margin:0px auto;
     }
     iframe {
-      width: 100%;
       border:none;
       padding:0px;
       margin:0px auto;
+      &.fixed-size {
+        overflow:hidden;
+      }
+      &.fluid-size {
+        width: 100%;
+      }
     }
   }
 }
