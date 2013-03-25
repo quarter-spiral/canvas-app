@@ -1,3 +1,7 @@
+# 0.0.52 WIP
+
+* Updates dependencies
+
 # 0.0.51
 
 * Adds size defaults when no size is set on the game

@@ -49,7 +49,7 @@ describe "Login" do
     @page.fill_in 'Password', with: @player['password']
     @page.click_button 'Log in'
     @page.click_button 'Allow'
-    @page.has_selector?('a', text: /Log out/, visible: true).must_equal true
+    @page.has_selector?('p', text: /Hey #{@player['name']}/, visible: true).must_equal true
   end
 
   #TODO: Fix the error Facebook causes in this test

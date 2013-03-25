@@ -11,7 +11,9 @@ describe "on the facebook venue" do
     @fb_adapter = connection.facebook(@app_id, @app_secret).adapter
     @fb_adapter.token_owner[@fb_token] = {'name' => 'Peter', 'email' => 'peter@example.com', 'id' => '123'}
     @game[:venues] = {'facebook' => {'enabled' => true, 'app-id' => @app_id, 'app-secret' => @app_secret}}
-    devcenter_client.put("/v1/games/#{@uuid}", {}, JSON.dump(venues: @game[:venues]))
+
+    body = JSON.dump(venues: @game[:venues])
+    devcenter_client.put("/v1/games/#{@uuid}", {'Content-Type' => 'application/json', 'Content-Length' => body.length, 'Authorization' => "Bearer #{APP_TOKEN}"}, body)
 
     #clear all jobs
     queue = connection.qless.queues['jobs']
@@ -39,17 +41,19 @@ describe "on the facebook venue" do
       fake_friend_class.new('32948990', 'Paul Toddlo', nil)
     ]
 
-    connection.playercenter.friends_of(uuid, token).must_be_empty
+    friends = connection.playercenter.friends_of(uuid, token)
+    friends.size.must_equal 1
+    friends.values.must_include("facebook" => {"id" => facebook_id, "name" => "Peter"})
+
     signed_request = ::Facebook::Client::Fixtures.signed_request(user_id: facebook_id, oauth_token: fb_token)
-
     @response = client.post("/v1/games/#{@uuid}/facebook", {}, signed_request: signed_request)
-
     job = connection.qless.queues['jobs'].pop
     job.wont_be_nil
     job.perform
 
     friends = connection.playercenter.friends_of(uuid, token)
-    friends.keys.size.must_equal 2
+    friends.keys.size.must_equal 3
+    friends.values.must_include("facebook" => {"id" => facebook_id, "name" => "Peter"})
     friends.values.must_include("facebook" => {"id" => "21312313", "name" => "Jacko Smith"})
     friends.values.must_include("facebook" => {"id" => "32948990", "name" => "Paul Toddlo"})
   end
