@@ -1,4 +1,4 @@
-# 0.0.53 WIP
+# 0.0.53
 
 * Fixed size games are now centered
 * Fixed size games no longer show scroll bars in Firefox
