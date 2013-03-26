@@ -1,3 +1,7 @@
+# 0.0.54 WIP
+
+* Adopts new embed code in canvas
+
 # 0.0.53
 
 * Fixed size games are now centered
