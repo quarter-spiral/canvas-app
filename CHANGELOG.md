@@ -1,4 +1,4 @@
-# 0.0.54 WIP
+# 0.0.54
 
 * Adopts new embed code in canvas
 
