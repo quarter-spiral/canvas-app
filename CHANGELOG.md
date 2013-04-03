@@ -1,3 +1,7 @@
+# 0.0.55 / Unreleased
+
+* Updates test dependencies
+
 # 0.0.54
 
 * Adopts new embed code in canvas
@@ -27,7 +31,7 @@
 
 # 0.0.48
 
-* Makes flash embeds work in Firefox 
+* Makes flash embeds work in Firefox
 
 # 0.0.47
 
@@ -91,7 +95,7 @@
 
 # 0.0.33
 
-* introduces promo bar 
+* introduces promo bar
 
 # 0.0.32
 

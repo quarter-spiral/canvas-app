@@ -23,7 +23,7 @@ platforms :ruby do
 end
 
 group :test, :development do
-  gem 'datastore-backend', '~> 0.0.18'
+  gem 'datastore-backend', '~> 0.0.19'
   #gem 'datastore-backend', path: '../datastore-backend'
 
   gem 'rack-test'
@@ -32,9 +32,9 @@ group :test, :development do
   gem 'rake'
 
   gem 'graph-client', '~> 0.0.12'
-  gem 'graph-backend', '~> 0.0.25'
+  gem 'graph-backend', '~> 0.0.26'
   #gem 'graph-backend', path: '../graph-backend'
-  gem 'auth-backend', "~> 0.0.29"
+  gem 'auth-backend', "~> 0.0.30"
   #gem 'auth-backend', path: '../auth-backend'
   gem 'sdk-app', "~> 0.0.5"
   gem 'sqlite3'
@@ -42,7 +42,7 @@ group :test, :development do
   gem 'songkick-oauth2-provider', git: 'https://github.com/quarter-spiral/oauth2-provider.git'
   gem 'nokogiri'
 
-  gem 'playercenter-backend', '~> 0.0.27'
+  gem 'playercenter-backend', '~> 0.0.29'
   #gem 'playercenter-backend', path: '../playercenter-backend'
   gem 'spiral-galaxy', '>= 0.0.31'
   #gem 'spiral-galaxy', path: '../spiral-galaxy'
