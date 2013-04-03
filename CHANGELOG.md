@@ -1,4 +1,4 @@
-# 0.0.55 / Unreleased
+# 0.0.55 / 2013-04-03
 
 * Updates test dependencies
 

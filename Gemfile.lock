@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.54)
+    canvas-app (0.0.55)
       angular-commons-middleware
       auth-client (>= 0.0.14)
       coffee-script (= 2.2.0)
@@ -144,7 +144,7 @@ GEM
       json
       service-client (>= 0.0.12)
     descendants_tracker (0.0.1)
-    devcenter-backend (0.0.48)
+    devcenter-backend (0.0.49)
       auth-client (>= 0.0.15)
       cache-backend-iron-cache (~> 0.0.4)
       cache-client (~> 0.0.4)
