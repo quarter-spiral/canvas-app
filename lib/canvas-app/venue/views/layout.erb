@@ -69,83 +69,87 @@
       </div>
 
       <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad>
+        <div class="page">
         <p>{{gameData().name}} is supported by:</p>
-        <div id="addBody">
+          <div id="addBody">
 
-          <!-- <iframe width="560" height="315" src="http://www.youtube.com/embed/jSOtjwwz7EE?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
-          <SCRIPT language="Javascript">
-          var cpmstar_rnd=Math.round(Math.random()*999999);
-          var cpmstar_pid=42195;
-          document.writeln("<SCR"+"IPT language='Javascript' src='//server.cpmstar.com/view.aspx?poolid="+cpmstar_pid+"&script=1&rnd="+cpmstar_rnd+"'></SCR"+"IPT>");
-          </SCRIPT>
-
-        </div>
-        <p ad-timer>
-          <span ng-hide="timeTillAdIsSkipable < 1">
-            You can skip this ad in {{timeTillAdIsSkipable}} seconds.
-          </span>
-          <a ng-click="toggleSection('game')" ng-show="timeTillAdIsSkipable < 1" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Continue to {{gameData().name}}</a></p>
-      </div>
-
-      <div id="about" class="page" ng-show="currentSection == 'about'">
-
-        <div class="container">
-          <div class="row">
-            <div class="span12">
-              <button class="close" ng-click="toggleSection('about')">&times;</button>
-              <h3>
-                {{gameData().name}}
-                <span ng-show="gameData().credits">
-                  <span ng-hide="gameData().credits_url">by {{gameData().credits}}</span>
-                  <span ng-show="gameData().credits_url">by <a href="{{gameData().credits_url}}">{{gameData().credits}}</a></span>
-              </span>
-
-
-              </h3>
-            </div>
-            <div class="span6">
-              <p>{{gameData().description}}</p>
-            </div>
-
-            <div class="span12">
-              <hr />
-              <p>
-                <button class="btn btn-primary" ng-click="toggleSection('about')"><i class="icon-arrow-left icon-white"></i> Back</button>
-              </p>
-            </div>
+            <!-- <iframe width="560" height="315" src="http://www.youtube.com/embed/jSOtjwwz7EE?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
+            <SCRIPT language="Javascript">
+            var cpmstar_rnd=Math.round(Math.random()*999999);
+            var cpmstar_pid=42195;
+            document.writeln("<SCR"+"IPT language='Javascript' src='//server.cpmstar.com/view.aspx?poolid="+cpmstar_pid+"&script=1&rnd="+cpmstar_rnd+"'></SCR"+"IPT>");
+            </SCRIPT>
 
           </div>
+          <p ad-timer>
+            <span ng-hide="timeTillAdIsSkipable < 1">
+              You can skip this ad in {{timeTillAdIsSkipable}} seconds.
+            </span>
+            <a ng-click="toggleSection('game')" ng-show="timeTillAdIsSkipable < 1" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Continue to {{gameData().name}}</a></p>
         </div>
-
       </div>
 
-      <div id="sharing" class="page" ng-show="gameEmbedCode() && currentSection == 'share'">
+      <div id="about" ng-show="currentSection == 'about'">
+        <div class="page">
+          <div class="container">
+            <div class="row">
+              <div class="span12">
+                <button class="close" ng-click="toggleSection('about')">&times;</button>
+                <h3>
+                  {{gameData().name}}
+                  <span ng-show="gameData().credits">
+                    <span ng-hide="gameData().credits_url">by {{gameData().credits}}</span>
+                    <span ng-show="gameData().credits_url">by <a href="{{gameData().credits_url}}">{{gameData().credits}}</a></span>
+                </span>
 
-        <div class="container">
-          <div class="row">
-            <div class="span12">
-              <button class="close" ng-click="toggleSection('share')">&times;</button>
-              <h3>Share this game</h3>
+
+                </h3>
+              </div>
+              <div class="span6">
+                <p>{{gameData().description}}</p>
+              </div>
+
+              <div class="span12">
+                <hr />
+                <p>
+                  <button class="btn btn-primary" ng-click="toggleSection('about')"><i class="icon-arrow-left icon-white"></i> Back</button>
+                </p>
+              </div>
 
             </div>
+          </div>
 
-            <div class="span5">
-              <p>Spread the love and embed "<%=h game.name %>" whereever you want: websites, blogs, the sky is the limit!</p>
-              <p>Simply copy the code snippet into your website and the game will appear there.</p>
-              <p>Just like youTube videos.</p>
-            </div>
+        </div>
+      </div>
 
-            <div class="span6 offset1">
+      <div id="sharing" ng-show="gameEmbedCode() && currentSection == 'share'">
+        <div class="page">
+          <div class="container">
+            <div class="row">
+              <div class="span12">
+                <button class="close" ng-click="toggleSection('share')">&times;</button>
+                <h3>Share this game</h3>
 
-              <pre class="code">{{gameEmbedCode()}}</pre>
+              </div>
 
-            </div>
+              <div class="span5">
+                <p>Spread the love and embed "<%=h game.name %>" whereever you want: websites, blogs, the sky is the limit!</p>
+                <p>Simply copy the code snippet into your website and the game will appear there.</p>
+                <p>Just like youTube videos.</p>
+              </div>
 
-            <div class="span12">
-              <hr />
-              <p>
-                <button class="btn btn-primary" ng-click="toggleSection('share')"><i class="icon-arrow-left icon-white"></i> Back</button>
-              </p>
+              <div class="span6 offset1">
+
+                <pre class="code">{{gameEmbedCode()}}</pre>
+
+              </div>
+
+              <div class="span12">
+                <hr />
+                <p>
+                  <button class="btn btn-primary" ng-click="toggleSection('share')"><i class="icon-arrow-left icon-white"></i> Back</button>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -225,6 +229,8 @@
     <script src="/angular-commons/javascripts/envs.js"></script>
     <script src="/angular-commons/javascripts/services.js"></script>
     <script src="/angular-commons/javascripts/controllers.js"></script>
+
+    <script src="/v1/javascripts/app/resizer.js" type="text/javascript"></script>
     <%= js :app %>
   </body>
 </html>
