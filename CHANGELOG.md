@@ -1,4 +1,4 @@
-# 0.0.56 / Unreleased
+# 0.0.56 / 2013-04-04
 
 * Does not display ads for games with paid subscriptions anymore
 
