@@ -32,11 +32,6 @@
     else
       $scope.showPromo = true
 
-  # This add
-  $timeout (->
-    $scope.toggleSection "preroll" unless $scope.qsData().info.localMode
-  ), 0
-
   $scope.qsData = ->
     window.qs
 
@@ -45,6 +40,13 @@
 
   $scope.gameEmbedCode = ->
     $scope.qsData().info.embedCode
+
+  skipAds = $scope.qsData().info.localMode or $scope.qsData().info.subscription
+
+  # This add
+  $timeout (->
+    $scope.toggleSection "preroll" unless skipAds
+  ), 0
 
   okToSkipAdAt = null
   addAirTime = 7000

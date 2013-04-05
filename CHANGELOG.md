@@ -1,3 +1,7 @@
+# 0.0.56 / Unreleased
+
+* Does not display ads for games with paid subscriptions anymore
+
 # 0.0.55 / 2013-04-03
 
 * Updates test dependencies

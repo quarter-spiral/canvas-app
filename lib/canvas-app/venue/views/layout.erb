@@ -204,6 +204,9 @@
         <% if game.configuration['local_mode'] %>
         localMode: true,
         <% end %>
+        <% if game.has_subscription? %>
+          subscription: true,
+        <% end %>
         friendbar: {
           <% values = {} %>
           <% if label = game.configuration['friendbarTopValueLabel'] and key = game.configuration['friendbarTopValueKey'] and !label.empty? and !key.empty? %>
