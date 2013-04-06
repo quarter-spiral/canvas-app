@@ -44,20 +44,48 @@ describe Canvas::App do
     sleep 2
 
     @connection.tracking.query_impression("game-played", :day).must_equal 1
+    @connection.tracking.query_impression("game-played-registered-player", :day).must_equal 0
     @connection.tracking.query_impression("game-played-embedded", :day).must_equal 1
+    @connection.tracking.query_impression("game-played-embedded-registered-player", :day).must_equal 0
     @connection.tracking.query_impression("game-played-facebook", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook-registered-player", :day).must_equal 0
     @connection.tracking.query_impression("game-played-#{@game.uuid}", :day).must_equal 1
+    @connection.tracking.query_impression("game-played-#{@game.uuid}-registered-player", :day).must_equal 0
     @connection.tracking.query_impression("game-played-embedded-#{@game.uuid}", :day).must_equal 1
+    @connection.tracking.query_impression("game-played-embedded-#{@game.uuid}-registered-player", :day).must_equal 0
     @connection.tracking.query_impression("game-played-facebook-#{@game.uuid}", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook-#{@game.uuid}-registered-player", :day).must_equal 0
+
+    client.get("/v1/games/#{@game.uuid}/embedded")
+    sleep 2
+
+    @connection.tracking.query_impression("game-played", :day).must_equal 2
+    @connection.tracking.query_impression("game-played-registered-player", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-embedded", :day).must_equal 2
+    @connection.tracking.query_impression("game-played-embedded-registered-player", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook-registered-player", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-#{@game.uuid}", :day).must_equal 2
+    @connection.tracking.query_impression("game-played-#{@game.uuid}-registered-player", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-embedded-#{@game.uuid}", :day).must_equal 2
+    @connection.tracking.query_impression("game-played-embedded-#{@game.uuid}-registered-player", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook-#{@game.uuid}", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook-#{@game.uuid}-registered-player", :day).must_equal 0
 
     client.post("/v1/games/#{@game.uuid}/facebook", {}, signed_request: ::Facebook::Client::Fixtures.signed_request(user_id: '123', oauth_token: @fb_token))
     sleep 2
 
     @connection.tracking.query_impression("game-played", :day).must_equal 2
-    @connection.tracking.query_impression("game-played-embedded", :day).must_equal 1
-    @connection.tracking.query_impression("game-played-facebook", :day).must_equal 1
+    @connection.tracking.query_impression("game-played-registered-player", :day).must_equal 1
+    @connection.tracking.query_impression("game-played-embedded", :day).must_equal 2
+    @connection.tracking.query_impression("game-played-embedded-registered-player", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook-registered-player", :day).must_equal 1
     @connection.tracking.query_impression("game-played-#{@game.uuid}", :day).must_equal 2
-    @connection.tracking.query_impression("game-played-embedded-#{@game.uuid}", :day).must_equal 1
-    @connection.tracking.query_impression("game-played-facebook-#{@game.uuid}", :day).must_equal 1
+    @connection.tracking.query_impression("game-played-#{@game.uuid}-registered-player", :day).must_equal 1
+    @connection.tracking.query_impression("game-played-embedded-#{@game.uuid}", :day).must_equal 2
+    @connection.tracking.query_impression("game-played-embedded-#{@game.uuid}-registered-player", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook-#{@game.uuid}", :day).must_equal 0
+    @connection.tracking.query_impression("game-played-facebook-#{@game.uuid}-registered-player", :day).must_equal 1
   end
 end

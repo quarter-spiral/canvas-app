@@ -18,7 +18,16 @@ def create_game_and_get_friendbar_values(merge_options = nil)
   game = Devcenter::Backend::Game.create(APP_TOKEN, game_options)
   page = Capybara.current_session
   page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
-  page.has_selector?('script[src="/angular-commons/javascripts/envs.js"]').must_equal true
+
+  has_selector = false
+  tries = 0
+  while !has_selector && tries < 5
+    sleep 1 if tries > 0
+    has_selector = page.has_selector?('script[src="/angular-commons/javascripts/envs.js"]')
+    tries += 1
+  end
+  has_selector.must_equal true
+
   values = page.evaluate_script('window.qs.info.friendbar.values')
   values
 end

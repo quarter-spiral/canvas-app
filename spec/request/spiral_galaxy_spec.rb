@@ -38,7 +38,14 @@ describe Canvas::App::Venue::SpiralGalaxy do
     @page.visit "/v1/games/#{@game.uuid}/spiral-galaxy"
     @page.has_selector?('iframe').must_equal true
 
-    dom_info = @page.evaluate_script('window.qs');
+    dom_info = nil
+    tries = 0
+    while !dom_info && tries < 5
+      sleep 1 if tries > 0
+      dom_info = @page.evaluate_script('window.qs')
+      tries += 1
+    end
+
     dom_info['tokens']['qs'].must_equal @token
     dom_info['tokens']['venue'].must_equal @token
     dom_info['info']['game'].must_equal @game.uuid
@@ -50,7 +57,14 @@ describe Canvas::App::Venue::SpiralGalaxy do
 
     @page.has_selector?('iframe').must_equal true
 
-    dom_info = @page.evaluate_script('window.qs');
+    dom_info = nil
+    tries = 0
+    while !dom_info && tries < 5
+      sleep 1 if tries > 0
+      dom_info = @page.evaluate_script('window.qs')
+      tries += 1
+    end
+
     dom_info['tokens'].wont_be_nil
     dom_info['tokens']['qs'].must_be_nil
     dom_info['tokens']['venue'].must_be_nil

@@ -21,14 +21,29 @@ module Canvas::App
           return embedded_game[:body]
         end
 
+        venue_name = Utils.uncamelize_string(name)
+        if logged_in_player
+          context.connection.tracking.game.track_logged_in_player(game.uuid, venue_name, qs_uuid)
+        else
+          context.connection.tracking.game.track_player(game.uuid, venue_name)
+        end
+
         context.erb template, locals: template_options.merge(game: game, embedded_game: embedded_game, context: context, venue: Utils.uncamelize_string(name).gsub('_', '-'))
+      end
+
+      def logged_in_player
+        qs_uuid
+      end
+
+      protected
+      def qs_uuid
+        @qs_uuid
       end
 
       def name
         self.class.name.split('::').last
       end
 
-      protected
       def embedded_game(game, context, options = {})
         embedder = Embedder.for(game)
         return unless embedder

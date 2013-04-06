@@ -5,17 +5,15 @@ module Canvas::App
         request = context.request
 
         qs_oauth = nil
-        qs_uuid = nil
+        @qs_uuid = nil
         player_name = nil
 
         if auth_cookie = context.request.cookies['qs_canvas_authentication']
           if auth_cookie['info']
             auth_cookie = JSON.parse(auth_cookie)
             qs_oauth = auth_cookie['info']['token']
-            qs_uuid = auth_cookie['info']['uuid']
+            @qs_uuid = auth_cookie['info']['uuid']
             player_name = auth_cookie['info']['name']
-
-            context.track_registered_play(game, self, qs_uuid)
           end
         end
 

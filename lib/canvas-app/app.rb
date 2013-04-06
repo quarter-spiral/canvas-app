@@ -93,28 +93,6 @@ module Canvas::App
         @embedder
       end
 
-      def tracking_keys(game, venue)
-        venue_name = Utils.uncamelize_string(venue.name)
-        keys = [
-          "game-played",
-          "game-played-#{game.uuid}",
-          "game-played-#{venue_name}",
-          "game-played-#{venue_name}-#{game.uuid}"
-        ]
-      end
-
-      def registered_player_tracking_keys(game, venue)
-        tracking_keys(game, venue).map {|k| "#{k}-registered-player"}
-      end
-
-      def track_registered_play(game, venue, player_uuid)
-        connection.tracking.track_impression(registered_player_tracking_keys(game, venue))
-      end
-
-      def track_play(game, venue)
-        connection.tracking.track_impression(tracking_keys(game, venue))
-      end
-
       include Rack::Utils
       alias_method :h, :escape_html
     end
@@ -138,7 +116,6 @@ module Canvas::App
         venue = Venue.for(game, params[:venue])
         return halt(404) unless venue
 
-        track_play(game, venue)
         venue.response_for(game, self)
       end
     end

@@ -43,10 +43,10 @@ module Canvas::App
             'venue-id' => player_info['id']
           }
           qs_oauth = nil
-          qs_uuid = nil
+          @qs_uuid = nil
           context.try_twice_and_avoid_token_expiration do
             qs_oauth = context.connection.auth.venue_token(context.token, 'facebook', venue_data)
-            qs_uuid = context.connection.auth.token_owner(qs_oauth)['uuid']
+            @qs_uuid = context.connection.auth.token_owner(qs_oauth)['uuid']
 
             context.connection.playercenter.register_player(qs_uuid, game.uuid, 'facebook', qs_oauth)
           end
@@ -66,11 +66,10 @@ module Canvas::App
             'uuid' => qs_uuid
           )
 
-          context.track_registered_play(game, self, qs_uuid)
           super(game, context, uuid: qs_uuid, user_name: player_info['name'])
         else
           authorization_url = facebook_client.unauthenticated.authorization_url(redirect_url: request.url, scopes: [:email])
-          "<html><head><title>Authorizing app</title></head><body><script>top.location.href=#{JSON.dump(authorization_url)};</script></body></html>"
+          @response = "<html><head><title>Authorizing app</title></head><body><script>top.location.href=#{JSON.dump(authorization_url)};</script></body></html>"
         end
       end
     end

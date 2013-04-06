@@ -1,3 +1,8 @@
+# 0.0.60 / Unreleased
+
+* Adds sharing options for games
+* Improves game play tracking
+
 # 0.0.59 / 2013-04-06
 
 * Updates tracking-client

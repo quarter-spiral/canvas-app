@@ -7,7 +7,7 @@ module Canvas::App
         game_url = File.join(ENV['QS_SPIRAL_GALAXY_URL'], 'play', game.uuid)
         context.redirect game_url and return unless request.post?
         spiral_galaxy_info = context.connection.facebook('none', game.secret).unauthenticated.decode_signed_request(request.params['signed_request'])
-        qs_uuid = spiral_galaxy_info['uuid']
+        @qs_uuid = spiral_galaxy_info['uuid']
         qs_oauth = nil
         player_name = nil
 
@@ -17,7 +17,6 @@ module Canvas::App
             context.connection.playercenter.register_player(qs_uuid, game.uuid, 'spiral-galaxy', qs_oauth)
           end
           player_name = spiral_galaxy_info['name']
-          context.track_registered_play(game, self, qs_uuid)
         end
         context.tokens = {
           qs: qs_oauth,
