@@ -14,6 +14,8 @@ module Canvas::App
             qs_oauth = auth_cookie['info']['token']
             qs_uuid = auth_cookie['info']['uuid']
             player_name = auth_cookie['info']['name']
+
+            context.track_registered_play(game, self, qs_uuid)
           end
         end
 

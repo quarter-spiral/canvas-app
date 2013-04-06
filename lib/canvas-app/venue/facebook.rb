@@ -66,6 +66,7 @@ module Canvas::App
             'uuid' => qs_uuid
           )
 
+          context.track_registered_play(game, self, qs_uuid)
           super(game, context, uuid: qs_uuid, user_name: player_info['name'])
         else
           authorization_url = facebook_client.unauthenticated.authorization_url(redirect_url: request.url, scopes: [:email])

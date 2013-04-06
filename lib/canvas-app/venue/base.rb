@@ -24,6 +24,10 @@ module Canvas::App
         context.erb template, locals: template_options.merge(game: game, embedded_game: embedded_game, context: context, venue: Utils.uncamelize_string(name).gsub('_', '-'))
       end
 
+      def name
+        self.class.name.split('::').last
+      end
+
       protected
       def embedded_game(game, context, options = {})
         embedder = Embedder.for(game)
@@ -40,10 +44,6 @@ module Canvas::App
 
         game.configuration = game.developer_configuration['local_mode'][uuid]
         game.configuration['local_mode'] = true
-      end
-
-      def name
-        self.class.name.split('::').last
       end
     end
   end

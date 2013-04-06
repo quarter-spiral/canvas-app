@@ -17,6 +17,7 @@ module Canvas::App
             context.connection.playercenter.register_player(qs_uuid, game.uuid, 'spiral-galaxy', qs_oauth)
           end
           player_name = spiral_galaxy_info['name']
+          context.track_registered_play(game, self, qs_uuid)
         end
         context.tokens = {
           qs: qs_oauth,

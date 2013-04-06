@@ -7,7 +7,7 @@ module Canvas::App
 
       @app = Rack::Builder.new do
         # QS Auth
-        use Rack::Session::Cookie, key: 'qs_canvas_app'
+        use Rack::Session::Cookie, key: 'qs_canvas_app', secret: ENV['QS_COOKIE_SECRET']
         use OmniAuth::Builder do
           provider AuthBackend, ENV['QS_OAUTH_CLIENT_ID'], ENV['QS_OAUTH_CLIENT_SECRET']
         end

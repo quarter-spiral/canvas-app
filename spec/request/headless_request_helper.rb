@@ -33,6 +33,8 @@ ENV['QS_AUTH_BACKEND_URL'] = "http://localhost:#{AUTH_SERVER.port}"
 Canvas::App.send(:remove_const, :AuthBackend)
 load File.expand_path("../../../lib/canvas-app/auth_backend.rb", __FILE__)
 
+ENV['QS_COOKIE_SECRET'] ||= "some-secret"
+
 SPIRAL_GALAXY_APP = Spiral::Galaxy::App.new
 SDK_APP = Sdk::App::App.new
 

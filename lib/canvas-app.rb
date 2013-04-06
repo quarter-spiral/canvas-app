@@ -7,6 +7,7 @@ end
 require "qless"
 
 require "facebook-client"
+require "tracking-client"
 
 require "datastore-client"
 require "playercenter-client"

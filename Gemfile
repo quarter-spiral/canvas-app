@@ -22,6 +22,8 @@ platforms :ruby do
   gem 'thin'
 end
 
+gem 'qless', git: "https://github.com/seomoz/qless.git", ref: '8e2917be640cfa31cef70acbdd45abf73a5fe1ff', submodules: true
+
 group :test, :development do
   gem 'datastore-backend', '~> 0.0.19'
   #gem 'datastore-backend', path: '../datastore-backend'

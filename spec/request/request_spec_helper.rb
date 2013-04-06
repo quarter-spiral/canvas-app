@@ -64,7 +64,7 @@ def devcenter_client
 end
 
 def connection
-  @connection ||= Connection.create
+  @connection ||= ::Canvas::App::Connection.create
 end
 
 def create_game(options)
