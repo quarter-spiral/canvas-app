@@ -1,4 +1,4 @@
-# 0.0.58 / Unreleased
+# 0.0.58 / 2013-04-06
 
 * Fixes bug in canvas height for flash games
 
