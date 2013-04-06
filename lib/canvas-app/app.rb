@@ -112,9 +112,7 @@ module Canvas::App
       end
 
       def track_play(game, venue)
-        Thread.new do
-          connection.tracking.track_impression(tracking_keys(game, venue))
-        end
+        connection.tracking.track_impression(tracking_keys(game, venue))
       end
 
       include Rack::Utils

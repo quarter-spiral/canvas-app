@@ -1,3 +1,7 @@
+# 0.0.59 / Unreleased
+
+* Updates tracking-client
+
 # 0.0.58 / 2013-04-06
 
 * Fixes bug in canvas height for flash games

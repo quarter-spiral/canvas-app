@@ -35,5 +35,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'ping-middleware', '~> 0.0.2'
   gem.add_dependency 'omniauth-oauth2'
 
-  gem.add_dependency 'tracking-client', '~> 0.0.4'
+  gem.add_dependency 'tracking-client', '~> 0.0.5'
 end
