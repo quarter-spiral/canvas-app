@@ -1,3 +1,7 @@
+# 0.0.58 / Unreleased
+
+* Fixes bug in canvas height for flash games
+
 # 0.0.57 / 2013-04-06
 
 * Adds game play tracking

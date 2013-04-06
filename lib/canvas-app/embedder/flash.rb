@@ -34,7 +34,7 @@ module Canvas::App
 </object>
 
 <% unless fluid %>
-  <script src="/v1/javascripts/app/resizer.js" type="text/javascript"></script>
+  <script src="/v1/javascripts/app/resize_helpers.js" type="text/javascript"></script>
   <script type="text/javascript">
     adoptSizes($('#qs-embedded-flash-game'), <%= sizes.to_json %>);
   </script>
