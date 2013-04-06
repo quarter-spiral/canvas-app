@@ -1,4 +1,4 @@
-# 0.0.57 / Unreleased
+# 0.0.57 / 2013-04-06
 
 * Adds game play tracking
 * prepares canvas for friendbar.us, fixes browser issues
