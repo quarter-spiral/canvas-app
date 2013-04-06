@@ -29,8 +29,7 @@ use Ping::Middleware
 app = Rack::Builder.new do
   if ENV['RACK_ENV'] == 'development'
     require 'qless/server'
-    Qless::Server.client = Canvas::App::Connection.create.qless
-    map('/qless') {run Qless::Server.new}
+    map('/qless') {run Qless::Server.new(Canvas::App::Connection.create.qless)}
   end
 
   run Canvas::App::AppBuilder.new

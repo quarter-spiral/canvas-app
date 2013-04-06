@@ -56,7 +56,9 @@
             <span ng-hide="gameData().credits_url">a {{gameData().credits}} game</span>
             <span ng-show="gameData().credits_url">a <a href="{{gameData().credits_url}}">{{gameData().credits}}</a> game</span>
         </span>
-        powered by <a href="http://quarterspiral.com" target="new">Quarter Spiral</a>
+        <span ng-show="!skipAds">
+          powered by <a href="http://quarterspiral.com" target="new">Quarter Spiral</a>
+        </span>
       </div>
     </div>
 
@@ -110,6 +112,7 @@
 
               <div class="span12">
                 <hr />
+                <p>{{gameData().name}} is powered by <a href="http://quarterspiral.com" target="new">Quarter Spiral</a>.</p>
                 <p>
                   <button class="btn btn-primary" ng-click="toggleSection('about')"><i class="icon-arrow-left icon-white"></i> Back</button>
                 </p>

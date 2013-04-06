@@ -41,11 +41,11 @@
   $scope.gameEmbedCode = ->
     $scope.qsData().info.embedCode
 
-  skipAds = $scope.qsData().info.localMode or $scope.qsData().info.subscription
+  $scope.skipAds = $scope.qsData().info.localMode or $scope.qsData().info.subscription
 
   # This add
   $timeout (->
-    $scope.toggleSection "preroll" unless skipAds
+    $scope.toggleSection "preroll" unless $scope.skipAds
   ), 0
 
   okToSkipAdAt = null
