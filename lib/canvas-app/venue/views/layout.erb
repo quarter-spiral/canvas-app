@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" ng-app="canvasApp">
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en-us" ng-app="canvasApp">
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -128,13 +128,27 @@
               <div class="span12">
                 <button class="close" ng-click="toggleSection('share')">&times;</button>
                 <h3>Share this game</h3>
+                <span class='st_facebook_large' displayText='Facebook'></span>
+                <span class='st_twitter_large' displayText='Tweet'></span>
+                <span class='st_reddit_large' displayText='Reddit'></span>
+                <span class='st_googleplus_large' displayText='Google +'></span>
+                <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                <span class='st_pinterest_large' displayText='Pinterest'></span>
+                <span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
+                <span class='st_email_large' displayText='Email'></span>
+                <script type="text/javascript">var switchTo5x=false;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "06a49cd6-8cbd-43d2-8a97-0c4e4c6e36bb", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+              <hr />
+              </div>
 
+              <div class="span12">
+                <h3>Embed {{gameData().name}} anywhere</h3>
               </div>
 
               <div class="span5">
-                <p>Spread the love and embed "<%=h game.name %>" whereever you want: websites, blogs, the sky is the limit!</p>
-                <p>Simply copy the code snippet into your website and the game will appear there.</p>
-                <p>Just like youTube videos.</p>
+                <p>Embed "<%=h game.name %>" whereever you want: websites, blogs, etc...</p>
+                <p>Simply copy the code snippet into your website and the game will appear there. Just like a youTube video.</p>
               </div>
 
               <div class="span6 offset1">
