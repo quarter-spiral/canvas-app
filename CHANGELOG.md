@@ -1,4 +1,4 @@
-# 0.0.59 / Unreleased
+# 0.0.59 / 2013-04-06
 
 * Updates tracking-client
 
