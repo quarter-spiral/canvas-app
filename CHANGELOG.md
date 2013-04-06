@@ -1,3 +1,7 @@
+# 0.0.57 / 2013-04-06
+
+* prepares canvas for friendbar.us, fixes browser issues
+
 # 0.0.56 / 2013-04-04
 
 * Does not display ads for games with paid subscriptions anymore
