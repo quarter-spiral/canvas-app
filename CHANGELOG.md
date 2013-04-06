@@ -1,4 +1,4 @@
-# 0.0.60 / Unreleased
+# 0.0.60 / 2013-04-06
 
 * Adds sharing options for games
 * Improves game play tracking
