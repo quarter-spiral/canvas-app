@@ -1,3 +1,7 @@
+# 0.0.62 / Unreleased
+
+* Fixes bug in JS share buttons plugin
+
 # 0.0.61 / 2013-04-07
 
 * Registers players from the embedded venue as well
