@@ -13,6 +13,11 @@ module Canvas::App
             auth_cookie = JSON.parse(auth_cookie)
             qs_oauth = auth_cookie['info']['token']
             @qs_uuid = auth_cookie['info']['uuid']
+
+            context.try_twice_and_avoid_token_expiration do
+              context.connection.playercenter.register_player(qs_uuid, game.uuid, 'embedded', qs_oauth)
+            end
+
             player_name = auth_cookie['info']['name']
           end
         end
