@@ -1,4 +1,4 @@
-# 0.0.63 / Unreleased
+# 0.0.63 / 2013-04-07
 
 * Updates SDK app testing dependency
 * Fixes problem with non-JSON window.post messages
