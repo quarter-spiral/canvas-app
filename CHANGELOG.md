@@ -1,4 +1,4 @@
-# 0.0.61 / Unreleased
+# 0.0.61 / 2013-04-07
 
 * Registers players from the embedded venue as well
 
