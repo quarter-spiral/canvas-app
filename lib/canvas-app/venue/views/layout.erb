@@ -190,6 +190,20 @@
           <li class="hidden-phone"><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
         </ul>
         <ul class="avatars" ng-show="friends.length > 0">
+          <li>
+            <div class="avatarLink">
+              <a href="#" class="btn btn-primary">
+                Login
+              </a>
+            </div>
+          </li>
+          <li>
+            <div class="avatarLink">
+              <a href="#" class="btn btn-success">
+                Invite...
+              </a>
+            </div>
+          </li>
           <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends">
             <div class="name">{{friend.fullName}}</div>
             <div ng-show="!!friend.meta.top.value" class="top-value level" title="{{friend.meta.top.label}}">{{friend.meta.top.value|friendbarValue}}</div>
