@@ -1,4 +1,4 @@
-# 0.0.62 / Unreleased
+# 0.0.62 / 2013-04-07
 
 * Fixes bug in JS share buttons plugin
 
