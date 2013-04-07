@@ -1,6 +1,9 @@
 # 0.0.63 / Unreleased
 
+* Updates SDK app testing dependency
+* Fixes problem with non-JSON window.post messages
 * Fixes authorization problem when registering players on embed venue
+
 # 0.0.62 / 2013-04-07
 
 * Fixes bug in JS share buttons plugin

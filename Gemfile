@@ -38,7 +38,7 @@ group :test, :development do
   #gem 'graph-backend', path: '../graph-backend'
   gem 'auth-backend', "~> 0.0.30"
   #gem 'auth-backend', path: '../auth-backend'
-  gem 'sdk-app', "~> 0.0.5"
+  gem 'sdk-app', "~> 0.0.12"
   gem 'sqlite3'
   gem 'sinatra_warden', git: 'https://github.com/quarter-spiral/sinatra_warden.git'
   gem 'songkick-oauth2-provider', git: 'https://github.com/quarter-spiral/oauth2-provider.git'

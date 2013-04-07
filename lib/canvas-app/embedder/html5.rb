@@ -40,7 +40,12 @@ module Canvas::App
     debug("Got a message:")
     debug(event.data)
 
-    var data = angular.fromJson(event.data);
+    var data = null;
+    try {
+      data = angular.fromJson(event.data);
+    } catch (e) {
+      return;
+    }
     switch(data.type) {
       case "qs-game-loaded":
         if (!frameHasSignaledGameIsLoaded) {
