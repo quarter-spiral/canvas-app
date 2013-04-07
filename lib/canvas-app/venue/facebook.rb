@@ -48,7 +48,7 @@ module Canvas::App
             qs_oauth = context.connection.auth.venue_token(context.token, 'facebook', venue_data)
             @qs_uuid = context.connection.auth.token_owner(qs_oauth)['uuid']
 
-            context.connection.playercenter.register_player(qs_uuid, game.uuid, 'facebook', qs_oauth)
+            context.connection.playercenter.register_player(qs_uuid, game.uuid, 'facebook', context.token)
           end
 
           context.tokens = {

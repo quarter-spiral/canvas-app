@@ -14,7 +14,7 @@ module Canvas::App
         if qs_uuid
           qs_oauth = spiral_galaxy_info['oauth_token']
           context.try_twice_and_avoid_token_expiration do
-            context.connection.playercenter.register_player(qs_uuid, game.uuid, 'spiral-galaxy', qs_oauth)
+            context.connection.playercenter.register_player(qs_uuid, game.uuid, 'spiral-galaxy', context.token)
           end
           player_name = spiral_galaxy_info['name']
         end
