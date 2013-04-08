@@ -3,6 +3,7 @@
 * Adds invite / login fake avatars
 * Creates venue identities on spiral-galaxy and embedded game plays
 * Moves player registration on game plays into fire and forget threads
+* Fixed avatar alignment issue
 
 # 0.0.63 / 2013-04-07
 
