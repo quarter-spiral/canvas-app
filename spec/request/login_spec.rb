@@ -44,12 +44,25 @@ describe "Login" do
   it "is possible to login with auth backend for embedded games" do
     @page.visit "#{ENV['QS_CANVAS_APP_URL']}/v1/games/#{@game.uuid}/embedded"
     @page.has_selector?('a', text: /Log out/, visible: true).must_equal false
-    @page.click_link 'Log in'
+    tries = 0
+    while tries < 5 && !@page.has_selector?('a', text: /Login/)
+      sleep 0.1
+      tries += 1
+    end
+    @page.has_selector?('a', text: /Login/).must_equal true
+
+    @page.click_link 'Login'
     @page.fill_in 'Name', with: @player['name']
     @page.fill_in 'Password', with: @player['password']
     @page.click_button 'Log in'
     @page.click_button 'Allow'
-    @page.has_selector?('p', text: /Hey #{@player['name']}/, visible: true).must_equal true
+
+    tries = 0
+    while tries < 5 && !@page.has_selector?('div', text: /#{@player['name']}/, visible: true)
+      sleep 0.1
+      tries += 1
+    end
+    @page.has_selector?('div', text: /#{@player['name']}/, visible: true).must_equal true
   end
 
   #TODO: Fix the error Facebook causes in this test

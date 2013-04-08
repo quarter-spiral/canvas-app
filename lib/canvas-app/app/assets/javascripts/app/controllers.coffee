@@ -16,7 +16,7 @@
 
 @SocialController.$inject = ["$scope", "players"]
 
-@navigationController = ($scope, $timeout) ->
+@navigationController = ($scope, $timeout, $filter) ->
   $scope.currentSection = "game"
   $scope.showPromo = false
   $scope.toggleSection = (target) ->
@@ -40,6 +40,16 @@
 
   $scope.gameEmbedCode = ->
     $scope.qsData().info.embedCode
+
+  $scope.loggedIn = ->
+    !!($scope.qsData().info.uuid)
+
+  $scope.loginUrl = ->
+    urls = {
+      embedded: '/auth/auth_backend'
+      'spiral-galaxy': $scope.qsData().ENV.QS_SPIRAL_GALAXY_URL + "/auth/auth_backend?origin=" + $filter('url')('/play/' + $scope.qsData().info.game)
+    }
+    urls[$scope.qsData().info.venue] || '#/no-login'
 
   $scope.skipAds = $scope.qsData().info.localMode or $scope.qsData().info.subscription
 
@@ -74,4 +84,4 @@
     logoutUrl = window.qs.ENV["QS_AUTH_BACKEND_URL"] + "/signout?redirect_uri=" + encodeURIComponent(redirectUrl)
     window.location.href = logoutUrl
 
-@navigationController.$inject = ["$scope", "$timeout"]
+@navigationController.$inject = ["$scope", "$timeout", "$filter"]

@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/quarter-spiral/oauth2-provider.git
-  revision: 5a3add849c4cba541c373ce7aea96bf384761104
+  revision: 97dccac6be286896e80b79447af1712b7cc19eb3
   specs:
-    songkick-oauth2-provider (0.10.0)
+    songkick-oauth2-provider (0.10.2)
       activerecord
       bcrypt-ruby
       json
@@ -85,7 +85,7 @@ GEM
       therubyracer
     arel (3.0.2)
     attr_required (0.0.5)
-    auth-backend (0.0.30)
+    auth-backend (0.0.33)
       activerecord (>= 3.2.13)
       bcrypt-ruby
       graph-client (~> 0.0.12)
@@ -100,7 +100,7 @@ GEM
       sinatra
       sinatra-activerecord
       sinatra-flash
-      thin
+      unicorn
       uuid
     auth-client (0.0.15)
       service-client (>= 0.0.12)
@@ -233,6 +233,7 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.8.0)
     launchy (2.1.2)
       addressable (~> 2.3)
     less (2.2.2)
@@ -332,6 +333,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    raindrops (0.10.0)
     rake (10.0.3)
     redis (3.0.3)
     rest (2.5.0)
@@ -413,6 +415,10 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unicorn (4.6.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     url_mount (0.2.1)
       rack
     uuid (2.3.7)
@@ -433,7 +439,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  auth-backend (~> 0.0.30)
+  auth-backend (~> 0.0.33)
   bson_ext
   canvas-app!
   capybara

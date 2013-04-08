@@ -1,6 +1,7 @@
 Bundler.setup
 
 ENV['RACK_ENV'] ||= 'test'
+ENV['QS_COOKIE_SECRET'] ||= 'some-secret'
 
 require 'minitest/autorun'
 
@@ -156,6 +157,6 @@ OAUTH_APP = AUTH_HELPERS.create_app!
 ENV['QS_OAUTH_CLIENT_ID'] = OAUTH_APP[:id]
 ENV['QS_OAUTH_CLIENT_SECRET'] = OAUTH_APP[:secret]
 
-APP_TOKEN = Devcenter::Backend::Connection.create.auth.create_app_token(OAUTH_APP[:id], OAUTH_APP[:secret])
+APP_TOKEN = AUTH_HELPERS.get_app_token(OAUTH_APP[:id], OAUTH_APP[:secret])
 
 ENV['QS_SDK_APP_URL'] = '/fake-sdk'

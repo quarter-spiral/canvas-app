@@ -36,7 +36,7 @@ group :test, :development do
   gem 'graph-client', '~> 0.0.12'
   gem 'graph-backend', '~> 0.0.26'
   #gem 'graph-backend', path: '../graph-backend'
-  gem 'auth-backend', "~> 0.0.30"
+  gem 'auth-backend', "~> 0.0.33"
   #gem 'auth-backend', path: '../auth-backend'
   gem 'sdk-app', "~> 0.0.12"
   gem 'sqlite3'

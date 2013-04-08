@@ -11,4 +11,9 @@
   ($scope, element, attrs) ->
     $scope.$on 'removeAds', ->
       element.remove()
+).directive('inviteLink', ->
+  ($scope, element, attrs) ->
+    $(element).click (e) ->
+      e.preventDefault()
+      $('.st_sharethis_large').click()
 )

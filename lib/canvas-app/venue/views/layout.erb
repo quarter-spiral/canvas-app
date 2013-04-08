@@ -137,6 +137,7 @@
                 <span class='st_pinterest_large' displayText='Pinterest'></span>
                 <span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
                 <span class='st_email_large' displayText='Email'></span>
+                <span class='st_sharethis_large' displayText='Share This'></span>
                 <script type="text/javascript">var switchTo5x=false;</script>
 <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "06a49cd6-8cbd-43d2-8a97-0c4e4c6e36bb", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
@@ -189,17 +190,17 @@
             <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.bottom.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.bottom.label}}</a></li>
           <li class="hidden-phone"><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
         </ul>
-        <ul class="avatars" ng-show="friends.length > 0">
-          <li>
-            <div class="avatarLink">
-              <a href="#" class="btn btn-primary">
+        <ul class="avatars">
+          <li ng-hide="loggedIn()">
+            <div class="avatarLink login-link">
+              <a ng-href="{{loginUrl()}}" class="btn btn-primary">
                 Login
               </a>
             </div>
           </li>
-          <li>
-            <div class="avatarLink">
-              <a href="#" class="btn btn-success">
+          <li ng-show="loggedIn()">
+            <div class="avatarLink invite-friends-link">
+              <a href="#" class="btn btn-success" invite-link>
                 Invite...
               </a>
             </div>
@@ -211,14 +212,6 @@
             <img ng-src="{{friend.avatar}}" />
           </li>
         </ul>
-        <div class="noFriends" ng-hide="friends.length > 0">
-          <p ng-hide="qsData().info.uuid">
-            <a href="/auth/auth_backend" ng-hide="qsData().info.venue == 'spiral-galaxy'">Log in</a>
-            <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/auth/auth_backend?origin={{('/play/' + qsData().info.game)|url}}" ng-show="qsData().info.venue == 'spiral-galaxy'">Log in</a>
-            to see your friends here
-          </p>
-          <p ng-show="qsData().info.uuid">Hey {{qsData().info.userName}}. You have no friends in our system, yet.</p>
-        </div>
       </div>
 
 

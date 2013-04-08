@@ -13,8 +13,13 @@ module Canvas::App
 
         if qs_uuid
           qs_oauth = spiral_galaxy_info['oauth_token']
-          context.try_twice_and_avoid_token_expiration do
-            context.connection.playercenter.register_player(qs_uuid, game.uuid, 'spiral-galaxy', context.token)
+
+          Thread.new do
+            context.try_twice_and_avoid_token_expiration do
+              context.connection.playercenter.register_player(qs_uuid, game.uuid, 'spiral-galaxy', context.token)
+              venue_identity = {"venue-id" => spiral_galaxy_info['uuid'], "name" => spiral_galaxy_info['name']}
+              context.connection.auth.attach_venue_identity_to(context.token, spiral_galaxy_info['uuid'], 'spiral-galaxy', venue_identity)
+            end
           end
           player_name = spiral_galaxy_info['name']
         end

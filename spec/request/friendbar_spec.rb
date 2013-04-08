@@ -1,5 +1,6 @@
 #encoding: utf-8
 
+require_relative './request_spec_helper'
 require_relative './headless_request_helper'
 
 def game_options
@@ -28,7 +29,14 @@ def create_game_and_get_friendbar_values(merge_options = nil)
   end
   has_selector.must_equal true
 
-  values = page.evaluate_script('window.qs.info.friendbar.values')
+  tries = 0
+  values = nil
+  while !values && tries < 5
+    values = page.evaluate_script('window.qs.info.friendbar.values')
+    tries += 1
+    sleep 0.1
+  end
+
   values
 end
 
@@ -174,7 +182,12 @@ describe "Friendbar" do
     playercenter_connection.register_player(friend_uuid, game.uuid, 'spiral-galaxy', APP_TOKEN)
     connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays')
     @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
-    sleep 1
+
+    tries = 0
+    while tries < 5 && !@page.has_selector?('div.top-value', visible: true, text: '123')
+      tries += 1
+      sleep 0.1
+    end
     @page.has_selector?('div.top-value', visible: true, text: '123').must_equal true
 
     connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays', meta: {"#{Playercenter::Backend::MetaData::PREFIX}highScore" => 654})
