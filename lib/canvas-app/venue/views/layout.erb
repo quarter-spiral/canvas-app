@@ -42,22 +42,22 @@
     <div id="header">
       <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
       <ul ng-hide="currentSection == 'preroll'">
-        <li ng-class="{active: currentSection == 'game'}"><a ng-click="toggleSection('game')"><i class="icon-play"></i> Play</a></li>
-        <li ng-class="{active: currentSection == 'share'}" ng-show="gameEmbedCode()"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
-        <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i> About</a></li>
+        <li ng-class="{active: currentSection == 'game'}"><a ng-click="toggleSection('game')"><i class="icon-home"></i><span class="hidden-phone"> Home</span></a></li>
+        <li ng-class="{active: currentSection == 'share'}"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
+        <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i><span class="hidden-phone"> About</span></a></li>
         <!-- <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li> -->
         <li ng-show="qsData().info.uuid">
-          <a ng-click="logout()" ng-show="qsData().info.venue == 'embedded'">Log out</a>
-          <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/#/logout" ng-show="qsData().info.venue == 'spiral-galaxy'">Log out</a>
+          <a ng-click="logout()" ng-show="qsData().info.venue == 'embedded'"><i class="icon-off"></i><span class="hidden-phone"> Log out</span></a>
+          <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/#/logout" ng-show="qsData().info.venue == 'spiral-galaxy'"><i class="icon-off"></i><span class="hidden-phone"> Log out</span></a>
         </li>
       </ul>
       <div id="QS">
-        <span ng-show="gameData().credits">
+        <span ng-show="gameData().credits" class="hidden-phone">
             <span ng-hide="gameData().credits_url">a {{gameData().credits}} game</span>
             <span ng-show="gameData().credits_url">a <a href="{{gameData().credits_url}}">{{gameData().credits}}</a> game</span>
         </span>
-        <span ng-show="!skipAds">
-          powered by <a href="http://quarterspiral.com" target="new">Quarter Spiral</a>
+        <span>
+          powered by <a href="https://friendbar.us" target="new">Friendbar.us</a>
         </span>
       </div>
     </div>
@@ -71,7 +71,7 @@
 
       <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad>
         <div class="page">
-        <p>{{gameData().name}} is supported by:</p>
+        <p>A message from our sponsors:</p>
           <div id="addBody">
 
             <!-- <iframe width="560" height="315" src="http://www.youtube.com/embed/jSOtjwwz7EE?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
@@ -83,9 +83,9 @@
 
           </div>
           <p ad-timer>
-            <span ng-hide="timeTillAdIsSkipable < 1">
+            <button ng-hide="timeTillAdIsSkipable < 1" class="btn disabled">
               You can skip this ad in {{timeTillAdIsSkipable}} seconds.
-            </span>
+            </button>
             <a ng-click="toggleSection('game')" ng-show="timeTillAdIsSkipable < 1" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Continue to {{gameData().name}}</a></p>
         </div>
       </div>
@@ -102,8 +102,6 @@
                     <span ng-hide="gameData().credits_url">by {{gameData().credits}}</span>
                     <span ng-show="gameData().credits_url">by <a href="{{gameData().credits_url}}">{{gameData().credits}}</a></span>
                 </span>
-
-
                 </h3>
               </div>
               <div class="span6">
@@ -112,7 +110,7 @@
 
               <div class="span12">
                 <hr />
-                <p>{{gameData().name}} is powered by <a href="http://quarterspiral.com" target="new">Quarter Spiral</a>.</p>
+                <p>{{gameData().name}}  is powered by <a href="http://friendbar.us" target="new">Friendbar.us</a>.</p>
                 <p>
                   <button class="btn btn-primary" ng-click="toggleSection('about')"><i class="icon-arrow-left icon-white"></i> Back</button>
                 </p>
@@ -145,23 +143,29 @@
               <hr />
               </div>
 
+              <div ng-show="gameEmbedCode()">
+                <div class="span12">
+                  <h3>Embed {{gameData().name}} anywhere</h3>
+                </div>
+
+                <div class="span5">
+                  <p>Embed "<%=h game.name %>" whereever you want: websites, blogs, etc...</p>
+                  <p>Simply copy the code snippet into your website and the game will appear there. Just like a youTube video.</p>
+                </div>
+
+                <div class="span6 offset1">
+
+                  <pre class="code">{{gameEmbedCode()}}</pre>
+
+                </div>
+                <div class="span12">
+                  <hr />
+                </div>
+                
+              </div>
+
               <div class="span12">
-                <h3>Embed {{gameData().name}} anywhere</h3>
-              </div>
-
-              <div class="span5">
-                <p>Embed "<%=h game.name %>" whereever you want: websites, blogs, etc...</p>
-                <p>Simply copy the code snippet into your website and the game will appear there. Just like a youTube video.</p>
-              </div>
-
-              <div class="span6 offset1">
-
-                <pre class="code">{{gameEmbedCode()}}</pre>
-
-              </div>
-
-              <div class="span12">
-                <hr />
+                
                 <p>
                   <button class="btn btn-primary" ng-click="toggleSection('share')"><i class="icon-arrow-left icon-white"></i> Back</button>
                 </p>
@@ -180,10 +184,10 @@
         -->
             <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'fullName'}"></i> Sort by Name</a></li>
 
-            <li ng-show="friendbarValues.top"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.top.value'}"></i> Sort by {{friendbarValues.top.label}}</a></li>
+            <li ng-show="friendbarValues.top"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.top.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.top.label}}</a></li>
 
-            <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.bottom.value'}"></i> Sort by {{friendbarValues.bottom.label}}</a></li>
-          <li><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
+            <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.bottom.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.bottom.label}}</a></li>
+          <li class="hidden-phone"><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
         </ul>
         <ul class="avatars" ng-show="friends.length > 0">
           <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends">
