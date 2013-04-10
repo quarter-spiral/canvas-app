@@ -28,7 +28,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.64)
+    canvas-app (0.0.65)
       angular-commons-middleware
       auth-client (>= 0.0.14)
       coffee-script (= 2.2.0)

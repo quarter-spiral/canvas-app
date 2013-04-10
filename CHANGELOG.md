@@ -1,4 +1,4 @@
-# 0.0.65 / Unreleased
+# 0.0.65 / 2013-04-10
 
 * Uses HTTPS to include the Facebook JS API
 
