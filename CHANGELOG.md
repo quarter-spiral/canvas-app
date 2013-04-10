@@ -1,4 +1,4 @@
-# 0.0.64 / Unreleased
+# 0.0.64 / 2013-04-10
 
 * Adds invite / login fake avatars
 * Creates venue identities on spiral-galaxy and embedded game plays
