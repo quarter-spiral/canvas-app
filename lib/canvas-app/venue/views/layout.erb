@@ -250,6 +250,11 @@
           values: <%= values.to_json %>
         }
       };
+      if (window.qs.inviteFriendsOnVenue === undefined) {
+        window.qs.inviteFriendsOnVenue = function() {
+          $('.st_sharethis_large').click();
+        };
+      }
     </script>
 
     <!-- Angular must be included before these -->

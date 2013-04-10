@@ -15,5 +15,5 @@
   ($scope, element, attrs) ->
     $(element).click (e) ->
       e.preventDefault()
-      $('.st_sharethis_large').click()
+      window.qs.inviteFriendsOnVenue();
 )

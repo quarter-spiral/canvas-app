@@ -1,0 +1,17 @@
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js">
+</script>
+<script type="text/javascript">
+  FB.init({
+    appId: <%=escape_javascript game.venues['facebook']['app-id'].to_json %>, cookie:true,
+    status:true, xfbml:true
+  });
+
+  if (window.qs === undefined) {
+    window.qs = {}
+  }
+  window.qs.inviteFriendsOnVenue = function() {
+    FB.ui({ method: 'apprequests',
+      message: <%=escape_javascript "You should check out #{game.name}".to_json %>});
+  };
+</script>
