@@ -1,3 +1,7 @@
+# 0.0.65 / Unreleased
+
+* Uses HTTPS to include the Facebook JS API
+
 # 0.0.64 / 2013-04-10
 
 * Adds invite / login fake avatars
