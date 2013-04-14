@@ -1,4 +1,4 @@
-# 0.0.66 / Unreleased
+# 0.0.66 / 2013-04-13
 
 * Positions the non-facebook invite box close to the actual invite button
 * Adds caching abilities
