@@ -1,5 +1,6 @@
 # 0.0.66 / Unreleased
 
+* Positions the non-facebook invite box close to the actual invite button
 * Adds caching abilities
 * Fixes hidden sharing section for games with embedding turned off
 

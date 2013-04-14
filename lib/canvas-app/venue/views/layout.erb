@@ -251,8 +251,22 @@
         }
       };
       if (window.qs.inviteFriendsOnVenue === undefined) {
-        window.qs.inviteFriendsOnVenue = function() {
+        window.qs.inviteFriendsOnVenue = function(element) {
+          var button = $(element);
           $('.st_sharethis_large').click();
+          var moveInviteBox = function() {
+            var wrapper = $('#stwrapper');
+            if (wrapper.lemgth < 1) {
+              return;
+            }
+            var buttonOffset = button.offset();
+            var top  = buttonOffset.top  - wrapper.height() - 20;
+            var left = buttonOffset.left - 20;
+            wrapper.offset({top: top, left: left});
+          }
+          moveInviteBox();
+          setTimeout(moveInviteBox, 500);
+          setTimeout(moveInviteBox, 2000);
         };
       }
     </script>

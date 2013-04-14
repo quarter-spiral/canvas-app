@@ -15,5 +15,5 @@
   ($scope, element, attrs) ->
     $(element).click (e) ->
       e.preventDefault()
-      window.qs.inviteFriendsOnVenue();
+      window.qs.inviteFriendsOnVenue(element);
 )
