@@ -13,6 +13,8 @@ require "datastore-client"
 require "playercenter-client"
 require "devcenter-backend"
 require "angular-commons-middleware"
+require "cache-client"
+require "cache-backend-iron-cache"
 
 require "canvas-app/version"
 require "canvas-app/utils"

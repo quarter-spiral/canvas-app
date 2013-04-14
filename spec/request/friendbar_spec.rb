@@ -13,6 +13,32 @@ def game_options
   {:name => "Test Game #{@count}", :description => "Good game", :category => 'Jump n Run', :configuration => {'type' => 'html5', 'url' => 'http://example.com'},:developers => [developer], :venues => {"spiral-galaxy" => {"enabled" => true}}}
 end
 
+def wait_for(*args)
+  tries = 0
+  while tries < 5 && !@page.has_selector?(*args)
+    tries += 1
+    sleep 1
+  end
+end
+
+def wait_for_js(expression)
+  tries = 0
+  res = evaluate_js_for_wait(expression)
+  while tries < 5 &&  !yield(res)
+    tries += 1
+    sleep 1
+    res = evaluate_js_for_wait(expression)
+  end
+  res
+  rescue Capybara::Poltergeist::JavascriptError
+end
+
+def evaluate_js_for_wait(expression)
+  @page.evaluate_script(expression)
+rescue Capybara::Poltergeist::JavascriptError => e
+  #do nothing it's fine
+end
+
 def create_game_and_get_friendbar_values(merge_options = nil)
   game_options = game_options()
   game_options[:configuration] = game_options[:configuration].merge(merge_options) if merge_options
@@ -29,13 +55,7 @@ def create_game_and_get_friendbar_values(merge_options = nil)
   end
   has_selector.must_equal true
 
-  tries = 0
-  values = nil
-  while !values && tries < 5
-    values = page.evaluate_script('window.qs.info.friendbar.values')
-    tries += 1
-    sleep 0.1
-  end
+  values = wait_for_js('window.qs.info.friendbar.values') {|e| e}
 
   values
 end
@@ -141,11 +161,12 @@ describe "Friendbar" do
 
     login(@player['uuid'], @player['name'], @token, domain: 'localhost')
     @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
-    sleep 2
+    wait_for_js('$("a:contains(\"Sort by Score\")").length') {|e| e == 1}
+
     @page.evaluate_script('$("a:contains(\"Sort by Score\")").length').must_equal 1
     @page.evaluate_script('$("a:contains(\"Sort by Level\")").length').must_equal 1
 
-    sleep 2
+    wait_for_js('$("div.top-value:contains(\"654\")").length') {|e| e == 1}
     @page.evaluate_script('$("div.top-value:contains(\"654\")").length').must_equal 1
     @page.evaluate_script('$("div.bottom-value:contains(\"Tower\")").length').must_equal 1
   end
@@ -183,15 +204,13 @@ describe "Friendbar" do
     connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays')
     @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
 
-    tries = 0
-    while tries < 5 && !@page.has_selector?('div.top-value', visible: true, text: '123')
-      tries += 1
-      sleep 0.1
-    end
+    wait_for('div.top-value', visible: true, text: '123')
     @page.has_selector?('div.top-value', visible: true, text: '123').must_equal true
 
     connection.graph.add_relationship(friend_uuid, game.uuid, APP_TOKEN, 'plays', meta: {"#{Playercenter::Backend::MetaData::PREFIX}highScore" => 654})
     @page.visit "/v1/games/#{game.uuid}/spiral-galaxy"
+
+    wait_for('div.top-value', visible: true, text: '654')
     @page.has_selector?('div.top-value', visible: true, text: '654').must_equal true
   end
 end

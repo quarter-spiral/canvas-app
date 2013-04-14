@@ -31,6 +31,8 @@ PATH
     canvas-app (0.0.65)
       angular-commons-middleware
       auth-client (>= 0.0.14)
+      cache-backend-iron-cache (~> 0.0.4)
+      cache-client (~> 0.0.4)
       coffee-script (= 2.2.0)
       datastore-client (>= 0.0.11)
       devcenter-backend (>= 0.0.50)

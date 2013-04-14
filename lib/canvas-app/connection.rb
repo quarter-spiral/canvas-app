@@ -1,6 +1,6 @@
 module Canvas::App
   class Connection
-    attr_reader :datastore, :auth, :playercenter, :redis, :qless, :tracking
+    attr_reader :datastore, :auth, :playercenter, :redis, :qless, :tracking, :cache
 
     def self.create
       self.new(
@@ -29,6 +29,8 @@ module Canvas::App
       @redis = Redis.new(redis_config)
 
       @qless = Qless::Client.new(redis_config)
+
+      @cache = ::Cache::Client.new(::Cache::Backend::IronCache, ENV['IRON_CACHE_PROJECT_ID'], ENV['IRON_CACHE_TOKEN'], ENV['IRON_CACHE_CACHE'])
     end
 
     def facebook(client_id, client_secret)

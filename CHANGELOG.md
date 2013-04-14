@@ -1,5 +1,6 @@
 # 0.0.66 / Unreleased
 
+* Adds caching abilities
 * Fixes hidden sharing section for games with embedding turned off
 
 # 0.0.65 / 2013-04-10
