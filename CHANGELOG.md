@@ -1,3 +1,7 @@
+# 0.0.67 / Unreleased
+
+* Adopts IFrame size on window resizing for fluidly sized HTML5 games
+
 # 0.0.66 / 2013-04-13
 
 * Positions the non-facebook invite box close to the actual invite button
