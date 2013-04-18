@@ -1,3 +1,7 @@
+# 0.0.68 / 2013-04-18 WIP
+
+* added link to privacy notice to the about section
+
 # 0.0.67 / 2013-04-18
 
 * Adopts IFrame size on window resizing for fluidly sized HTML5 games
