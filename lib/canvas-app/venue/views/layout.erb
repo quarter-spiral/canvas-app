@@ -41,6 +41,7 @@
 
     <div id="header">
       <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
+      <span class="ng-cloak">
       <ul ng-hide="currentSection == 'preroll'">
         <li ng-class="{active: currentSection == 'game'}"><a ng-click="toggleSection('game')"><i class="icon-home"></i><span class="hidden-phone"> Home</span></a></li>
         <li ng-class="{active: currentSection == 'share'}"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
@@ -51,8 +52,9 @@
           <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/#/logout" ng-show="qsData().info.venue == 'spiral-galaxy'"><i class="icon-off"></i><span class="hidden-phone"> Log out</span></a>
         </li>
       </ul>
+      </span>
       <div id="QS">
-        <span ng-show="gameData().credits" class="hidden-phone">
+        <span ng-show="gameData().credits" class="hidden-phone ng-cloak">
             <span ng-hide="gameData().credits_url">a {{gameData().credits}} game</span>
             <span ng-show="gameData().credits_url">a <a href="{{gameData().credits_url}}">{{gameData().credits}}</a> game</span>
         </span>
@@ -63,13 +65,13 @@
     </div>
 
     <div id="mainView">
-      <div id="game" ng-show="currentSection == 'game'">
+      <div id="game" ng-show="currentSection == 'game'" class="ng-cloak">
 
         <%= embedded_game %>
 
       </div>
 
-      <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad>
+      <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad class="ng-cloak">
         <div class="page">
         <p>A message from our sponsors:</p>
           <div id="addBody">
@@ -90,7 +92,7 @@
         </div>
       </div>
 
-      <div id="about" ng-show="currentSection == 'about'">
+      <div id="about" ng-show="currentSection == 'about'" class="ng-cloak">
         <div class="page">
           <div class="container">
             <div class="row">
@@ -124,7 +126,7 @@
         </div>
       </div>
 
-      <div id="sharing" ng-show="currentSection == 'share'">
+      <div id="sharing" ng-show="currentSection == 'share'" class="ng-cloak">
         <div class="page">
           <div class="container">
             <div class="row">
@@ -179,7 +181,7 @@
       </div>
 
 
-      <div id="socialBar" ng-Controller="SocialController">
+      <div id="socialBar" ng-Controller="SocialController" class="ng-cloak">
         <ul class="options" ng-show="friends.length > 0">
         <!--
             <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
