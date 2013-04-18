@@ -1,4 +1,4 @@
-# 0.0.67 / Unreleased
+# 0.0.67 / 2013-04-18
 
 * Adopts IFrame size on window resizing for fluidly sized HTML5 games
 
