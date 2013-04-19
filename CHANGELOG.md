@@ -1,5 +1,6 @@
-# 0.0.68 / 2013-04-18 WIP
+# 0.0.68 / Unreleased
 
+* Adds Facebook resizing
 * added link to privacy notice to the about section
 * added link to terms of service to the about section
 * now preventing flickering on load
