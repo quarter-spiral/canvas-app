@@ -1,4 +1,4 @@
-# 0.0.68 / Unreleased
+# 0.0.68 / 2013-04-19
 
 * Adds Facebook resizing
 * added link to privacy notice to the about section
