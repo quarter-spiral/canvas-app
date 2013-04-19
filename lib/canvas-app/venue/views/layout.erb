@@ -43,6 +43,7 @@
       <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
       <span class="ng-cloak">
       <ul ng-hide="currentSection == 'preroll'">
+        <li><a ng-click="getTotalSize()">size</a></li>
         <li ng-class="{active: currentSection == 'game'}"><a ng-click="toggleSection('game')"><i class="icon-home"></i><span class="hidden-phone"> Home</span></a></li>
         <li ng-class="{active: currentSection == 'share'}"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
         <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i><span class="hidden-phone"> About</span></a></li>
