@@ -1,3 +1,7 @@
+# 0.0.69 / Unreleased
+
+* Fixes Facebook resizing
+
 # 0.0.68 / 2013-04-19
 
 * Adds Facebook resizing

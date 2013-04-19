@@ -2,10 +2,6 @@
 <script src="https://connect.facebook.net/en_US/all.js">
 </script>
 <script type="text/javascript">
-  window.fbAsyncInit = function() {
-    FB.Canvas.setSize();
-  };
-
   FB.init({
     appId: <%=escape_javascript game.venues['facebook']['app-id'].to_json %>, cookie:true,
     status:true, xfbml:true
@@ -19,7 +15,14 @@
       message: <%=escape_javascript "You should check out #{game.name}".to_json %>});
   };
 
+  var initialFBResize = true;
   window.addEventListener("qs-game-height-changed", function(event) {
+    if (initialFBResize) {
+      setTimeout(function() {
+        FB.Canvas.setSize({height: $('body').height()})
+      }, 1000);
+      initialFBResize = false;
+    }
     FB.Canvas.setSize({height: $('body').height()});
   }, false);
 </script>

@@ -60,13 +60,11 @@ module Canvas::App
       case "qs-game-size-changed":
         var dimensions = data.dimensions;
         debug("Received a new game height", "old:", $('#html5frame').height(), "new", dimensions.height, "threshold", Math.abs($('#html5frame').height() - dimensions.height))
-        if (Math.abs($('#html5frame').height() - dimensions.height) > 5) {
-          debug("Game height changed to: " + dimensions.height + "px");
-          $('#html5frame').height(dimensions.height);
-          var evt = document.createEvent("Events")
-          evt.initEvent("qs-game-height-changed", true, true);
-          window.dispatchEvent(evt);
-        }
+        debug("Game height changed to: " + dimensions.height + "px");
+        $('#html5frame').height(dimensions.height);
+        var evt = document.createEvent("Events")
+        evt.initEvent("qs-game-height-changed", true, true);
+        window.dispatchEvent(evt);
 
         break;
       <% end %>
