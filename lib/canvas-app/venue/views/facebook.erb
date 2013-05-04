@@ -14,15 +14,4 @@
     FB.ui({ method: 'apprequests',
       message: <%=escape_javascript "You should check out #{game.name}".to_json %>});
   };
-
-  var initialFBResize = true;
-  window.addEventListener("qs-game-height-changed", function(event) {
-    if (initialFBResize) {
-      setTimeout(function() {
-        FB.Canvas.setSize({height: $('body').height()})
-      }, 1000);
-      initialFBResize = false;
-    }
-    FB.Canvas.setSize({height: $('body').height()});
-  }, false);
 </script>

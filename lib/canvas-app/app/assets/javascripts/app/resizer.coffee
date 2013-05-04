@@ -1,7 +1,7 @@
 $(->
   win = $(window)
 
-  infoContainers = $('#about, #sharing, #preroll')
+  infoContainers = $('#about, #sharing, #preroll, #game')
   gameContainer = $('#html5frame, #qs-embedded-flash-game')
 
   adoptInfoSizes = ->

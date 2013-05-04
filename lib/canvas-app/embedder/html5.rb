@@ -10,13 +10,15 @@ module Canvas::App
 
 <iframe name="html5frame" id="html5frame" src="<%= URI.escape(url) %>" <% if fluid %>style="min-width:<%= sizes.first['width'] %>px;min-height:<%= sizes.first['height'] %>px;%>"<% end %> class="<%= fluid ? 'fluid-size' : 'fixed-size' %>"></iframe>
 
-<script src="/v1/javascripts/app/resize_helpers.js" type="text/javascript"></script>
+<% unless fluid %>
+  <script src="/v1/javascripts/app/resize_helpers.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    adoptSizes($('#html5frame'), <%= sizes.to_json %>);
+  </script>
+<% end %>
+
 
 <script type="text/javascript">
-  <% unless fluid %>
-    adoptSizes($('#html5frame'), <%= sizes.to_json %>);
-  <% end %>
-
   var debug = function(message) {
     if (!window.qsDebug) return;
     console.log(message);
@@ -56,18 +58,6 @@ module Canvas::App
         debug("Turning of sending of data to frame");
         frameHasAcknowledgedReceiptOfData = true;
         break;
-      <% if fluid %>
-      case "qs-game-size-changed":
-        var dimensions = data.dimensions;
-        debug("Received a new game height", "old:", $('#html5frame').height(), "new", dimensions.height, "threshold", Math.abs($('#html5frame').height() - dimensions.height))
-        debug("Game height changed to: " + dimensions.height + "px");
-        $('#html5frame').height(dimensions.height);
-        var evt = document.createEvent("Events")
-        evt.initEvent("qs-game-height-changed", true, true);
-        window.dispatchEvent(evt);
-
-        break;
-      <% end %>
     }
   }
   window.addEventListener("message", messageHandler, false)
