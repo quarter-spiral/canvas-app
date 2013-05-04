@@ -4,6 +4,8 @@ require 'uri'
 require 'service-client'
 
 module Canvas::App
+  CHROME_HEIGHT = 160
+
   class App < Sinatra::Base
     class TokenStore
       def self.token(connection)
