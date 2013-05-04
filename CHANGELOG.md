@@ -1,4 +1,4 @@
-# 0.0.70 / Unreleased
+# 0.0.70 / 2013-05-04
 
 * Adds super simple facebook resizing
 * Removes complicated facebook resizing mechanics
