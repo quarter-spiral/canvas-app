@@ -1,4 +1,4 @@
-# 0.0.71 / Unreleased
+# 0.0.71 / 2013-05-06
 
 * Get rids of Flash movie reloads on section changes
 
