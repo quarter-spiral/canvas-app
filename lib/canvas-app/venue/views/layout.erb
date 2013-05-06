@@ -65,7 +65,7 @@
     </div>
 
     <div id="mainView">
-      <div id="game" ng-show="currentSection == 'game'" class="ng-cloak">
+      <div id="game" ng-class="{flashHide: !gameIsVisible()}" class="ng-cloak">
 
         <%= embedded_game %>
 

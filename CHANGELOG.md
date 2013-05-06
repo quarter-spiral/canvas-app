@@ -1,3 +1,7 @@
+# 0.0.71 / Unreleased
+
+* Get rids of Flash movie reloads on section changes
+
 # 0.0.70 / 2013-05-04
 
 * Adds super simple facebook resizing

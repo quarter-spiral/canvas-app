@@ -32,6 +32,9 @@
     else
       $scope.showPromo = true
 
+  $scope.gameIsVisible = ->
+    $scope.currentSection is "game"
+
   $scope.qsData = ->
     window.qs
 
