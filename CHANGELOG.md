@@ -1,4 +1,4 @@
-# 0.0.72 / Unreleased
+# 0.0.72 / 2013-05-27
 
 * Adds flXHR for IE8 compatibility and incompatiblity CSS support classes
 * Adds EventShim for IE8 support
