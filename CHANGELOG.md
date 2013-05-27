@@ -1,7 +1,7 @@
 # 0.0.74 / Unreleased
 
+* Loads ads via HTTPS to avoid warning messages on IE
 * Fixes FlXHR problems on production
-*
 
 # 0.0.73 / 2013-05-27
 
