@@ -45,8 +45,6 @@ module Canvas::App
         '/v1/javascripts/vendor/angular/angular.js',
         '/v1/javascripts/vendor/angular/angular-resource.js',
         '/v1/javascripts/vendor/bootstrap.js',
-        '/v1/javascripts/vendor/flXHR/flXHR.js',
-        '/v1/javascripts/vendor/flXHR/angular-adaptor.js',
         '/v1/javascripts/vendor/modernizr-2-6-1.js'
       ]
 
@@ -116,6 +114,22 @@ module Canvas::App
 
     error Devcenter::Backend::Error::BaseError do
       halt 403, env['sinatra.error']
+    end
+
+    [
+      '/v1/javascripts-flXHR/flXHR.js',
+      '/v1/javascripts-flXHR/flXHR.swf',
+      '/v1/javascripts-flXHR/flXHR.vbs',
+      '/v1/javascripts-flXHR/checkplayer.js',
+      '/v1/javascripts-flXHR/flensed.js',
+      '/v1/javascripts-flXHR/swfobject.js',
+      '/v1/javascripts-flXHR/updateplayer.js',
+      '/v1/javascripts-flXHR/angular-adaptor.js'
+    ].each do |resource|
+      send(:get, resource) do
+        base_dir = File.dirname(__FILE__)
+        send_file File.join(base_dir, 'app/assets/javascripts/vendor/flXHR', resource.gsub(/^\/v1\/javascripts-flXHR\//, ''))
+      end
     end
 
     [:get, :post].each do |method|

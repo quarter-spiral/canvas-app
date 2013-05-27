@@ -1,3 +1,8 @@
+# 0.0.74 / Unreleased
+
+* Fixes FlXHR problems on production
+*
+
 # 0.0.73 / 2013-05-27
 
 * Loads the IE8 EventShim for Flash games, too

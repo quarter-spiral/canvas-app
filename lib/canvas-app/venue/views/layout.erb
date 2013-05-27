@@ -4,9 +4,17 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title><%=h game.name %></title>
+
       <%= css :application, :media => 'screen' %>
       <%= css :vendor, :media => 'screen' %>
+
+      <script type="text/javascript">
+        flensed = {base_path: "/v1/javascripts-flXHR/"};
+      </script>
+      <script src="/v1/javascripts-flXHR/flXHR.js"></script>
+      <script src="/v1/javascripts-flXHR/angular-adaptor.js"></script>
       <%= js :vendor %>
+
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width">
   </head>
