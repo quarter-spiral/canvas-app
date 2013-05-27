@@ -1,3 +1,7 @@
+# 0.0.73 / Unreleased
+
+* Loads the IE8 EventShim for Flash games, too
+
 # 0.0.72 / 2013-05-27
 
 * Adds flXHR for IE8 compatibility and incompatiblity CSS support classes

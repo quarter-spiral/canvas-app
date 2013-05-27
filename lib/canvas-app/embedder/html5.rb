@@ -17,7 +17,6 @@ module Canvas::App
   </script>
 <% end %>
 
-<script type="text/javascript" src="/v1/javascripts/vendor/event-shim.js"></script>
 <script type="text/javascript">
   var debug = function(message) {
     if (!window.qsDebug) return;

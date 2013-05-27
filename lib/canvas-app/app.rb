@@ -40,6 +40,7 @@ module Canvas::App
       ]
 
       js  :vendor, '/v1/javascripts/vendor.js', [
+        '/v1/javascripts/vendor/event-shim.js',
         '/v1/javascripts/vendor/jquery-1.8.2.min.js',
         '/v1/javascripts/vendor/angular/angular.js',
         '/v1/javascripts/vendor/angular/angular-resource.js',
