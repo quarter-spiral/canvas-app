@@ -1,4 +1,4 @@
-# 0.0.75 / Unreleased
+# 0.0.75 / 2013-05-27
 
 * Fixed avatar width (collapsing on IE and friends)
 
