@@ -1,5 +1,6 @@
 # 0.0.72 / Unreleased
 
+* Adds flXHR for IE8 compatibility and incompatiblity CSS support classes
 * Adds EventShim for IE8 support
 * Migrates to .ruby-version
 

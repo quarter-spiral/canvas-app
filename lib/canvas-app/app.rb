@@ -44,6 +44,8 @@ module Canvas::App
         '/v1/javascripts/vendor/angular/angular.js',
         '/v1/javascripts/vendor/angular/angular-resource.js',
         '/v1/javascripts/vendor/bootstrap.js',
+        '/v1/javascripts/vendor/flXHR/flXHR.js',
+        '/v1/javascripts/vendor/flXHR/angular-adaptor.js',
         '/v1/javascripts/vendor/modernizr-2-6-1.js'
       ]
 
