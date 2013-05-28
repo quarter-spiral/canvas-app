@@ -12,277 +12,290 @@
   </head>
   <body ng-Controller="navigationController">
 
-    <div id="promo" ng-show="showPromo" class="ng-cloak">
-      <button class="close" ng-click="togglePromo()">&times;</button>
-      <div class="container">
-        <div class="row">
-          <div class="span1">
-            <a href="http://game.quarterspiral.com/v1/games/59b0bc40-3351-0130-2784-1231381f54b3/spiral-galaxy" target="new"><img src="/v1/images/face.png" width="100" height="100" /></a>
-          </div>
-          <div class="span5">
-            <p class="big">If you like {{gameData().name}}, try <a href="http://game.quarterspiral.com/v1/games/59b0bc40-3351-0130-2784-1231381f54b3/spiral-galaxy" target="new">A Million Faces</a> next</p>
 
-          </div>
-          <div class="span2 offset1">
-            <p>Publish your own game with <a href="http://mk.quarterspiral.com" target="new">Mission Kontrol</a> for free.</p>
-
-          </div>
-          <div class="span2">
-
-            <p>
-              Find more games like this on <a href="http://sg.quarterspiral.com" target="new">Spiral Galaxy</a>.
-            </p>
-
-          </div>
-        </div>
+    <div id="systemWarning">
+      <div class="warningBox">
+        <p>Your browser is currently not supported. We recommend you use <a href="https://www.google.com/intl/en/chrome/browser/">Chrome</a> or <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a>.</p>
+        <p><i>If you have to use IE please update to version 8 or higher. You may require to install the latest flash plugin.</i></p>
       </div>
     </div>
 
 
-    <div id="header">
-      <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
-      <span class="ng-cloak">
-      <ul ng-hide="currentSection == 'preroll'">
-        <li><a ng-click="getTotalSize()">size</a></li>
-        <li ng-class="{active: currentSection == 'game'}"><a ng-click="toggleSection('game')"><i class="icon-home"></i><span class="hidden-phone"> Home</span></a></li>
-        <li ng-class="{active: currentSection == 'share'}"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
-        <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i><span class="hidden-phone"> About</span></a></li>
-        <!-- <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li> -->
-        <li ng-show="qsData().info.uuid">
-          <a ng-click="logout()" ng-show="qsData().info.venue == 'embedded'"><i class="icon-off"></i><span class="hidden-phone"> Log out</span></a>
-          <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/#/logout" ng-show="qsData().info.venue == 'spiral-galaxy'"><i class="icon-off"></i><span class="hidden-phone"> Log out</span></a>
-        </li>
-      </ul>
-      </span>
-      <div id="QS">
-        <span ng-show="gameData().credits" class="hidden-phone ng-cloak">
-            <span ng-hide="gameData().credits_url">a {{gameData().credits}} game</span>
-            <span ng-show="gameData().credits_url">a <a href="{{gameData().credits_url}}">{{gameData().credits}}</a> game</span>
-        </span>
-        <span>
-          powered by <a href="https://friendbar.us" target="new">Friendbar.us</a>
-        </span>
-      </div>
-    </div>
+    <div id="wrapper">
 
-    <div id="mainView">
-      <div id="game" ng-show="currentSection == 'game'" class="ng-cloak">
+      <div id="promo" ng-show="showPromo" class="ng-cloak">
+        <button class="close" ng-click="togglePromo()">&times;</button>
+        <div class="container">
+          <div class="row">
+            <div class="span1">
+              <a href="http://game.quarterspiral.com/v1/games/59b0bc40-3351-0130-2784-1231381f54b3/spiral-galaxy" target="new"><img src="/v1/images/face.png" width="100" height="100" /></a>
+            </div>
+            <div class="span5">
+              <p class="big">If you like {{gameData().name}}, try <a href="http://game.quarterspiral.com/v1/games/59b0bc40-3351-0130-2784-1231381f54b3/spiral-galaxy" target="new">A Million Faces</a> next</p>
 
-        <%= embedded_game %>
+            </div>
+            <div class="span2 offset1">
+              <p>Publish your own game with <a href="http://mk.quarterspiral.com" target="new">Mission Kontrol</a> for free.</p>
 
-      </div>
+            </div>
+            <div class="span2">
 
-      <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad class="ng-cloak">
-        <div class="page">
-        <p>A message from our sponsors:</p>
-          <div id="addBody">
-
-            <!-- <iframe width="560" height="315" src="http://www.youtube.com/embed/jSOtjwwz7EE?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
-            <SCRIPT language="Javascript">
-            var cpmstar_rnd=Math.round(Math.random()*999999);
-            var cpmstar_pid=42195;
-            document.writeln("<SCR"+"IPT language='Javascript' src='//server.cpmstar.com/view.aspx?poolid="+cpmstar_pid+"&script=1&rnd="+cpmstar_rnd+"'></SCR"+"IPT>");
-            </SCRIPT>
-
-          </div>
-          <p ad-timer>
-            <button ng-hide="timeTillAdIsSkipable < 1" class="btn disabled">
-              You can skip this ad in {{timeTillAdIsSkipable}} seconds.
-            </button>
-            <a ng-click="toggleSection('game')" ng-show="timeTillAdIsSkipable < 1" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Continue to {{gameData().name}}</a></p>
-        </div>
-      </div>
-
-      <div id="about" ng-show="currentSection == 'about'" class="ng-cloak">
-        <div class="page">
-          <div class="container">
-            <div class="row">
-              <div class="span12">
-                <button class="close" ng-click="toggleSection('about')">&times;</button>
-                <h3>
-                  {{gameData().name}}
-                  <span ng-show="gameData().credits">
-                    <span ng-hide="gameData().credits_url">by {{gameData().credits}}</span>
-                    <span ng-show="gameData().credits_url">by <a href="{{gameData().credits_url}}">{{gameData().credits}}</a></span>
-                </span>
-                </h3>
-              </div>
-              <div class="span6">
-                <p>{{gameData().description}}</p>
-              </div>
-
-              <div class="span12">
-                <hr />
-                <p>{{gameData().name}}  is powered by <a href="http://friendbar.us" target="new">Friendbar.us</a>.</p>
-
-                <p>
-                  <button class="btn btn-primary" ng-click="toggleSection('about')"><i class="icon-arrow-left icon-white"></i> Back</button>
-                </p>
-                <p><a href="https://docs.google.com/document/d/1HwI4dWdm6Od1-zl29xDINKfwhJnPzko1omSc_-DrPzY/pub" target="new">Privacy Notice</a> &amp; <a href="https://docs.google.com/document/d/1oWjZK6Z6p8gn5WRiHDup6uD9HuKDKNz-yuCtjfTI924/pub" target="new">Terms of Service</a>.</p>
-              </div>
+              <p>
+                Find more games like this on <a href="http://sg.quarterspiral.com" target="new">Spiral Galaxy</a>.
+              </p>
 
             </div>
           </div>
-
         </div>
       </div>
 
-      <div id="sharing" ng-show="currentSection == 'share'" class="ng-cloak">
-        <div class="page">
-          <div class="container">
-            <div class="row">
-              <div class="span12">
-                <button class="close" ng-click="toggleSection('share')">&times;</button>
-                <h3>Share this game</h3>
-                <span class='st_facebook_large' displayText='Facebook'></span>
-                <span class='st_twitter_large' displayText='Tweet'></span>
-                <span class='st_reddit_large' displayText='Reddit'></span>
-                <span class='st_googleplus_large' displayText='Google +'></span>
-                <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                <span class='st_pinterest_large' displayText='Pinterest'></span>
-                <span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
-                <span class='st_email_large' displayText='Email'></span>
-                <span class='st_sharethis_large' displayText='Share This'></span>
-                <script type="text/javascript">var switchTo5x=false;</script>
-<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "06a49cd6-8cbd-43d2-8a97-0c4e4c6e36bb", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
-              <hr />
-              </div>
 
-              <div ng-show="gameEmbedCode()">
+      <div id="header">
+        <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
+        <span class="ng-cloak">
+        <ul ng-hide="currentSection == 'preroll'">
+          <li><a ng-click="getTotalSize()">size</a></li>
+          <li ng-class="{active: currentSection == 'game'}"><a ng-click="toggleSection('game')"><i class="icon-home"></i><span class="hidden-phone"> Home</span></a></li>
+          <li ng-class="{active: currentSection == 'share'}"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
+          <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i><span class="hidden-phone"> About</span></a></li>
+          <!-- <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li> -->
+          <li ng-show="qsData().info.uuid">
+            <a ng-click="logout()" ng-show="qsData().info.venue == 'embedded'"><i class="icon-off"></i><span class="hidden-phone"> Log out</span></a>
+            <a href="{{qsData().ENV.QS_SPIRAL_GALAXY_URL}}/#/logout" ng-show="qsData().info.venue == 'spiral-galaxy'"><i class="icon-off"></i><span class="hidden-phone"> Log out</span></a>
+          </li>
+        </ul>
+        </span>
+        <div id="QS">
+          <span ng-show="gameData().credits" class="hidden-phone ng-cloak">
+              <span ng-hide="gameData().credits_url">a {{gameData().credits}} game</span>
+              <span ng-show="gameData().credits_url">a <a href="{{gameData().credits_url}}">{{gameData().credits}}</a> game</span>
+          </span>
+          <span>
+            powered by <a href="https://friendbar.us" target="new">Friendbar.us</a>
+          </span>
+        </div>
+      </div>
+
+      <div id="mainView">
+        <div id="game" ng-show="currentSection == 'game'" class="ng-cloak">
+
+          <%= embedded_game %>
+
+        </div>
+
+        <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad class="ng-cloak">
+          <div class="page">
+          <p>A message from our sponsors:</p>
+            <div id="addBody">
+
+              <!-- <iframe width="560" height="315" src="http://www.youtube.com/embed/jSOtjwwz7EE?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
+              <SCRIPT language="Javascript">
+              var cpmstar_rnd=Math.round(Math.random()*999999);
+              var cpmstar_pid=42195;
+              document.writeln("<SCR"+"IPT language='Javascript' src='//server.cpmstar.com/view.aspx?poolid="+cpmstar_pid+"&script=1&rnd="+cpmstar_rnd+"'></SCR"+"IPT>");
+              </SCRIPT>
+
+            </div>
+            <p ad-timer>
+              <button ng-hide="timeTillAdIsSkipable < 1" class="btn disabled">
+                You can skip this ad in {{timeTillAdIsSkipable}} seconds.
+              </button>
+              <a ng-click="toggleSection('game')" ng-show="timeTillAdIsSkipable < 1" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Continue to {{gameData().name}}</a></p>
+          </div>
+        </div>
+
+        <div id="about" ng-show="currentSection == 'about'" class="ng-cloak">
+          <div class="page">
+            <div class="container">
+              <div class="row">
                 <div class="span12">
-                  <h3>Embed {{gameData().name}} anywhere</h3>
+                  <button class="close" ng-click="toggleSection('about')">&times;</button>
+                  <h3>
+                    {{gameData().name}}
+                    <span ng-show="gameData().credits">
+                      <span ng-hide="gameData().credits_url">by {{gameData().credits}}</span>
+                      <span ng-show="gameData().credits_url">by <a href="{{gameData().credits_url}}">{{gameData().credits}}</a></span>
+                  </span>
+                  </h3>
+                </div>
+                <div class="span6">
+                  <p>{{gameData().description}}</p>
                 </div>
 
-                <div class="span5">
-                  <p>Embed "<%=h game.name %>" whereever you want: websites, blogs, etc...</p>
-                  <p>Simply copy the code snippet into your website and the game will appear there. Just like a youTube video.</p>
-                </div>
-
-                <div class="span6 offset1">
-
-                  <pre class="code">{{gameEmbedCode()}}</pre>
-
-                </div>
                 <div class="span12">
                   <hr />
+                  <p>{{gameData().name}}  is powered by <a href="http://friendbar.us" target="new">Friendbar.us</a>.</p>
+
+                  <p>
+                    <button class="btn btn-primary" ng-click="toggleSection('about')"><i class="icon-arrow-left icon-white"></i> Back</button>
+                  </p>
+                  <p><a href="https://docs.google.com/document/d/1HwI4dWdm6Od1-zl29xDINKfwhJnPzko1omSc_-DrPzY/pub" target="new">Privacy Notice</a> &amp; <a href="https://docs.google.com/document/d/1oWjZK6Z6p8gn5WRiHDup6uD9HuKDKNz-yuCtjfTI924/pub" target="new">Terms of Service</a>.</p>
                 </div>
 
               </div>
-
-              <div class="span12">
-                <p>
-                  <button class="btn btn-primary" ng-click="toggleSection('share')"><i class="icon-arrow-left icon-white"></i> Back</button>
-                </p>
-              </div>
             </div>
+
           </div>
         </div>
 
+        <div id="sharing" ng-show="currentSection == 'share'" class="ng-cloak">
+          <div class="page">
+            <div class="container">
+              <div class="row">
+                <div class="span12">
+                  <button class="close" ng-click="toggleSection('share')">&times;</button>
+                  <h3>Share this game</h3>
+                  <span class='st_facebook_large' displayText='Facebook'></span>
+                  <span class='st_twitter_large' displayText='Tweet'></span>
+                  <span class='st_reddit_large' displayText='Reddit'></span>
+                  <span class='st_googleplus_large' displayText='Google +'></span>
+                  <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                  <span class='st_pinterest_large' displayText='Pinterest'></span>
+                  <span class='st_stumbleupon_large' displayText='StumbleUpon'></span>
+                  <span class='st_email_large' displayText='Email'></span>
+                  <span class='st_sharethis_large' displayText='Share This'></span>
+                  <script type="text/javascript">var switchTo5x=false;</script>
+  <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">stLight.options({publisher: "06a49cd6-8cbd-43d2-8a97-0c4e4c6e36bb", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+                <hr />
+                </div>
+
+                <div ng-show="gameEmbedCode()">
+                  <div class="span12">
+                    <h3>Embed {{gameData().name}} anywhere</h3>
+                  </div>
+
+                  <div class="span5">
+                    <p>Embed "<%=h game.name %>" whereever you want: websites, blogs, etc...</p>
+                    <p>Simply copy the code snippet into your website and the game will appear there. Just like a youTube video.</p>
+                  </div>
+
+                  <div class="span6 offset1">
+
+                    <pre class="code">{{gameEmbedCode()}}</pre>
+
+                  </div>
+                  <div class="span12">
+                    <hr />
+                  </div>
+
+                </div>
+
+                <div class="span12">
+                  <p>
+                    <button class="btn btn-primary" ng-click="toggleSection('share')"><i class="icon-arrow-left icon-white"></i> Back</button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div id="socialBar" ng-Controller="SocialController" class="ng-cloak">
+          <ul class="options" ng-show="friends.length > 0">
+          <!--
+              <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
+          -->
+              <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'fullName'}"></i> Sort by Name</a></li>
+
+              <li ng-show="friendbarValues.top"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.top.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.top.label}}</a></li>
+
+              <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.bottom.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.bottom.label}}</a></li>
+            <li class="hidden-phone"><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
+          </ul>
+
+          <ul class="avatars">
+            <li ng-hide="loggedIn()">
+              <div class="avatarLink login-link">
+                <a ng-href="{{loginUrl()}}" class="btn btn-primary">
+                  Login
+                </a>
+              </div>
+            </li>
+            <li ng-show="loggedIn()">
+              <div class="avatarLink invite-friends-link">
+                <a href="#" class="btn btn-success" invite-link>
+                  Invite...
+                </a>
+              </div>
+            </li>
+            <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends">
+              <div class="name">{{friend.fullName}}</div>
+              <div ng-show="!!friend.meta.top.value" class="top-value level" title="{{friend.meta.top.label}}">{{friend.meta.top.value|friendbarValue}}</div>
+              <div ng-show="!!friend.meta.bottom.value" class="bottom-value xp" title="{{friend.meta.bottom.label}}">{{friend.meta.bottom.value|friendbarValue}}</div>
+              <img ng-src="{{friend.avatar}}" />
+            </li>
+          </ul>
+        </div>
+
+
       </div>
 
+      <%= yield %>
 
-      <div id="socialBar" ng-Controller="SocialController" class="ng-cloak">
-        <ul class="options" ng-show="friends.length > 0">
-        <!--
-            <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
-        -->
-            <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'fullName'}"></i> Sort by Name</a></li>
+      <script type="text/javascript">
+        if (window.qs === undefined) {
+          window.qs = {}
+        }
+        window.qs.tokens = <%= tokens.to_json %>;
+        window.qs.info = {
+          game: <%= game.uuid.to_json %>,
+          gameDetails: <%= game.public_information.to_json %>,
+          embedCode: <%= (((game.venues_with_computed_config || {})['embedded'] || {})['computed'] || {})['code'].to_json %>,
+          venue: <%= venue.to_json %>,
+          <%if defined? uuid %>
+          uuid: <%= uuid.to_json %>,
+          userName: <%= user_name.to_json %>,
+          <% end %>
+          <% if game.configuration['local_mode'] %>
+          localMode: true,
+          <% end %>
+          <% if game.has_subscription? %>
+            subscription: true,
+          <% end %>
+          friendbar: {
+            <% values = {} %>
+            <% if label = game.configuration['friendbarTopValueLabel'] and key = game.configuration['friendbarTopValueKey'] and !label.empty? and !key.empty? %>
+              <% values['top'] = {'label' => label, 'key' => key, 'default' => game.configuration['friendbarTopValueDefault']} %>
+            <% end %>
+            <% if label = game.configuration['friendbarBottomValueLabel'] and key = game.configuration['friendbarBottomValueKey'] and !label.empty? and !key.empty? %>
+              <% values['bottom'] = {'label' => label, 'key' => key, 'default' => game.configuration['friendbarBottomValueDefault']} %>
+            <% end %>
+            values: <%= values.to_json %>
+          }
+        };
+        if (window.qs.inviteFriendsOnVenue === undefined) {
+          window.qs.inviteFriendsOnVenue = function(element) {
+            var button = $(element);
+            $('.st_sharethis_large').click();
+            var moveInviteBox = function() {
+              var wrapper = $('#stwrapper');
+              if (wrapper.lemgth < 1) {
+                return;
+              }
+              var buttonOffset = button.offset();
+              var top  = buttonOffset.top  - wrapper.height() - 20;
+              var left = buttonOffset.left - 20;
+              wrapper.offset({top: top, left: left});
+            }
+            moveInviteBox();
+            setTimeout(moveInviteBox, 500);
+            setTimeout(moveInviteBox, 2000);
+          };
+        }
+      </script>
 
-            <li ng-show="friendbarValues.top"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.top.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.top.label}}</a></li>
+      <!-- Angular must be included before these -->
+      <script src="/angular-commons/javascripts/envs.js"></script>
+      <script src="/angular-commons/javascripts/services.js"></script>
+      <script src="/angular-commons/javascripts/controllers.js"></script>
 
-            <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.bottom.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.bottom.label}}</a></li>
-          <li class="hidden-phone"><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
-        </ul>
-
-        <ul class="avatars">
-          <li ng-hide="loggedIn()">
-            <div class="avatarLink login-link">
-              <a ng-href="{{loginUrl()}}" class="btn btn-primary">
-                Login
-              </a>
-            </div>
-          </li>
-          <li ng-show="loggedIn()">
-            <div class="avatarLink invite-friends-link">
-              <a href="#" class="btn btn-success" invite-link>
-                Invite...
-              </a>
-            </div>
-          </li>
-          <li ng-repeat="friend in friends | filter:searchFriends | orderBy:sortFriends">
-            <div class="name">{{friend.fullName}}</div>
-            <div ng-show="!!friend.meta.top.value" class="top-value level" title="{{friend.meta.top.label}}">{{friend.meta.top.value|friendbarValue}}</div>
-            <div ng-show="!!friend.meta.bottom.value" class="bottom-value xp" title="{{friend.meta.bottom.label}}">{{friend.meta.bottom.value|friendbarValue}}</div>
-            <img ng-src="{{friend.avatar}}" />
-          </li>
-        </ul>
-      </div>
-
+      <script src="/v1/javascripts/app/resizer.js" type="text/javascript"></script>
+      <%= js :app %>
 
     </div>
-
-    <%= yield %>
-
-    <script type="text/javascript">
-      if (window.qs === undefined) {
-        window.qs = {}
-      }
-      window.qs.tokens = <%= tokens.to_json %>;
-      window.qs.info = {
-        game: <%= game.uuid.to_json %>,
-        gameDetails: <%= game.public_information.to_json %>,
-        embedCode: <%= (((game.venues_with_computed_config || {})['embedded'] || {})['computed'] || {})['code'].to_json %>,
-        venue: <%= venue.to_json %>,
-        <%if defined? uuid %>
-        uuid: <%= uuid.to_json %>,
-        userName: <%= user_name.to_json %>,
-        <% end %>
-        <% if game.configuration['local_mode'] %>
-        localMode: true,
-        <% end %>
-        <% if game.has_subscription? %>
-          subscription: true,
-        <% end %>
-        friendbar: {
-          <% values = {} %>
-          <% if label = game.configuration['friendbarTopValueLabel'] and key = game.configuration['friendbarTopValueKey'] and !label.empty? and !key.empty? %>
-            <% values['top'] = {'label' => label, 'key' => key, 'default' => game.configuration['friendbarTopValueDefault']} %>
-          <% end %>
-          <% if label = game.configuration['friendbarBottomValueLabel'] and key = game.configuration['friendbarBottomValueKey'] and !label.empty? and !key.empty? %>
-            <% values['bottom'] = {'label' => label, 'key' => key, 'default' => game.configuration['friendbarBottomValueDefault']} %>
-          <% end %>
-          values: <%= values.to_json %>
-        }
-      };
-      if (window.qs.inviteFriendsOnVenue === undefined) {
-        window.qs.inviteFriendsOnVenue = function(element) {
-          var button = $(element);
-          $('.st_sharethis_large').click();
-          var moveInviteBox = function() {
-            var wrapper = $('#stwrapper');
-            if (wrapper.lemgth < 1) {
-              return;
-            }
-            var buttonOffset = button.offset();
-            var top  = buttonOffset.top  - wrapper.height() - 20;
-            var left = buttonOffset.left - 20;
-            wrapper.offset({top: top, left: left});
-          }
-          moveInviteBox();
-          setTimeout(moveInviteBox, 500);
-          setTimeout(moveInviteBox, 2000);
-        };
-      }
-    </script>
-
-    <!-- Angular must be included before these -->
-    <script src="/angular-commons/javascripts/envs.js"></script>
-    <script src="/angular-commons/javascripts/services.js"></script>
-    <script src="/angular-commons/javascripts/controllers.js"></script>
-
-    <script src="/v1/javascripts/app/resizer.js" type="text/javascript"></script>
-    <%= js :app %>
   </body>
 </html>
 
