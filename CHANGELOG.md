@@ -1,3 +1,7 @@
+# 0.0.69 / 2013-05-29 WIP
+
+* now promoting friendbar.us
+
 # 0.0.68 / 2013-04-18 WIP
 
 * added link to privacy notice to the about section
