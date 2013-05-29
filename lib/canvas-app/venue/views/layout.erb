@@ -101,23 +101,26 @@
 
         <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad class="ng-cloak">
           <div class="page">
-          <p>A message from our sponsors:</p>
+          <!-- <p>Powered by <a href="http://friendbar.us" target="new">Friendbar.us</a>:</p> -->
             <div id="addBody">
 
-            <!-- <iframe width="560" height="315" src="http://www.youtube.com/embed/jSOtjwwz7EE?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
-            <SCRIPT language="Javascript">
-            var cpmstar_rnd=Math.round(Math.random()*999999);
-            var cpmstar_pid=42195;
-            document.writeln("<SCR"+"IPT language='Javascript' src='https://server.cpmstar.com/view.aspx?poolid="+cpmstar_pid+"&script=1&rnd="+cpmstar_rnd+"'></SCR"+"IPT>");
-            </SCRIPT>
-
+              <a href="http://friendbar.us" target="new">
+                <img src="../../images/friendbarAd.gif" alt="freindbar.us animation" width="250" height="246" />
+              </a>
+              <!--  Add server dissabled to promote Friendbar.us instead.
+              <SCRIPT language="Javascript">
+              var cpmstar_rnd=Math.round(Math.random()*999999);
+              var cpmstar_pid=42195;
+              document.writeln("<SCR"+"IPT language='Javascript' src='//server.cpmstar.com/view.aspx?poolid="+cpmstar_pid+"&script=1&rnd="+cpmstar_rnd+"'></SCR"+"IPT>");
+              </SCRIPT>
+              -->
 
             </div>
             <p ad-timer>
               <button ng-hide="timeTillAdIsSkipable < 1" class="btn disabled">
                 You can skip this ad in {{timeTillAdIsSkipable}} seconds.
               </button>
-              <a ng-click="toggleSection('game')" ng-show="timeTillAdIsSkipable < 1" class="btn btn-primary"><i class="icon-arrow-right icon-white"></i> Continue to {{gameData().name}}</a></p>
+              <a ng-click="toggleSection('game')" ng-show="timeTillAdIsSkipable < 1" class="btn btn-success"><i class="icon-arrow-right icon-white"></i> Continue to {{gameData().name}}</a></p>
           </div>
         </div>
 

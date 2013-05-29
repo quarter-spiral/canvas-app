@@ -1,3 +1,7 @@
+# 0.0.76 / 2013-05-30 WIP
+
+* now promoting friendbar.us
+
 # 0.0.75 / 2013-05-27
 
 * Fixed avatar width (collapsing on IE and friends)
