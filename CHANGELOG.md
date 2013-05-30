@@ -1,3 +1,7 @@
+# 0.0.70 / 2013-05-30 WIP
+
+* now with google tracking
+
 # 0.0.69 / 2013-05-29 WIP
 
 * now promoting friendbar.us
