@@ -2,6 +2,7 @@
 
 * now promoting friendbar.us
 * now with google tracking
+* restored center align of flash games
 
 # 0.0.75 / 2013-05-27
 
