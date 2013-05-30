@@ -80,16 +80,9 @@
         <span>
           powered by <a href="https://friendbar.us" target="new">Friendbar.us</a>
         </span>
-        <div id="QS">
-          <span ng-show="gameData().credits" class="hidden-phone ng-cloak">
-              <span ng-hide="gameData().credits_url">a {{gameData().credits}} game</span>
-              <span ng-show="gameData().credits_url">a <a href="{{gameData().credits_url}}">{{gameData().credits}}</a> game</span>
-          </span>
-          <span>
-            powered by <a href="https://friendbar.us" target="new">Friendbar.us</a>
-          </span>
-        </div>
       </div>
+
+    </div>
 
     <div id="mainView">
       <div id="game" ng-class="{flashHide: !gameIsVisible()}" class="ng-cloak">
