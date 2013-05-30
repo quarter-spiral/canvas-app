@@ -3,6 +3,7 @@
 * now promoting friendbar.us
 * now with google tracking
 * restored center align of flash games
+* removed overlapping controls on the social bar
 
 # 0.0.75 / 2013-05-27
 
