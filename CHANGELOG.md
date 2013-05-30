@@ -1,6 +1,7 @@
 # 0.0.70 / 2013-05-30 WIP
 
 * now with google tracking
+* restored center align of flash games
 
 # 0.0.69 / 2013-05-29 WIP
 
