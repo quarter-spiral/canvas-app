@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="en-us" ng-app="canvasApp">
   <head>
+      <%if defined? uuid %>
+        <script type="text/javascript">
+          if ((typeof window.opener) !== 'undefined' && window.opener !== null) {
+            window.opener.location.reload();
+            window.close();
+          }
+        </script>
+      <% end %>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title><%=h game.name %></title>
@@ -222,7 +230,7 @@
           <ul class="avatars">
             <li ng-hide="loggedIn()">
               <div class="avatarLink login-link">
-                <a ng-href="{{loginUrl()}}" class="btn btn-primary">
+                <a ng-click="openLoginPopup()" href="#" class="btn btn-primary">
                   Login
                 </a>
               </div>

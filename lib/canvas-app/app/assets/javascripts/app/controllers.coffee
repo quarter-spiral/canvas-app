@@ -54,6 +54,12 @@
     }
     urls[$scope.qsData().info.venue] || '#/no-login'
 
+  $scope.openLoginPopup = ->
+    popup = window.open($scope.loginUrl(), 'Login', 'width=500,height=500')
+    window.location.href = $scope.loginUrl() unless popup
+
+    false
+
   $scope.skipAds = $scope.qsData().info.localMode or $scope.qsData().info.subscription
 
   # This add

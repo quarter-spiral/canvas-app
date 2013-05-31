@@ -1,3 +1,7 @@
+# 0.0.77 / Unrelased
+
+* Moves the login to a popout to fix [#50900917](https://www.pivotaltracker.com/story/show/50900917)
+
 # 0.0.76 / 2013-05-30
 
 * now promoting friendbar.us

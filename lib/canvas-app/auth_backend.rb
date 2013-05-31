@@ -3,6 +3,7 @@ require 'omniauth-oauth2'
 module Canvas::App
   class AuthBackend < OmniAuth::Strategies::OAuth2
     option :name, "auth_backend"
+    option :provider_ignores_state, true
     option :client_options, {site: ENV['QS_AUTH_BACKEND_URL']}
 
     uid{ raw_info['id'] }
