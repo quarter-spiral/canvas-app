@@ -1,4 +1,4 @@
-# 0.0.77 / Unrelased
+# 0.0.77 / 2013-05-31
 
 * Moves the login to a popout to fix [#50900917](https://www.pivotaltracker.com/story/show/50900917)
 
