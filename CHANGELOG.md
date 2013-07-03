@@ -1,4 +1,4 @@
-# 0.0.78 / Unreleased
+# 0.0.78 / 2013-07-04
 
 * Adds firebase tokens to the QS info
 

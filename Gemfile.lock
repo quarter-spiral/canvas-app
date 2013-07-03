@@ -28,7 +28,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.77)
+    canvas-app (0.0.78)
       angular-commons-middleware
       auth-client (>= 0.0.14)
       cache-backend-iron-cache (~> 0.0.4)
@@ -155,7 +155,7 @@ GEM
       json
       service-client (>= 0.0.12)
     descendants_tracker (0.0.1)
-    devcenter-backend (0.0.50)
+    devcenter-backend (0.0.54)
       auth-client (>= 0.0.15)
       cache-backend-iron-cache (~> 0.0.4)
       cache-client (~> 0.0.4)
@@ -166,7 +166,10 @@ GEM
       json (~> 1.7.7)
       ping-middleware (~> 0.0.2)
       rack (~> 1.4.5)
+      rack-crossdomain-xml (>= 0.0.1)
+      rack-fake-method (~> 0.0.1)
       stripe (~> 1.7.11)
+      tracking-client (>= 0.0.6)
       uuid
     devcenter-client (0.0.4)
       service-client (>= 0.0.12)
@@ -320,6 +323,8 @@ GEM
       rack (>= 0.4)
     rack-client (0.4.0)
       rack (>= 1.0.0)
+    rack-crossdomain-xml (0.0.1)
+    rack-fake-method (0.0.1)
     rack-jsonp-middleware (0.0.5)
       rack
     rack-mount (0.8.3)
@@ -414,7 +419,7 @@ GEM
     typhoeus (0.6.1)
       ethon (~> 0.5.9)
     tzinfo (0.3.37)
-    uglifier (2.1.0)
+    uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)
