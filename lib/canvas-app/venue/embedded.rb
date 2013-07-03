@@ -7,12 +7,15 @@ module Canvas::App
         qs_oauth = nil
         @qs_uuid = nil
         player_name = nil
+        qs_firebase_token = nil
 
         if auth_cookie = context.request.cookies['qs_canvas_authentication']
           if auth_cookie['info']
             auth_cookie = JSON.parse(auth_cookie)
             qs_oauth = auth_cookie['info']['token']
             @qs_uuid = auth_cookie['info']['uuid']
+            token_owner = context.connection.auth.token_owner(qs_oauth)
+            qs_firebase_token = token_owner['firebase-token']
 
             Thread.new do
               context.try_twice_and_avoid_token_expiration do
@@ -26,7 +29,7 @@ module Canvas::App
           end
         end
 
-        context.tokens = {qs: qs_oauth, venue: qs_oauth}
+        context.tokens = {qs: qs_oauth, venue: qs_oauth, firebase: qs_firebase_token}
         context.venue = 'embedded'
 
         super(game, context, uuid: qs_uuid, user_name: player_name)

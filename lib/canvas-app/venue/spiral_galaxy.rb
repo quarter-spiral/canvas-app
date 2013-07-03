@@ -10,9 +10,12 @@ module Canvas::App
         @qs_uuid = spiral_galaxy_info['uuid']
         qs_oauth = nil
         player_name = nil
+        qs_firebase_token = nil
 
         if qs_uuid
           qs_oauth = spiral_galaxy_info['oauth_token']
+          token_owner = context.connection.auth.token_owner(qs_oauth)
+          qs_firebase_token = token_owner['firebase-token']
 
           Thread.new do
             context.try_twice_and_avoid_token_expiration do
@@ -25,7 +28,8 @@ module Canvas::App
         end
         context.tokens = {
           qs: qs_oauth,
-          venue: qs_oauth
+          venue: qs_oauth,
+          firebase: qs_firebase_token
         }
 
         context.venue = 'spiral-galaxy'

@@ -44,9 +44,12 @@ module Canvas::App
           }
           qs_oauth = nil
           @qs_uuid = nil
+          qs_firebase_token = nil
           context.try_twice_and_avoid_token_expiration do
             qs_oauth = context.connection.auth.venue_token(context.token, 'facebook', venue_data)
-            @qs_uuid = context.connection.auth.token_owner(qs_oauth)['uuid']
+            token_owner = context.connection.auth.token_owner(qs_oauth)
+            @qs_uuid = token_owner['uuid']
+            qs_firebase_token = token_owner['firebase-token']
 
             Thread.new do
               context.connection.playercenter.register_player(qs_uuid, game.uuid, 'facebook', context.token)
@@ -55,7 +58,8 @@ module Canvas::App
 
           context.tokens = {
             qs: qs_oauth,
-            venue: facebook_info['oauth_token']
+            venue: facebook_info['oauth_token'],
+            firebase: qs_firebase_token
           }
           context.venue = 'facebook'
 
