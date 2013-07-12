@@ -1,4 +1,4 @@
-# 0.0.79 / Unreleased
+# 0.0.79 / 2013-07-12
 
 * Fixes bug that caused people to have to delete their auth cookies
 
