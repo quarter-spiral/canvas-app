@@ -1,3 +1,7 @@
+# 0.0.79 / Unreleased
+
+* Fixes bug that caused people to have to delete their auth cookies
+
 # 0.0.78 / 2013-07-04
 
 * Adds firebase tokens to the QS info

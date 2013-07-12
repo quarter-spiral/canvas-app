@@ -39,7 +39,7 @@ describe Canvas::App::Venue::Embedded do
     @page.has_selector?('iframe').must_equal true
 
     dom_info = @page.evaluate_script('window.qs');
-    dom_info['tokens'].keys.sort.must_equal ['qs', 'venue']
+    dom_info['tokens'].keys.sort.must_equal ['firebase', 'qs', 'venue']
     dom_info['tokens']['qs'].must_be_nil
     dom_info['tokens']['venue'].must_be_nil
     dom_info['info']['game'].must_equal @game.uuid

@@ -14,7 +14,7 @@ module Canvas::App
             auth_cookie = JSON.parse(auth_cookie)
             qs_oauth = auth_cookie['info']['token']
             @qs_uuid = auth_cookie['info']['uuid']
-            token_owner = context.connection.auth.token_owner(qs_oauth)
+            token_owner = context.env['qs_token_owner'] || context.connection.auth.token_owner(qs_oauth)
             qs_firebase_token = token_owner['firebase-token']
 
             Thread.new do

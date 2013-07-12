@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/assetpack'
 require 'uri'
 require 'service-client'
+require 'cgi'
+require 'json'
 
 module Canvas::App
   CHROME_HEIGHT = 160
@@ -114,6 +116,20 @@ module Canvas::App
 
     error Devcenter::Backend::Error::BaseError do
       halt 403, env['sinatra.error']
+    end
+
+    before do
+      if auth_cookie = request.cookies['qs_canvas_authentication']
+        auth_cookie = JSON.parse(auth_cookie)
+        if auth_cookie['info']
+          unless env['qs_token_owner'] = connection.auth.token_owner(auth_cookie['info']['token'])
+            redirect_url = "#{ENV['QS_AUTH_BACKEND_URL']}/signout?redirect_uri=#{CGI.escape(request.url)}"
+            response.set_cookie('qs_canvas_authentication', :value => '', :path => "/", :expires => Time.new(1970).utc)
+            response.redirect redirect_url
+            halt
+          end
+        end
+      end
     end
 
     [
