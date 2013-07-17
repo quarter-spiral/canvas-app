@@ -1,3 +1,7 @@
+# 0.0.80 / Unreleased
+
+* Adds current game URL to the qs info object
+
 # 0.0.79 / 2013-07-12
 
 * Fixes bug that caused people to have to delete their auth cookies

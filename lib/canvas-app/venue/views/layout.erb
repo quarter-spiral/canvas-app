@@ -263,6 +263,7 @@
         window.qs.tokens = <%= tokens.to_json %>;
         window.qs.info = {
           game: <%= game.uuid.to_json %>,
+          url: <%= request.url.to_json %>,
           gameDetails: <%= game.public_information.to_json %>,
           embedCode: <%= (((game.venues_with_computed_config || {})['embedded'] || {})['computed'] || {})['code'].to_json %>,
           venue: <%= venue.to_json %>,
