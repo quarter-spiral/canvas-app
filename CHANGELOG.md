@@ -1,4 +1,4 @@
-# 0.0.80 / Unreleased
+# 0.0.80 / 2013-07-17
 
 * Adds current game URL to the qs info object
 
