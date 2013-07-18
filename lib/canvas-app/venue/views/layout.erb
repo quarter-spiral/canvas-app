@@ -70,7 +70,7 @@
       <h1><a ng-click="toggleSection('game')"><%=h game.name %></a></h1>
       <span class="ng-cloak">
       <ul ng-hide="currentSection == 'preroll'">
-        <li ng-class="{active: currentSection == 'game'}"><a ng-click="toggleSection('game')"><i class="icon-home"></i><span class="hidden-phone"> Home</span></a></li>
+        <li ng-class="{active: currentSection == 'game'}"><a ng-click="toggleSection('game')"><i class="icon-home"></i><span class="hidden-phone"> {{gameData().name}}</span></a></li>
         <li ng-class="{active: currentSection == 'share'}"><a ng-click="toggleSection('share')"><i class="icon-share"></i> Share</a></li>
         <li ng-class="{active: currentSection == 'about'}"><a class="" ng-click="toggleSection('about')"><i class="icon-info-sign"></i><span class="hidden-phone"> About</span></a></li>
         <!-- <li ng-class="{promo: showPromo}"><a class="" ng-click="togglePromo()"><i class="icon-hand-up"></i> More Games!</a></li> -->
@@ -93,13 +93,7 @@
     </div>
 
     <div id="mainView">
-      <div id="game" ng-class="{flashHide: !gameIsVisible()}" class="ng-cloak">
-
-
-          <%= embedded_game %>
-
-        </div>
-
+    
         <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad class="ng-cloak">
           <div class="page">
           <!-- <p>Powered by <a href="http://friendbar.us" target="new">Friendbar.us</a>:</p> -->
@@ -176,9 +170,9 @@
                   <span class='st_email_large' displayText='Email'></span>
                   <span class='st_sharethis_large' displayText='Share This'></span>
                   <script type="text/javascript">var switchTo5x=false;</script>
-  <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
-  <script type="text/javascript">stLight.options({publisher: "06a49cd6-8cbd-43d2-8a97-0c4e4c6e36bb", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
-                <hr />
+                  <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+                  <script type="text/javascript">stLight.options({publisher: "06a49cd6-8cbd-43d2-8a97-0c4e4c6e36bb", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+                  <hr />
                 </div>
 
                 <div ng-show="gameEmbedCode()">
@@ -213,17 +207,24 @@
 
         </div>
 
+        <div id="game" ng-class="{flashHide: !gameIsVisible()}" class="ng-cloak">
+
+
+          <%= embedded_game %>
+
+        </div>
+
 
         <div id="socialBar" ng-Controller="SocialController" class="ng-cloak">
           <ul class="options" ng-show="friends.length > 0">
           <!--
               <li><a ng-click="toggleFriendFilter();"><i class="icon-ok" ng-class="{'icon-white': searchFriends.online == true}"></i> Online Only</a></li>
           -->
-              <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'fullName'}"></i> Sort by Name</a></li>
+              <li><a ng-click="sortFriends = 'fullName'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'fullName'}"></i> Sort by Name</a></li>
 
-              <li ng-show="friendbarValues.top"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.top.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.top.label}}</a></li>
+              <li ng-show="friendbarValues.top"><a ng-click="sortFriends = 'meta.top.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'meta.top.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.top.label}}</a></li>
 
-              <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends != 'meta.bottom.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.bottom.label}}</a></li>
+              <li ng-show="friendbarValues.bottom"><a ng-click="sortFriends = 'meta.bottom.value'"><i class="icon-ok" ng-class="{'icon-white': sortFriends == 'meta.bottom.value'}"></i> <span class="hidden-phone">Sort by </span>{{friendbarValues.bottom.label}}</a></li>
             <li class="hidden-phone"><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
           </ul>
 

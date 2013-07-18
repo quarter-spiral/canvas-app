@@ -60,7 +60,9 @@
 
     false
 
-  $scope.skipAds = $scope.qsData().info.localMode or $scope.qsData().info.subscription
+  # !!!!!!!! for the time being not showing no adds ever !!!!!!!!!
+  # $scope.skipAds = $scope.qsData().info.localMode or $scope.qsData().info.subscription
+  $scope.skipAds = true
 
   # This add
   $timeout (->
