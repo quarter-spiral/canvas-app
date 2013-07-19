@@ -1,3 +1,10 @@
+# 0.0.81 / UNRELEASED
+
+* shows app name rather then home in the top bar
+* fixes bug where game shows through the sharing/about panes
+* removes pre loader ad for all apps (for the time being)
+* Adjusts canvas app colours to work better with EW
+
 # 0.0.80 / 2013-07-17
 
 * Adds current game URL to the qs info object
