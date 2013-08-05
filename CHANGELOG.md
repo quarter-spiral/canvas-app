@@ -1,5 +1,6 @@
 # 0.0.81 / UNRELEASED
 
+* Fixes bug that caused games to be closed immediately when accessing over a link that used ``target="_blank"``
 * shows app name rather then home in the top bar
 * fixes bug where game shows through the sharing/about panes
 * removes pre loader ad for all apps (for the time being)

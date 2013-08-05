@@ -3,7 +3,7 @@
   <head>
       <%if defined? uuid %>
         <script type="text/javascript">
-          if ((typeof window.opener) !== 'undefined' && window.opener !== null) {
+          if ((typeof window.opener) !== 'undefined' && window.opener !== null && (typeof window.opener.location.href) !== 'undefined') {
             window.opener.location.reload();
             window.close();
           }
@@ -93,7 +93,7 @@
     </div>
 
     <div id="mainView">
-    
+
         <div id="preroll" ng-show="currentSection == 'preroll'" removable-ad class="ng-cloak">
           <div class="page">
           <!-- <p>Powered by <a href="http://friendbar.us" target="new">Friendbar.us</a>:</p> -->
