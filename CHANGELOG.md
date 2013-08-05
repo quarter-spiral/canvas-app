@@ -1,4 +1,4 @@
-# 0.0.81 / UNRELEASED
+# 0.0.81 / 2013-08-06
 
 * Fixes bug that caused games to be closed immediately when accessing over a link that used ``target="_blank"``
 * shows app name rather then home in the top bar
