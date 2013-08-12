@@ -1,3 +1,7 @@
+# 0.0.82 / Unreleased
+
+* Updates client depencies
+
 # 0.0.81 / 2013-08-06
 
 * Fixes bug that caused games to be closed immediately when accessing over a link that used ``target="_blank"``

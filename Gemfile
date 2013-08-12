@@ -33,7 +33,7 @@ group :test, :development do
   gem 'json'
   gem 'rake'
 
-  gem 'graph-client', '~> 0.0.12'
+  gem 'graph-client', '~> 0.0.13'
   gem 'graph-backend', '~> 0.0.26'
   #gem 'graph-backend', path: '../graph-backend'
   gem 'auth-backend', "~> 0.0.33"
