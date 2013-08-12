@@ -26,6 +26,8 @@ end
 use NewRelicMiddleware
 use Ping::Middleware
 
+use Qs::Request::Tracker::Middleware
+
 app = Rack::Builder.new do
   if ENV['RACK_ENV'] == 'development'
     require 'qless/server'

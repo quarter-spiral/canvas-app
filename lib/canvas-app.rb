@@ -16,6 +16,9 @@ require "angular-commons-middleware"
 require "cache-client"
 require "cache-backend-iron-cache"
 
+require 'qs/request/tracker'
+require 'qs/request/tracker/service_client_extension'
+
 require "canvas-app/version"
 require "canvas-app/utils"
 require "canvas-app/job"

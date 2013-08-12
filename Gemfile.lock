@@ -42,6 +42,7 @@ PATH
       omniauth-oauth2
       ping-middleware (~> 0.0.2)
       playercenter-client (= 0.0.5)
+      qs-request-tracker (>= 0.0.2)
       sass (= 3.2.1)
       sinatra (= 1.3.3)
       sinatra-assetpack (= 0.0.11)
@@ -317,6 +318,8 @@ GEM
       faye-websocket (~> 0.4, >= 0.4.4)
       http_parser.rb (~> 0.5.3)
       multi_json (~> 1.0)
+    qs-request-tracker (0.0.2)
+      uuid
     rack (1.4.5)
     rack-accept (0.4.5)
       rack (>= 0.4)
