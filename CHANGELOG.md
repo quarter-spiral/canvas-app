@@ -1,3 +1,7 @@
+# 0.0.83 / Unreleased
+
+* Resizes iFrames automatically to the max possible height
+
 # 0.0.82 / 2013-08-12
 
 * Adds getsentry.com exception tracking

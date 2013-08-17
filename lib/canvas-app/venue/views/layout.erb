@@ -278,6 +278,10 @@
           <% if game.has_subscription? %>
             subscription: true,
           <% end %>
+          sizes: {
+            fluid: <%= game.configuration["fluid-size"].to_json %>,
+            sizes: <%= (game.configuration["sizes"] || [{'width' => 600, 'height' => 400}]).to_json %>
+          },
           friendbar: {
             <% values = {} %>
             <% if label = game.configuration['friendbarTopValueLabel'] and key = game.configuration['friendbarTopValueKey'] and !label.empty? and !key.empty? %>
