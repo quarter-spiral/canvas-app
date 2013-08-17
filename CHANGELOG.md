@@ -1,4 +1,4 @@
-# 0.0.83 / Unreleased
+# 0.0.83 / 2013-08-17
 
 * Resizes iFrames automatically to the max possible height
 
