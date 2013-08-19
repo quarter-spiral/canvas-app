@@ -232,15 +232,12 @@
             <li class="hidden-phone"><input type="text" ng-model="searchFriends.$" class="span2 input-mini" placeholder="Search... " ></li>
           </ul>
 
-          <ul class="avatars">
-            <li ng-hide="loggedIn()">
-              <div class="avatarLink login-link">
-                <a ng-click="openLoginPopup()" href="#" class="btn btn-primary">
-                  Login
-                </a>
-              </div>
-            </li>
-            <li ng-show="loggedIn()">
+          <div class="not-logged-in-friendbar" ng-hide="loggedIn()">
+            <a ng-click="openLoginPopup()" href="#" class="">Login or register</a> to see and interact with your friends here.
+          </div>
+
+          <ul class="avatars" ng-show="loggedIn()">
+            <li>
               <div class="avatarLink invite-friends-link">
                 <a href="#" class="btn btn-success" invite-link>
                   Invite...
