@@ -1,3 +1,7 @@
+# 0.0.84 / 2013-08-19
+
+* Makes login lings more prominent
+
 # 0.0.83 / 2013-08-17
 
 * Resizes iFrames automatically to the max possible height
