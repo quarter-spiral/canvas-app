@@ -1,5 +1,6 @@
 # 0.0.85 / Unreleased
 
+* Re-orders and defers script to render page earlier
 * Makes web server run threaded on Heroku
 
 # 0.0.84 / 2013-08-19
