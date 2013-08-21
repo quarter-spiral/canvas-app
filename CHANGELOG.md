@@ -1,3 +1,7 @@
+# 0.0.85 / Unreleased
+
+* Makes web server run threaded on Heroku
+
 # 0.0.84 / 2013-08-19
 
 * Makes login lings more prominent
