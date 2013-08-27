@@ -54,7 +54,7 @@ describe Canvas::App::Venue::SpiralGalaxy do
 
   it "can puts the right information into the DOM when not logged in" do
     @page.visit "/v1/games/#{@game.uuid}/spiral-galaxy"
-
+    sleep 2
     @page.has_selector?('iframe').must_equal true
 
     dom_info = nil

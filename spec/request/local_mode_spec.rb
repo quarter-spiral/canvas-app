@@ -3,6 +3,7 @@
 require_relative './headless_request_helper'
 
 def local_mode_enabled?(page)
+  sleep 2
   page.has_selector?('iframe').must_equal true
   src  = page.evaluate_script('document.getElementById("html5frame").src')
   src == 'http://example.com/local-mode'

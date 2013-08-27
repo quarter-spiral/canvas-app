@@ -50,12 +50,24 @@ describe "Login" do
       tries += 1
     end
     @page.has_selector?('a', text: /Login/).must_equal true
+    @page.driver.render('/Users/walski/Desktop/screen1.png')
+    @page.click_link 'Login or register'
 
-    @page.click_link 'Login'
-    @page.fill_in 'Name', with: @player['name']
-    @page.fill_in 'Password', with: @player['password']
-    @page.click_button 'Log in'
-    @page.click_button 'Allow'
+    tries = 0
+    while tries < 5 && @page.driver.browser.window_handles.length < 2
+      sleep 0.2
+      tries += 1
+    end
+    login_window = @page.driver.browser.window_handles.last
+
+    @page.within_window(login_window) do
+      @page.driver.render('/Users/walski/Desktop/screen2.png')
+      @page.fill_in 'Name', with: @player['name']
+      @page.fill_in 'Password', with: @player['password']
+      @page.click_button 'Log in'
+      @page.click_button 'Allow'
+    end
+    sleep 1
 
     tries = 0
     while tries < 5 && !@page.has_selector?('div', text: /#{@player['name']}/, visible: true)

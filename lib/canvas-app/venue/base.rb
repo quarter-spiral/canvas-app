@@ -22,11 +22,7 @@ module Canvas::App
         end
 
         venue_name = Utils.uncamelize_string(name)
-        if logged_in_player
-          context.connection.tracking.game.track_logged_in_player(game.uuid, venue_name, qs_uuid)
-        else
-          context.connection.tracking.game.track_player(game.uuid, venue_name)
-        end
+        context.track_game_play(game.uuid, venue_name, logged_in_player)
 
         context.erb template, locals: template_options.merge(game: game, embedded_game: embedded_game, context: context, venue: Utils.uncamelize_string(name).gsub('_', '-'))
       end

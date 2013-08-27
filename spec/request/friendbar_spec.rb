@@ -100,6 +100,7 @@ describe "Friendbar" do
       )
       values.must_equal({})
 
+      sleep 5
       values = create_game_and_get_friendbar_values(
         'friendbarTopValueLabel' => "Top",
         'friendbarTopValueKey' => "theKey"

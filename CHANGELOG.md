@@ -1,5 +1,6 @@
 # 0.0.86 / Unreleased
 
+* Adds page caching
 * Fixes some jQuery shenanigans
 
 # 0.0.85 / 2013-08-21

@@ -6,6 +6,7 @@ require 'cgi'
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
+require_relative './poltergeist_hack_from_hell'
 
 # Make sure Capybara fucks itself and actually shows errors happening in our webapp.
 require 'rack/handler/thin'

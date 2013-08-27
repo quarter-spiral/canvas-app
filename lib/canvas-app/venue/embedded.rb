@@ -32,7 +32,8 @@ module Canvas::App
         context.tokens = {qs: qs_oauth, venue: qs_oauth, firebase: qs_firebase_token}
         context.venue = 'embedded'
 
-        super(game, context, uuid: qs_uuid, user_name: player_name)
+        response = super(game, context, uuid: qs_uuid, user_name: player_name)
+        context.connection.cache.set(context.game_cache_key(game.uuid, 'embedded', qs_uuid), response)
       end
     end
   end

@@ -4,9 +4,13 @@ require 'uri'
 require 'service-client'
 require 'cgi'
 require 'json'
+require 'date'
 
 module Canvas::App
   CHROME_HEIGHT = 160
+  MINUTES_PER_HOUR = 60
+  MINUTES_PER_DAY = 24 * MINUTES_PER_HOUR
+  RESPONSE_CACHE_TTL_IN_MINUTES = 15
 
   class App < Sinatra::Base
     class TokenStore
@@ -43,7 +47,6 @@ module Canvas::App
 
       js  :vendor, '/v1/javascripts/vendor.js', [
         '/v1/javascripts/vendor/event-shim.js',
-        '/v1/javascripts/vendor/jquery-1.8.2.min.js',
         '/v1/javascripts/vendor/angular/angular.js',
         '/v1/javascripts/vendor/angular/angular-resource.js',
         '/v1/javascripts/vendor/bootstrap.js',
@@ -106,6 +109,31 @@ module Canvas::App
         "\"#{escaped_string}\""
       end
 
+      def minute_at_midnight
+        Date.today.yday * MINUTES_PER_DAY
+      end
+
+      def minute_of_the_year
+        time = Time.new
+        minute_at_midnight + (time.hour * MINUTES_PER_HOUR) + time.min
+      end
+
+      def game_cache_key(game_uuid, venue, player_uuid)
+        ['game', game_uuid, venue, player_uuid || 'unauthorized', minute_of_the_year / RESPONSE_CACHE_TTL_IN_MINUTES]
+      end
+
+      def logged_in_player
+        (env['qs_token_owner'] || {})['uuid']
+      end
+
+      def track_game_play(game_uuid, venue_name, logged_in_player)
+        if logged_in_player
+          connection.tracking.game.track_logged_in_player(game_uuid, venue_name, logged_in_player)
+        else
+          connection.tracking.game.track_player(game_uuid, venue_name)
+        end
+      end
+
       include Rack::Utils
       alias_method :h, :escape_html
     end
@@ -152,11 +180,19 @@ module Canvas::App
       send(method, '/v1/games/:uuid/:venue') do
         return not_found unless params[:uuid]
 
-        game = try_twice_and_avoid_token_expiration do
-          Devcenter::Backend::Game.find(params[:uuid], token)
+        game_uuid = params[:uuid]
+        venue_name = params[:venue]
+
+        if cached_result = connection.cache.get(game_cache_key(game_uuid, venue_name, logged_in_player))
+          track_game_play(game_uuid, venue_name, logged_in_player)
+          return cached_result
         end
 
-        venue = Venue.for(game, params[:venue])
+        game = try_twice_and_avoid_token_expiration do
+          Devcenter::Backend::Game.find(game_uuid, token)
+        end
+
+        venue = Venue.for(game, venue_name)
         return halt(404) unless venue
 
         venue.response_for(game, self)

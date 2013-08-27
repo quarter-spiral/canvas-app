@@ -34,8 +34,8 @@ describe Canvas::App::Venue::Embedded do
 
   it "is delivering the pure embed without any framing" do
     login(@player['uuid'], @player['name'], @token, domain: 'localhost')
-    @page.visit "/v1/games/#{@game.uuid}/embedded"
 
+    @page.visit "/v1/games/#{@game.uuid}/embedded"
     @page.has_selector?('iframe').must_equal true
 
     dom_info = @page.evaluate_script('window.qs');
