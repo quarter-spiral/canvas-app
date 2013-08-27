@@ -1,8 +1,8 @@
-$(->
-  win = $(window)
+jQuery(->
+  win = jQuery(window)
 
-  infoContainers = $('#about, #sharing, #preroll, #game')
-  gameContainer = $('#html5frame, #qs-embedded-flash-game')
+  infoContainers = jQuery('#about, #sharing, #preroll, #game')
+  gameContainer = jQuery('#html5frame, #qs-embedded-flash-game')
 
   adoptInfoSizes = ->
     infoContainers.height(gameContainer.height())
@@ -11,11 +11,11 @@ $(->
   adoptInfoSizes()
 
   return unless qs.info.sizes.fluid
-  iframe = $('#html5frame')
+  iframe = jQuery('#html5frame')
   return unless iframe.length > 0
 
-  topBar = $('#header')
-  socialBar = $('#socialBar')
+  topBar = jQuery('#header')
+  socialBar = jQuery('#socialBar')
   minHeight = (qs.info.sizes.sizes[0] || {}).height
   adoptIframeSize = ->
     newHeight = win.height() - topBar.height() - socialBar.height() - 1

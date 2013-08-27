@@ -1,5 +1,5 @@
 @adoptSizes = (container, sizes) ->
-  win = $(window)
+  win = jQuery(window)
 
   resize = ->
     width = win.width()

@@ -1,3 +1,7 @@
+# 0.0.86 / Unreleased
+
+* Fixes some jQuery shenanigans
+
 # 0.0.85 / 2013-08-21
 
 * Re-orders and defers script to render page earlier

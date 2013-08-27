@@ -13,7 +13,7 @@
       element.remove()
 ).directive('inviteLink', ->
   ($scope, element, attrs) ->
-    $(element).click (e) ->
+    jQuery(element).click (e) ->
       e.preventDefault()
       window.qs.inviteFriendsOnVenue(element);
 )

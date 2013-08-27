@@ -21,6 +21,8 @@
       </script>
       <script src="/v1/javascripts-flXHR/flXHR.js" defer></script>
       <script src="/v1/javascripts-flXHR/angular-adaptor.js" defer></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></script>
+
       <%= js :vendor, {:defer => 'defer'} %>
 
       <meta name="description" content="">
@@ -297,10 +299,10 @@
         };
         if (window.qs.inviteFriendsOnVenue === undefined) {
           window.qs.inviteFriendsOnVenue = function(element) {
-            var button = $(element);
-            $('.st_sharethis_large').click();
+            var button = jQuery(element);
+            jQuery('.st_sharethis_large').click();
             var moveInviteBox = function() {
-              var wrapper = $('#stwrapper');
+              var wrapper = jQuery('#stwrapper');
               if (wrapper.lemgth < 1) {
                 return;
               }

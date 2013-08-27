@@ -16,7 +16,7 @@
   };
 
   <% sizes = game.configuration["sizes"] || [{'width' => 600, 'height' => 400}] %>
-  $(function() {
+  jQuery(function() {
     FB.Canvas.setSize({height: <%= (sizes.first['height'] + Canvas::App::CHROME_HEIGHT).to_json %>});
   });
 </script>

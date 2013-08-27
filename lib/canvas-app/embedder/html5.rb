@@ -13,7 +13,7 @@ module Canvas::App
 <% unless fluid %>
   <script src="/v1/javascripts/app/resize_helpers.js" type="text/javascript"></script>
   <script type="text/javascript">
-    adoptSizes($('#html5frame'), <%= sizes.to_json %>);
+    adoptSizes(jQuery('#html5frame'), <%= sizes.to_json %>);
   </script>
 <% end %>
 
