@@ -28,7 +28,7 @@ GIT
 PATH
   remote: .
   specs:
-    canvas-app (0.0.85)
+    canvas-app (0.0.86)
       angular-commons-middleware
       auth-client (>= 0.0.17)
       cache-backend-iron-cache (~> 0.0.4)
@@ -427,7 +427,7 @@ GEM
     typhoeus (0.6.1)
       ethon (~> 0.5.9)
     tzinfo (0.3.37)
-    uglifier (2.1.1)
+    uglifier (2.2.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)

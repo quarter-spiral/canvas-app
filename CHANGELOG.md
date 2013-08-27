@@ -1,4 +1,4 @@
-# 0.0.86 / Unreleased
+# 0.0.86 / 2013-08-27
 
 * Adds page caching
 * Fixes some jQuery shenanigans
